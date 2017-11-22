@@ -8,9 +8,9 @@
 <h2>The team</h2>
 <h4>Created with almost no coffee by 4 young app developers:  </h4>
 <ul>
-  <li><a href="https://github.com/Saryx11"> Benjamin Louis </a></li> 
+  <li><a href="https://github.com/Saryx11"> Benjamin LOUIS </a></li> 
   <li><a href="https://github.com/DeltaHammerFest"> Guillaume LAZARO </a></li> 
-  <li><a href="https://github.com/IdrisAd "> Idris Adrien </a></li> 
+  <li><a href="https://github.com/IdrisAd "> Idris ADRIEN </a></li> 
   <li><a href="https://github.com/Ailelame"> Thomas FOLMER  </a> </li> 
 </ul>
 <br>
