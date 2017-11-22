@@ -1,7 +1,7 @@
 <h1 align="center"> Final collaborative app written in Swift </h1>
-<div>
+<p align="center">
   <img src="https://developer.apple.com/swift/images/swift-og.png" alt="Swift Logo" width="600px" >
-</div>
+</p>
  <br>
 <h4>Created with almost no coffee by 4 young app developers:  </h4>
 <ul>
