@@ -3,10 +3,10 @@
   <img src="https://developer.apple.com/swift/images/swift-og.png" alt="Swift Logo" width="600px" >
 </div>
  <br>
-<p>Created with almost no coffee by 4 young app developers:  </p>
+<h4>Created with almost no coffee by 4 young app developers:  </h4>
 <ul>
-  <li>Ailelame: https://github.com/Ailelame</li>
-  <li>DeltaHammerfest: https://github.com/DeltaHammerFest</li>
-  <li>IdrisAd: https://github.com/IdrisAd </li>
-  <li>Saryx11: https://github.com/Saryx11</li>
+  <li>Ailelame: <span><a href="https://github.com/Ailelame"> GitHub </a> </li> 
+  <li>DeltaHammerfest: <span><a href="https://github.com/DeltaHammerFest"> GitHub </a></li> 
+  <li>IdrisAd: <span><a href="https://github.com/IdrisAd "> GitHub </a></li> 
+  <li>Saryx11: <span><a href="https://github.com/Saryx11"> GitHub </a></li> 
 </ul>
