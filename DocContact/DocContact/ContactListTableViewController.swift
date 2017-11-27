@@ -9,9 +9,20 @@
 import UIKit
 
 class ContactListTableViewController: UITableViewController {
-        
+    
+    // SearchBar
+    let searchController = UISearchController(searchResultsController: nil)
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // Setup the Search Controller
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Recherche"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
         
         self.title = "Mes contacts"
         let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
@@ -19,12 +30,13 @@ class ContactListTableViewController: UITableViewController {
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
+        
+ 
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     @objc func goToEditContact(){
@@ -64,7 +76,7 @@ class ContactListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
     
 

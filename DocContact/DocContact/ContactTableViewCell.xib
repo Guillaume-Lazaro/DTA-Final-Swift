@@ -41,22 +41,24 @@
                         </constraints>
                         <state key="normal" image="phoneIcon"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
-                        <rect key="frame" x="106" y="60" width="60" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
+                        <rect key="frame" x="62.5" y="60" width="138" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="zaY-1Q-dTw" secondAttribute="trailing" id="3p3-Gw-IEM"/>
                     <constraint firstAttribute="bottom" secondItem="fOr-S7-Q6J" secondAttribute="bottom" constant="5" id="Mjk-Bo-1NK"/>
                     <constraint firstItem="QmT-Ol-vPm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Nwz-Jl-p3I"/>
                     <constraint firstItem="fOr-S7-Q6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Z2V-TL-K2x"/>
                     <constraint firstItem="3nj-cW-JO4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="aZr-Vs-WQW"/>
+                    <constraint firstItem="zaY-1Q-dTw" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="bsI-K6-Ci3"/>
                     <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="3nj-cW-JO4" secondAttribute="trailing" id="fFd-DY-zJw"/>
                     <constraint firstAttribute="trailing" secondItem="fOr-S7-Q6J" secondAttribute="trailing" constant="5" id="fpS-Yh-3Ih"/>
                     <constraint firstItem="QmT-Ol-vPm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="g24-iW-0gT"/>
+                    <constraint firstItem="zaY-1Q-dTw" firstAttribute="top" secondItem="3nj-cW-JO4" secondAttribute="bottom" constant="18" id="p8j-kY-aeO"/>
                     <constraint firstItem="3nj-cW-JO4" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="sWQ-T3-xor"/>
                     <constraint firstAttribute="bottom" secondItem="QmT-Ol-vPm" secondAttribute="bottom" constant="10" id="z1r-gL-3iJ"/>
                 </constraints>
