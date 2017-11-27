@@ -23,6 +23,7 @@
 		E984FB071FCC361800BD7F09 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB051FCC361800BD7F09 /* DetailViewController.xib */; };
 		E984FB0A1FCC366900BD7F09 /* AddEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */; };
 		E984FB0B1FCC366900BD7F09 /* AddEditContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */; };
+		FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		E984FB051FCC361800BD7F09 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditContactViewController.swift; sourceTree = "<group>"; };
 		E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditContactViewController.xib; sourceTree = "<group>"; };
+		FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				BC1448CD1FCC18DB00528F85 /* DocContact.xcdatamodeld */,
 				BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */,
 				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
+				FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */,
 			);
 			path = DocContact;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				BC1448C91FCC18DB00528F85 /* LoginViewController.swift in Sources */,
 				E984FB0A1FCC366900BD7F09 /* AddEditContactViewController.swift in Sources */,
 				E984FB061FCC361800BD7F09 /* DetailViewController.swift in Sources */,
+				FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */,
 				BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */,
 				BC1448C71FCC18DB00528F85 /* AppDelegate.swift in Sources */,
 			);

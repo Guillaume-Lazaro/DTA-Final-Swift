@@ -21,7 +21,7 @@ class InscriptionViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         var pickerView = UIPickerView()
-        pickerView.delegate = self
+        // pickerView.delegate = self
         pickerTextField.inputView = pickerView
     }
 

@@ -97,6 +97,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="SCK-0B-f3Z"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="bdL-A3-tlA" id="ZYV-f5-Qs5"/>
+                        <outlet property="phoneTextField" destination="ago-v7-oPE" id="Rer-am-ogs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
