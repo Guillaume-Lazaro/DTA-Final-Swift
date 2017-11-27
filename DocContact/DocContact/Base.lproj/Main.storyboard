@@ -40,6 +40,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2h-cc-M8s">
                                 <rect key="frame" x="91" y="459" width="138" height="30"/>
                                 <state key="normal" title="Mot de passe oublié"/>
+                                <connections>
+                                    <action selector="alertForgottenPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kBb-vq-NMf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkm-TE-9Gz">
                                 <rect key="frame" x="120" y="518" width="80" height="30"/>

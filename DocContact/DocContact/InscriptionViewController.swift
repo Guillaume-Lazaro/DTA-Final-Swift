@@ -19,10 +19,23 @@ class InscriptionViewController: UIViewController {
         
         self.title = "Inscription"
         // Do any additional setup after loading the view.
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(validateInscription))
 
         var pickerView = UIPickerView()
-        pickerView.delegate = self
+        //pickerView.delegate = self
         pickerTextField.inputView = pickerView
+    }
+    
+    // Method of the back button
+    @objc func backAction(){
+        //print("Back Button Clicked")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func validateInscription(){
+        //TODO: validation of the inscription
     }
 
     override func didReceiveMemoryWarning() {
