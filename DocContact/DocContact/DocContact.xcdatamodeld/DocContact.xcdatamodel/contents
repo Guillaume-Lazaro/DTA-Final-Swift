@@ -13,10 +13,12 @@
         <attribute name="phone" attributeType="String" syncable="YES"/>
         <attribute name="profile" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="User" representedClassName="User" parentEntity="Person" syncable="YES" codeGenerationType="class"/>
+    <entity name="User" representedClassName="User" parentEntity="Person" syncable="YES" codeGenerationType="class">
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Contact" positionX="-45" positionY="36" width="128" height="105"/>
-        <element name="User" positionX="-27" positionY="63" width="128" height="45"/>
+        <element name="User" positionX="-27" positionY="63" width="128" height="60"/>
     </elements>
 </model>
