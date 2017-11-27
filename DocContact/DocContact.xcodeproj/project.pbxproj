@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC1448C71FCC18DB00528F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448C61FCC18DB00528F85 /* AppDelegate.swift */; };
-		BC1448C91FCC18DB00528F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448C81FCC18DB00528F85 /* ViewController.swift */; };
+		BC1448C91FCC18DB00528F85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448C81FCC18DB00528F85 /* LoginViewController.swift */; };
 		BC1448CC1FCC18DB00528F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1448CA1FCC18DB00528F85 /* Main.storyboard */; };
 		BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC1448CD1FCC18DB00528F85 /* DocContact.xcdatamodeld */; };
 		BC1448D11FCC18DB00528F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC1448D01FCC18DB00528F85 /* Assets.xcassets */; };
@@ -19,6 +19,10 @@
 		E984FAFF1FCC1B0500BD7F09 /* InscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */; };
 		E984FB021FCC1B2B00BD7F09 /* ContactListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */; };
 		E984FB031FCC1B2B00BD7F09 /* ContactListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */; };
+		E984FB061FCC361800BD7F09 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB041FCC361800BD7F09 /* DetailViewController.swift */; };
+		E984FB071FCC361800BD7F09 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB051FCC361800BD7F09 /* DetailViewController.xib */; };
+		E984FB0A1FCC366900BD7F09 /* AddEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */; };
+		E984FB0B1FCC366900BD7F09 /* AddEditContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +45,7 @@
 /* Begin PBXFileReference section */
 		BC1448C31FCC18DB00528F85 /* DocContact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocContact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1448C61FCC18DB00528F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC1448C81FCC18DB00528F85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BC1448C81FCC18DB00528F85 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BC1448CB1FCC18DB00528F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC1448CE1FCC18DB00528F85 /* DocContact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DocContact.xcdatamodel; sourceTree = "<group>"; };
 		BC1448D01FCC18DB00528F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +61,10 @@
 		E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InscriptionViewController.xib; sourceTree = "<group>"; };
 		E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewController.swift; sourceTree = "<group>"; };
 		E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListTableViewController.xib; sourceTree = "<group>"; };
+		E984FB041FCC361800BD7F09 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E984FB051FCC361800BD7F09 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditContactViewController.swift; sourceTree = "<group>"; };
+		E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditContactViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				BC1448C61FCC18DB00528F85 /* AppDelegate.swift */,
-				BC1448C81FCC18DB00528F85 /* ViewController.swift */,
+				BC1448C81FCC18DB00528F85 /* LoginViewController.swift */,
 				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
 				BC1448D01FCC18DB00528F85 /* Assets.xcassets */,
 				BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */,
@@ -118,6 +126,10 @@
 				E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */,
 				E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */,
 				E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */,
+				E984FB041FCC361800BD7F09 /* DetailViewController.swift */,
+				E984FB051FCC361800BD7F09 /* DetailViewController.xib */,
+				E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */,
+				E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */,
 			);
 			path = DocContact;
 			sourceTree = "<group>";
@@ -248,7 +260,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E984FAFF1FCC1B0500BD7F09 /* InscriptionViewController.xib in Resources */,
+				E984FB071FCC361800BD7F09 /* DetailViewController.xib in Resources */,
 				BC1448D41FCC18DB00528F85 /* LaunchScreen.storyboard in Resources */,
+				E984FB0B1FCC366900BD7F09 /* AddEditContactViewController.xib in Resources */,
 				BC1448D11FCC18DB00528F85 /* Assets.xcassets in Resources */,
 				E984FB031FCC1B2B00BD7F09 /* ContactListTableViewController.xib in Resources */,
 				BC1448CC1FCC18DB00528F85 /* Main.storyboard in Resources */,
@@ -278,7 +292,9 @@
 			files = (
 				E984FB021FCC1B2B00BD7F09 /* ContactListTableViewController.swift in Sources */,
 				E984FAFE1FCC1B0500BD7F09 /* InscriptionViewController.swift in Sources */,
-				BC1448C91FCC18DB00528F85 /* ViewController.swift in Sources */,
+				BC1448C91FCC18DB00528F85 /* LoginViewController.swift in Sources */,
+				E984FB0A1FCC366900BD7F09 /* AddEditContactViewController.swift in Sources */,
+				E984FB061FCC361800BD7F09 /* DetailViewController.swift in Sources */,
 				BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */,
 				BC1448C71FCC18DB00528F85 /* AppDelegate.swift in Sources */,
 			);
