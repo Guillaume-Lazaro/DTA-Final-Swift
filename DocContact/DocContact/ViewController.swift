@@ -21,9 +21,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func connexionAction(_ sender: Any) {
-        
+    
+    @IBAction func navToContactList(_ sender: Any) {
+        // Setting up the delegate
+        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+        let navVC = UINavigationController(rootViewController: contactVC)
+        self.present(navVC, animated: true, completion: nil)
     }
-
 }
 
