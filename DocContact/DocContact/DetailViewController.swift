@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Mon Contact"
         // Do any additional setup after loading the view.
     }
 

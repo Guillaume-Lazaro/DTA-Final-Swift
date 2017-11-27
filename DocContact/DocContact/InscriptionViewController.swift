@@ -12,7 +12,8 @@ class InscriptionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = "Inscription"
         // Do any additional setup after loading the view.
     }
 

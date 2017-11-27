@@ -12,6 +12,12 @@ class ContactListTableViewController: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Mes contacts"
+        
+        
+        let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
+        self.navigationItem.rightBarButtonItem = validateCreation
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -20,6 +26,12 @@ class ContactListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    @objc func goToEditContact(){
+        let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
+        let navVC = UINavigationController(rootViewController: contactVC)
+        self.present(navVC, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
