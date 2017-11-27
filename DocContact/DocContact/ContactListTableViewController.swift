@@ -14,7 +14,8 @@ class ContactListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Mes contacts"
-        
+        let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "ContactCell")
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
@@ -41,23 +42,27 @@ class ContactListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 8 
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
+        
+        if let contactCell = cell as? ContactTableViewCell {
+            
+        }
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
