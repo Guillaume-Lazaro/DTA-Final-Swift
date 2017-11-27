@@ -23,9 +23,15 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func navToInscription(_ sender: Any) {
+        // Setting up the nav
+        let contactVC = InscriptionViewController(nibName: nil, bundle: nil)
+        let navVC = UINavigationController(rootViewController: contactVC)
+        self.present(navVC, animated: true, completion: nil)
+    }
     
     @IBAction func navToContactList(_ sender: Any) {
-        // Setting up the delegate
+        // Setting up the nav
         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
         self.present(navVC, animated: true, completion: nil)
