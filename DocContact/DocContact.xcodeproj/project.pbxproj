@@ -115,21 +115,21 @@
 		BC1448C51FCC18DB00528F85 /* DocContact */ = {
 			isa = PBXGroup;
 			children = (
-				BC1448C61FCC18DB00528F85 /* AppDelegate.swift */,
-				BC1448C81FCC18DB00528F85 /* LoginViewController.swift */,
-				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
-				BC1448D01FCC18DB00528F85 /* Assets.xcassets */,
-				BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */,
 				BC1448D51FCC18DB00528F85 /* Info.plist */,
-				BC1448CD1FCC18DB00528F85 /* DocContact.xcdatamodeld */,
-				E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */,
-				E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */,
-				E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */,
-				E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */,
-				E984FB041FCC361800BD7F09 /* DetailViewController.swift */,
-				E984FB051FCC361800BD7F09 /* DetailViewController.xib */,
 				E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */,
+				BC1448C61FCC18DB00528F85 /* AppDelegate.swift */,
+				E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */,
+				E984FB041FCC361800BD7F09 /* DetailViewController.swift */,
+				E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */,
+				BC1448C81FCC18DB00528F85 /* LoginViewController.swift */,
+				BC1448D01FCC18DB00528F85 /* Assets.xcassets */,
 				E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */,
+				E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */,
+				E984FB051FCC361800BD7F09 /* DetailViewController.xib */,
+				E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */,
+				BC1448CD1FCC18DB00528F85 /* DocContact.xcdatamodeld */,
+				BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */,
+				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
 			);
 			path = DocContact;
 			sourceTree = "<group>";
