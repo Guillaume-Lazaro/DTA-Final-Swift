@@ -10,18 +10,26 @@ import UIKit
 
 class InscriptionViewController: UIViewController {
 
+    @IBOutlet weak var pickerTextField: UITextField!
+
+    var pickOption = ["Famille", "Santé", "Proche"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Inscription"
         // Do any additional setup after loading the view.
+
+        var pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerTextField.inputView = pickerView
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation
