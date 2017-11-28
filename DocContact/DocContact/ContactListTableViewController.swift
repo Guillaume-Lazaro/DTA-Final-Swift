@@ -9,16 +9,9 @@
 import UIKit
 
 class ContactListTableViewController: UITableViewController {
-<<<<<<< HEAD
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-=======
     
     // SearchBar
     let searchController = UISearchController(searchResultsController: nil)
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,29 +23,21 @@ class ContactListTableViewController: UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
->>>>>>> IHMThomas
         self.title = "Mes contacts"
         let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ContactCell")
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
-<<<<<<< HEAD
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-=======
-        
- 
-        
-        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
->>>>>>> IHMThomas
     }
 
     @objc func goToEditContact(){
@@ -91,14 +76,10 @@ class ContactListTableViewController: UITableViewController {
         return cell
     }
     
-<<<<<<< HEAD
-=======
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
->>>>>>> IHMThomas
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
