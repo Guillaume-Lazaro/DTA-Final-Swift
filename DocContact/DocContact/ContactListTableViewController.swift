@@ -10,12 +10,16 @@ import UIKit
 
 class ContactListTableViewController: UITableViewController {
     
+ 
+    
     // SearchBar
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //POUR LES TEST
+        appDelegate().mockedData()
         
         // Setup the Search Controller
         searchController.obscuresBackgroundDuringPresentation = false
@@ -68,6 +72,7 @@ class ContactListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
         
         if let contactCell = cell as? ContactTableViewCell {
+       
             
         }
 
@@ -78,6 +83,12 @@ class ContactListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController(nibName: nil, bundle: nil)
+        //detailViewController.delegate = self
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     /*
