@@ -125,6 +125,7 @@
 		BC1448C51FCC18DB00528F85 /* DocContact */ = {
 			isa = PBXGroup;
 			children = (
+				FC50F38D1FCDA7FA0028FB12 /* Providers */,
 				BC1448D51FCC18DB00528F85 /* Info.plist */,
 				E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */,
 				BC1448C61FCC18DB00528F85 /* AppDelegate.swift */,
@@ -144,7 +145,6 @@
 				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
 				E984FB121FCC590100BD7F09 /* RoundedButton.swift */,
 				E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */,
-				FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */,
 			);
 			path = DocContact;
 			sourceTree = "<group>";
@@ -165,6 +165,14 @@
 				BC1448EB1FCC18DB00528F85 /* Info.plist */,
 			);
 			path = DocContactUITests;
+			sourceTree = "<group>";
+		};
+		FC50F38D1FCDA7FA0028FB12 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
