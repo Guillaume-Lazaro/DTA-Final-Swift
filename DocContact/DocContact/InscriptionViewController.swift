@@ -21,7 +21,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
-    var pickOption = ["SENIOR", "MEDECIN", "FAMILLE"]
+    var pickOption = ["_", "SENIOR", "MEDECIN", "FAMILLE"]
     let pickerView = UIPickerView()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -87,26 +87,37 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text, let firstname: String = firstNameTextField.text, let lastname: String = nameTextField.text, let mail: String = emailTextField.text, let profile: String = pickerTextField.text else {
             return
         }
+        if password == confirmPasswordTextField.text {
+            self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
+                self.netProvider.loginOnServer(phone: phone, password: password, success: {
+                    DispatchQueue.main.async {
+                        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+                        let navVC = UINavigationController(rootViewController: contactVC)
+                        self.present(navVC, animated: true, completion: nil)
+                    }
+                }, failure: {})
+            },failure: { DispatchQueue.main.async {
+                self.alertFailed()}
+            })
+        } else {
+            self.alertPwd()
+        }
         
-        self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
-            self.netProvider.loginOnServer(phone: phone, password: password, success: {
-                DispatchQueue.main.async {
-                    let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                    let navVC = UINavigationController(rootViewController: contactVC)
-                    self.present(navVC, animated: true, completion: nil)
-                }
-            }, failure: {})
-        },failure: { DispatchQueue.main.async {
-            self.alertFailed()}
-        })
+    }
+    
+    func alertPwd(){
+        let alertMdp = UIAlertController(title: "Erreur Mot de pase", message:
+            "Confirmation mot de passe incorrecte", preferredStyle: UIAlertControllerStyle.alert)
+        alertMdp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertMdp, animated: true, completion: nil)
+        
     }
     
     func alertFailed(){
         let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veillez à remplir tous les champs avec des informations correctes", preferredStyle: .alert)
-        let OK = UIAlertAction(title: "OK", style: .default){ _ in self.dismiss(animated: true, completion: nil)
-        }
-        alertSignUp.addAction(OK)
-        self.present(alertSignUp, animated: true)
+        alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+        self.present(alertSignUp, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

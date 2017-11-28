@@ -101,11 +101,12 @@ class NetworkProvider{
         }
         task.resume()
     }
-
+    
     func getContacts(){
+        func getContacts(){
             let urlString = API_URL + protectedModifier + "/contacts"
             let url = URL(string: urlString)!
-            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4ODU2NzksImV4cCI6MTUxMTg4NTk3OX0.xj-vi0gtproD5mWbM574douNDuYXfgdQB6rbVsqjbe0"
+            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4ODMzODEsImV4cCI6MTUxMTg4MzY4MX0.6yawEdkZ8lba4F0BBDPT9p6OEb2jOShWV5MTy2-suro"
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.setValue("application/json", forHTTPHeaderField: "Content-type")
@@ -120,15 +121,17 @@ class NetworkProvider{
                         return
                     }
                     let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                    
-                    guard let resp = responseJSON as? [[String:Any]] else{
-                        return
+                    print(responseJSON)
+                    if let responseJSON = responseJSON as? [String: Any] {
+                        print(responseJSON)
                     }
-                    print(resp)
                     
+                } catch let error as NSError {
+                    print("json error: \(error.localizedDescription)")
                 }
             }
             task.resume()
         }
-
+    }
 }
+    
