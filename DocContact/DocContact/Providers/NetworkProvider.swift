@@ -105,7 +105,7 @@ class NetworkProvider{
     }
     
     // TODO : Renvoyer la liste reçue
-    func getContacts(token: String){
+    func getContacts(){
         let urlString = API_URL + protectedModifier + "/contacts"
         let url = URL(string: urlString)!
         let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4ODMzODEsImV4cCI6MTUxMTg4MzY4MX0.6yawEdkZ8lba4F0BBDPT9p6OEb2jOShWV5MTy2-suro"
