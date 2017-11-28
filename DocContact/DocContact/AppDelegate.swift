@@ -138,17 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-        let task = session.dataTask(with: request){data, response, error in
-//            if let httpResponse = response as? HTTPURLResponse {
-//                if httpResponse.statusCode == 200 {
-//                    success()
-//                } else{
-//                    failure(NSError(domain:"HTTP Error", code: httpResponse.statusCode, userInfo:nil))
-//                }
-//            }else{
-//                failure(error)
-//            }
-            
+        let task = session.dataTask(with: request){data, response, error in            
             do{
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
