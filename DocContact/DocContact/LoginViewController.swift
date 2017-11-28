@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    weak var delegate: LoginViewControllerDelegate?
+    let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -65,12 +65,13 @@ class LoginViewController: UIViewController {
         guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text else {
             return
         }
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
-            appDelegate.loginOnServer(phone: phone, password: password)
-        }
-        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-        let navVC = UINavigationController(rootViewController: contactVC)
-        self.present(navVC, animated: true, completion: nil)
+        netProvider.loginOnServer(phone: phone, password: password,
+                                  success: {DispatchQueue.main.async {
+                                    self.goToList()}
+        },
+                                  failure: { DispatchQueue.main.async {
+                                    self.alertLoginFailed()}
+        })
     }
     
     func forgottenPassword(phoneNumber: String) {
@@ -94,6 +95,21 @@ class LoginViewController: UIViewController {
         alertController.addAction(OK)
         self.present(alertController, animated:true)
     }
+    func goToList(){
+        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+        let navVC = UINavigationController(rootViewController: contactVC)
+        self.present(navVC, animated: true, completion: nil)
+    }
+    
+    func alertLoginFailed(){
+        let alertLogin = UIAlertController(title: "Login échoué", message: "Nous n'avons pas pu vous connecter, vérifiez votre numéro de téléphone et votre mot de passe puis réessayez", preferredStyle: .alert)
+        let OK = UIAlertAction(title: "OK", style: .default){ _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertLogin.addAction(OK)
+        self.present(alertLogin, animated:true)
+    }
+
 }
 protocol LoginViewControllerDelegate : AnyObject{
     func login(phone: String, password: String)
