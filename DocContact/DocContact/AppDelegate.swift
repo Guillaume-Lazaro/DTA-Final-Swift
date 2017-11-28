@@ -122,35 +122,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         task.resume()
     }
-
     
-    func mockedData(){
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4NzE1NDEsImV4cCI6MTUxMTg3MTg0MX0.ef0kublYYQmGef0x6p0Dixx521qszTzmo8W5F7S8mKA"
-        let urlString = API_URL+protectedModifier+"/contact";
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+    // Get the contact from the server
+    func getContacts(){
+        let url = URL(string: "http://familink.cleverapps.io/secured/users/contacts")
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4Nzk0NTgsImV4cCI6MTUxMTg3OTc1OH0.1V8zeHQTud7WZT3YeBw7y7lfOHxbVvueSgb1DUKQ_Fs"
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
-        request.setValue("Bearer <>", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
             do {
+                print(data ?? "Pas de data")
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                print(responseJSON)
                 if let responseJSON = responseJSON as? [String: Any] {
                     print(responseJSON)
                 }
+                
+            } catch let error as NSError {
+                print("json error: \(error.localizedDescription)")
             }
         }
         task.resume()
-        
-      
     }
-    
 }
+    
+
 
 
 extension UIViewController{

@@ -19,8 +19,8 @@ class ContactListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //POUR LES TEST
-        appDelegate().mockedData()
-        
+        appDelegate().getContacts()
+                
         // Setup the Search Controller
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Recherche"
