@@ -13,6 +13,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="DocContact" customModuleProvider="target">
             <connections>
+                <outlet property="emailView" destination="BFX-mY-Try" id="TLS-Xx-KIr"/>
+                <outlet property="imageView" destination="5M8-Ug-CDh" id="5TV-NR-2bQ"/>
+                <outlet property="phoneView" destination="MU3-jG-Jdm" id="jjj-ph-745"/>
+                <outlet property="typeView" destination="Iq0-0p-39b" id="Igy-Od-ACN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
