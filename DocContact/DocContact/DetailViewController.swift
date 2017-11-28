@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
         
         //Changement de l'image de profil:
         DispatchQueue.main.async() {
-            let strUrl = "https://www.gravatar.com/avatar/"+hashGravatar+"s=200"
+            let strUrl = "https://www.gravatar.com/avatar/"+hashGravatar+"?s=200"
             print("URL: ",strUrl)
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)
