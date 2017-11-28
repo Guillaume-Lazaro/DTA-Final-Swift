@@ -16,6 +16,7 @@
                 <outlet property="firstNameTextField" destination="0fY-Xq-gMT" id="Clf-QU-bgI"/>
                 <outlet property="nameTextField" destination="P0X-oM-QZZ" id="N56-Ba-odn"/>
                 <outlet property="phoneTextField" destination="7Su-ZE-nGR" id="Yir-Oa-ddL"/>
+                <outlet property="pickerTextField" destination="P9u-5f-OM0" id="Bdk-1c-iIP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,10 +26,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pTo-7f-MHn">
-                    <rect key="frame" x="10" y="30" width="355" height="180"/>
+                    <rect key="frame" x="10" y="30" width="355" height="230"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="iy2-bb-M8j">
-                            <rect key="frame" x="0.0" y="0.0" width="170" height="174"/>
+                            <rect key="frame" x="0.0" y="0.0" width="170" height="223.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMu-1m-GHt">
                                     <rect key="frame" x="0.0" y="0.0" width="170" height="25.5"/>
@@ -54,10 +55,16 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type de profil" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM3-UV-V9q">
+                                    <rect key="frame" x="0.0" y="198" width="170" height="25.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="w8E-fg-Gbm">
-                            <rect key="frame" x="185" y="0.0" width="170" height="180"/>
+                            <rect key="frame" x="185" y="0.0" width="170" height="230"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0X-oM-QZZ">
                                     <rect key="frame" x="0.0" y="0.0" width="170" height="30"/>
@@ -79,6 +86,12 @@
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXW-Im-o5N">
                                     <rect key="frame" x="0.0" y="150" width="170" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P9u-5f-OM0">
+                                    <rect key="frame" x="0.0" y="200" width="170" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
