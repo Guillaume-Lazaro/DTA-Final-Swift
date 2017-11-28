@@ -101,5 +101,36 @@ class NetworkProvider{
         }
         task.resume()
     }
-}
 
+    func getContacts(){
+        func getContacts(){
+            let urlString = API_URL + protectedModifier + "/contacts"
+            let url = URL(string: urlString)!
+            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4ODMzODEsImV4cCI6MTUxMTg4MzY4MX0.6yawEdkZ8lba4F0BBDPT9p6OEb2jOShWV5MTy2-suro"
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("application/json", forHTTPHeaderField: "Content-type")
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            let task = URLSession.shared.dataTask(with: request) {
+                (data, response, error) in
+                do {
+                    print(data ?? "Pas de data")
+                    guard let data = data, error == nil else {
+                        print(error?.localizedDescription ?? "No data")
+                        return
+                    }
+                    let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                    print(responseJSON)
+                    if let responseJSON = responseJSON as? [String: Any] {
+                        print(responseJSON)
+                    }
+                    
+                } catch let error as NSError {
+                    print("json error: \(error.localizedDescription)")
+                }
+            }
+            task.resume()
+        }
+}
+}
