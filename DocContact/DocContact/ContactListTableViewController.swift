@@ -19,7 +19,7 @@ class ContactListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //POUR LES TEST
-        appDelegate().mockedData()
+        //appDelegate().mockedData()
         
         // Setup the Search Controller
         searchController.obscuresBackgroundDuringPresentation = false
