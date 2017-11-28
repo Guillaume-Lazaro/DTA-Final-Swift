@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,45 +20,47 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-Ol-vPm">
-                        <rect key="frame" x="10" y="10" width="52.5" height="104.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="profileImage" image="chuck" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-Ol-vPm" customClass="RoundedImage" customModule="DocContact" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="QmT-Ol-vPm" secondAttribute="height" multiplier="1:2" id="tmm-fD-zWW"/>
+                            <constraint firstAttribute="width" secondItem="QmT-Ol-vPm" secondAttribute="height" multiplier="1:1" id="tmm-fD-zWW"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nj-cW-JO4">
-                        <rect key="frame" x="62.5" y="21" width="138" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PO8-Fs-eRJ">
+                        <rect key="frame" x="114.5" y="42" width="86" height="41"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nj-cW-JO4">
+                                <rect key="frame" x="0.0" y="0.0" width="86" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
+                                <rect key="frame" x="0.0" y="20.5" width="86" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-S7-Q6J" customClass="RoundedButton" customModule="DocContact" customModuleProvider="target">
                         <rect key="frame" x="200.5" y="5" width="114.5" height="114.5"/>
-                        <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.029362974688410759" green="0.94758719205856323" blue="0.310301274061203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="fOr-S7-Q6J" secondAttribute="height" multiplier="1:1" id="WTj-5f-WPI"/>
                         </constraints>
                         <state key="normal" image="phoneIcon"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
-                        <rect key="frame" x="62.5" y="60" width="138" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="zaY-1Q-dTw" secondAttribute="trailing" id="3p3-Gw-IEM"/>
+                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="PO8-Fs-eRJ" secondAttribute="trailing" id="5Lc-Yh-wxN"/>
+                    <constraint firstItem="PO8-Fs-eRJ" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="AMt-U9-mLc"/>
+                    <constraint firstItem="PO8-Fs-eRJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fcr-Od-D5Z"/>
                     <constraint firstAttribute="bottom" secondItem="fOr-S7-Q6J" secondAttribute="bottom" constant="5" id="Mjk-Bo-1NK"/>
                     <constraint firstItem="QmT-Ol-vPm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Nwz-Jl-p3I"/>
                     <constraint firstItem="fOr-S7-Q6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Z2V-TL-K2x"/>
-                    <constraint firstItem="3nj-cW-JO4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="aZr-Vs-WQW"/>
-                    <constraint firstItem="zaY-1Q-dTw" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="bsI-K6-Ci3"/>
-                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="3nj-cW-JO4" secondAttribute="trailing" id="fFd-DY-zJw"/>
                     <constraint firstAttribute="trailing" secondItem="fOr-S7-Q6J" secondAttribute="trailing" constant="5" id="fpS-Yh-3Ih"/>
                     <constraint firstItem="QmT-Ol-vPm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="g24-iW-0gT"/>
-                    <constraint firstItem="zaY-1Q-dTw" firstAttribute="top" secondItem="3nj-cW-JO4" secondAttribute="bottom" constant="18" id="p8j-kY-aeO"/>
-                    <constraint firstItem="3nj-cW-JO4" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="sWQ-T3-xor"/>
                     <constraint firstAttribute="bottom" secondItem="QmT-Ol-vPm" secondAttribute="bottom" constant="10" id="z1r-gL-3iJ"/>
                 </constraints>
             </tableViewCellContentView>
@@ -68,7 +69,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Image" width="272" height="387"/>
+        <image name="chuck" width="600" height="345"/>
         <image name="phoneIcon" width="16" height="16"/>
     </resources>
 </document>

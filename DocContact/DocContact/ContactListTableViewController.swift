@@ -69,6 +69,7 @@ class ContactListTableViewController: UITableViewController {
         
         if let contactCell = cell as? ContactTableViewCell {
             
+            
         }
 
         // Configure the cell...
