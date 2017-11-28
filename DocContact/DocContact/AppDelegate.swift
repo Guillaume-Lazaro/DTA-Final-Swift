@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         task.resume()
     }
     
-    func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String){
+    func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String, success: @escaping () -> (), failure: @escaping () -> ()) {
         var json = [String:String]()
         json["phone"] = phone
         json["password"] = password
@@ -131,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         json["lastName"] = lastname
         json["email"] = mail
         json["profile"] = profile
-        let urlString = API_URL+publicModifier+"/sign-in";
+        let urlString = API_URL+publicModifier+"/sign-in?contactsLength=0";
         let url = URL(string: urlString)!
         let session = URLSession.shared
         var request = URLRequest(url: url)
@@ -139,21 +139,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let task = session.dataTask(with: request){data, response, error in
+//            if let httpResponse = response as? HTTPURLResponse {
+//                if httpResponse.statusCode == 200 {
+//                    success()
+//                } else{
+//                    failure(NSError(domain:"HTTP Error", code: httpResponse.statusCode, userInfo:nil))
+//                }
+//            }else{
+//                failure(error)
+//            }
+            
             do{
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
+                    failure()
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let responseJSON = responseJSON as? [String: Any]{
-                    print(responseJSON)
+                    if let message = responseJSON["message"]{
+                        print(message)
+                        failure()
+                        return
+                    }
+                    print("inscription valide")
+                    success()
                 }
             }
         }
         task.resume()
     }
-
 }
+
+
 
 extension UIViewController{
     func appDelegate() -> AppDelegate{

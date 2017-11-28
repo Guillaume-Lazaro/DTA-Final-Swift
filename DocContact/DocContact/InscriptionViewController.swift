@@ -87,11 +87,25 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
-            appDelegate.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile)
-            appDelegate.loginOnServer(phone: phone, password: password)
+            appDelegate.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
+                appDelegate.loginOnServer(phone: phone, password: password)
+                DispatchQueue.main.async {
+                    let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+                    let navVC = UINavigationController(rootViewController: contactVC)
+                    self.present(navVC, animated: true, completion: nil)
+                }
+            },failure: { DispatchQueue.main.async {
+                self.alertFailed()} 
+            })
         }
-        
-        
+    }
+    
+    func alertFailed(){
+        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veillez à remplir tous les champs avec des informations correctes", preferredStyle: .alert)
+        let OK = UIAlertAction(title: "OK", style: .default){ _ in self.dismiss(animated: true, completion: nil)
+        }
+        alertSignUp.addAction(OK)
+        self.present(alertSignUp, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
