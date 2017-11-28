@@ -14,7 +14,14 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Mon Contact"
-        // Do any additional setup after loading the view.
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Modifier", style: .plain, target: self, action: #selector(goToEditContact))
+    }
+    
+    @objc func goToEditContact(){
+        let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
+        let navVC = UINavigationController(rootViewController: contactVC)
+        self.present(navVC, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
