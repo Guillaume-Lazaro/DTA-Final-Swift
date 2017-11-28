@@ -122,6 +122,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         task.resume()
     }
+    
+    func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String){
+        var json = [String:String]()
+        json["phone"] = phone
+        json["password"] = password
+        json["firstName"] = firstname
+        json["lastName"] = lastname
+        json["email"] = mail
+        json["profile"] = profile
+        let urlString = API_URL+publicModifier+"/sign-in";
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any]{
+                    print(responseJSON)
+                }
+            }
+        }
+        task.resume()
+    }
 
 }
 

@@ -20,7 +20,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
-    var pickOption = ["Famille", "Santé", "Proche"]
+    var pickOption = ["SENIOR", "MEDECIN", "FAMILLE"]
     let pickerView = UIPickerView()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -83,6 +83,15 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     @objc func validateInscription(){
         //TODO: validation of the inscription
+        guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text, let firstname: String = firstNameTextField.text, let lastname: String = nameTextField.text, let mail: String = emailTextField.text, let profile: String = pickerTextField.text else {
+            return
+        }
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
+            appDelegate.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile)
+            appDelegate.loginOnServer(phone: phone, password: password)
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,3 +134,5 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     */
 
 }
+
+

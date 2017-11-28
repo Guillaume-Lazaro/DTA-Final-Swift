@@ -9,7 +9,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    weak var delegate: LoginViewControllerDelegate?
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
@@ -59,7 +58,5 @@ class LoginViewController: UIViewController {
         self.present(navVC, animated: true, completion: nil)
     }
 }
-protocol LoginViewControllerDelegate : AnyObject{
-    func login(phone: String, password: String)
-}
+
 
