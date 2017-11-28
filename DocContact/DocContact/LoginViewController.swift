@@ -9,7 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+    weak var delegate: LoginViewControllerDelegate?
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,9 +48,18 @@ class LoginViewController: UIViewController {
     
     @IBAction func navToContactList(_ sender: Any) {
         // Setting up the nav
+        guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text else {
+            return
+        }
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
+            appDelegate.loginOnServer(phone: phone, password: password)
+        }
         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
         self.present(navVC, animated: true, completion: nil)
     }
+}
+protocol LoginViewControllerDelegate : AnyObject{
+    func login(phone: String, password: String)
 }
 

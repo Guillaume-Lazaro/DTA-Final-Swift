@@ -88,6 +88,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    let API_URL: String = "http://familink.cleverapps.io"
+    let publicModifier: String = "/public"
+    let protectedModifier: String = "/secured/users"
+    
+    
+    func loginOnServer(phone: String, password: String){
+        var json = [String:String]()
+        json["phone"] = phone
+        json["password"] = password
+        let urlString = API_URL+publicModifier+"/login";
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let task = session.dataTask(with: request){data, response, error in
+            // TODO : vérifier réponse serveur(response)
+            // TODO : si erreur-> notifier
+            // TODO : si ok -> stocker token(data) et passer à la liste (charger contacts)
+            do {
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any] {
+                    print(responseJSON)
+                }
+            }
+        }
+        task.resume()
+    }
 
+}
+
+extension UIViewController{
+    func appDelegate() -> AppDelegate{
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 }
 
