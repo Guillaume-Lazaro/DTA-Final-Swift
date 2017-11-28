@@ -8,15 +8,30 @@
 
 import UIKit
 
-class AddEditContactViewController: UIViewController {
+class AddEditContactViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Edition du contact"
-        // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
+        
+        //TextField:
+        nameTextField.delegate = self
+        firstNameTextField.delegate = self
+        phoneTextField.delegate = self
+        emailTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
     
     // Method of the back button

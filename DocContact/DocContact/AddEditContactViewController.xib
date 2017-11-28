@@ -12,6 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddEditContactViewController" customModule="DocContact" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="KXW-Im-o5N" id="J26-L0-Ons"/>
+                <outlet property="firstNameTextField" destination="0fY-Xq-gMT" id="Clf-QU-bgI"/>
+                <outlet property="nameTextField" destination="P0X-oM-QZZ" id="N56-Ba-odn"/>
+                <outlet property="phoneTextField" destination="7Su-ZE-nGR" id="Yir-Oa-ddL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
