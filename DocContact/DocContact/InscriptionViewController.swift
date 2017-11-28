@@ -10,6 +10,7 @@ import UIKit
 
 class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
+    let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pickerTextField: UITextField!
     
@@ -49,7 +50,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-
+        
         
         self.title = "Inscription"
         
@@ -66,7 +67,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(validateInscription))
-
+        
         pickerTextField.inputView = pickerView
     }
     
@@ -86,18 +87,18 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text, let firstname: String = firstNameTextField.text, let lastname: String = nameTextField.text, let mail: String = emailTextField.text, let profile: String = pickerTextField.text else {
             return
         }
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
-            appDelegate.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
-                appDelegate.loginOnServer(phone: phone, password: password)
+        
+        self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
+            self.netProvider.loginOnServer(phone: phone, password: password, success: {
                 DispatchQueue.main.async {
                     let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
                     let navVC = UINavigationController(rootViewController: contactVC)
                     self.present(navVC, animated: true, completion: nil)
                 }
-            },failure: { DispatchQueue.main.async {
-                self.alertFailed()} 
-            })
-        }
+            }, failure: {})
+        },failure: { DispatchQueue.main.async {
+            self.alertFailed()}
+        })
     }
     
     func alertFailed(){
@@ -107,12 +108,12 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         alertSignUp.addAction(OK)
         self.present(alertSignUp, animated: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     
     @objc func keyboardWillHide(noti: Notification) {
@@ -136,17 +137,17 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 
