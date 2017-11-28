@@ -29,6 +29,7 @@ class NetworkProvider{
         persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
+    // TODO : Garder le token en base locale, récupérer le profil
     func loginOnServer(phone: String, password: String, success: @escaping () -> (), failure: @escaping () ->()){
         var json = [String:String]()
         json["phone"] = phone
@@ -65,6 +66,7 @@ class NetworkProvider{
         task.resume()
     }
     
+    // TODO : Ajouter user en base locale
     func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String, success: @escaping () -> (), failure: @escaping () -> ()) {
         var json = [String:String]()
         json["phone"] = phone
@@ -101,36 +103,166 @@ class NetworkProvider{
         }
         task.resume()
     }
+    
+    // TODO : Renvoyer la liste reçue
+    func getContacts(token: String){
+        let urlString = API_URL + protectedModifier + "/contacts"
+        let url = URL(string: urlString)!
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4ODMzODEsImV4cCI6MTUxMTg4MzY4MX0.6yawEdkZ8lba4F0BBDPT9p6OEb2jOShWV5MTy2-suro"
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
+            do {
+                print(data ?? "Pas de data")
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                print(responseJSON)
+                if let responseJSON = responseJSON as? [String: Any] {
+                    print(responseJSON)
+                }
+                
+            } catch let error as NSError {
+                print("json error: \(error.localizedDescription)")
+            }
+        }
+        task.resume()
+    }
+    
+    // TODO : Que faire en cas de suppression
+    func deleteContact(id: String, token: String){
+        let urlString = API_URL + protectedModifier + "/contacts/id"
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let task = URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
+            do {
+                print(data ?? "Pas de data")
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                print(responseJSON)
+                if let responseJSON = responseJSON as? [String: Any] {
+                    print(responseJSON)
+                }
+                
+            } catch let error as NSError {
+                print("json error: \(error.localizedDescription)")
+            }
+        }
+        task.resume()
+    }
 
-    func getContacts(){
-        func getContacts(){
-            let urlString = API_URL + protectedModifier + "/contacts"
-            let url = URL(string: urlString)!
-            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4ODMzODEsImV4cCI6MTUxMTg4MzY4MX0.6yawEdkZ8lba4F0BBDPT9p6OEb2jOShWV5MTy2-suro"
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            request.setValue("application/json", forHTTPHeaderField: "Content-type")
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            
-            let task = URLSession.shared.dataTask(with: request) {
-                (data, response, error) in
-                do {
-                    print(data ?? "Pas de data")
-                    guard let data = data, error == nil else {
-                        print(error?.localizedDescription ?? "No data")
+    //TODO : tester l'update
+    func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, id: String, token: String ){
+        var json = [String:Any]()
+        json["phone"] = phone
+        json["firstName"] = firstname
+        json["lastName"] = lastname
+        json["email"] = mail
+        json["profile"] = profile
+        json["gravatar"] = gravatar
+        json["isFamilinkUser"] = false
+        json["isEmergencyUser"] = false
+        let urlString = API_URL + protectedModifier + "/"+id;
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any]{
+                    if let message = responseJSON["message"]{
+                        print(message)
+
                         return
                     }
-                    let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                    print(responseJSON)
-                    if let responseJSON = responseJSON as? [String: Any] {
-                        print(responseJSON)
-                    }
-                    
-                } catch let error as NSError {
-                    print("json error: \(error.localizedDescription)")
+                    print("Contact modifié")
                 }
             }
-            task.resume()
         }
-}
+        task.resume()
+    }
+    
+    // TODO : tester la création
+    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, id: String, token: String ){
+        var json = [String:Any]()
+        json["phone"] = phone
+        json["firstName"] = firstname
+        json["lastName"] = lastname
+        json["email"] = mail
+        json["profile"] = profile
+        json["gravatar"] = gravatar
+        json["isFamilinkUser"] = false
+        json["isEmergencyUser"] = false
+        let urlString = API_URL + protectedModifier + "/"+id;
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any]{
+                    if let message = responseJSON["message"]{
+                        print(message)
+                        
+                        return
+                    }
+                    print("Contact crééé")
+                }
+            }
+        }
+        task.resume()
+    }
+
+    // TODO : l'utiliser pour les profiles d'inscription
+    func getProfiles(){
+        let urlString = API_URL+publicModifier+"/profiles"
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String]{
+                        print(responseJSON)
+                }
+            }
+        }
+        task.resume()
+    }
+    
 }
