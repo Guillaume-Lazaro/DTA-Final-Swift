@@ -8,12 +8,37 @@
 
 import UIKit
 
-class AddEditContactViewController: UIViewController, UITextFieldDelegate {
+class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var pickerTextField: UITextField!
+    
+    var pickOption = ["SENIOR", "MEDECIN", "FAMILLE"]
+    let pickerView = UIPickerView()
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickOption.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickOption[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerTextField.text = pickOption[row]
+        pickerTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +52,14 @@ class AddEditContactViewController: UIViewController, UITextFieldDelegate {
         firstNameTextField.delegate = self
         phoneTextField.delegate = self
         emailTextField.delegate = self
+        
+        //PickerView:
+        pickerView.delegate = self
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
+        
+        pickerTextField.inputView = pickerView
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
