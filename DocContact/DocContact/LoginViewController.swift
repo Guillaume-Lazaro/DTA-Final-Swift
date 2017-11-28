@@ -111,7 +111,5 @@ class LoginViewController: UIViewController {
     }
 
 }
-protocol LoginViewControllerDelegate : AnyObject{
-    func login(phone: String, password: String)
-}
+
 

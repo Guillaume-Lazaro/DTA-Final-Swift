@@ -122,35 +122,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         task.resume()
     }
-
     
-    func mockedData(){
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4NzE1NDEsImV4cCI6MTUxMTg3MTg0MX0.ef0kublYYQmGef0x6p0Dixx521qszTzmo8W5F7S8mKA"
-        let urlString = API_URL+protectedModifier+"/contact";
+    func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String, success: @escaping () -> (), failure: @escaping () -> ()) {
+        var json = [String:String]()
+        json["phone"] = phone
+        json["password"] = password
+        json["firstName"] = firstname
+        json["lastName"] = lastname
+        json["email"] = mail
+        json["profile"] = profile
+        let urlString = API_URL+publicModifier+"/sign-in?contactsLength=0";
         let url = URL(string: urlString)!
+        let session = URLSession.shared
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
-        request.setValue("Bearer <>", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            do {
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let task = session.dataTask(with: request){data, response, error in            
+            do{
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
+                    failure()
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let responseJSON = responseJSON as? [String: Any] {
-                    print(responseJSON)
+                if let responseJSON = responseJSON as? [String: Any]{
+                    if let message = responseJSON["message"]{
+                        print(message)
+                        failure()
+                        return
+                    }
+                    print("inscription valide")
+                    success()
                 }
             }
         }
         task.resume()
-        
-      
     }
-    
 }
+
 
 
 extension UIViewController{
