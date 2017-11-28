@@ -123,7 +123,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         task.resume()
     }
 
+    
+    func mockedData(){
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4NzE1NDEsImV4cCI6MTUxMTg3MTg0MX0.ef0kublYYQmGef0x6p0Dixx521qszTzmo8W5F7S8mKA"
+        let urlString = API_URL+protectedModifier+"/contact";
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.setValue("Bearer <>", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            do {
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any] {
+                    print(responseJSON)
+                }
+            }
+        }
+        task.resume()
+        
+      
+    }
+    
 }
+
 
 extension UIViewController{
     func appDelegate() -> AppDelegate{
