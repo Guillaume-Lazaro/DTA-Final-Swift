@@ -127,6 +127,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         if mail == ""{
             valid = false
         }
+        let gravatar = self.getGravatar(mail: mail)
         
         guard let profile = pickerTextField.text else{
             return
@@ -141,17 +142,23 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             return
             }
             if !self.isInEditionMode{
-                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: "",emergency: emergency, token: token)
+                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token)
             } else {
                 // TODO : gérer via l'id du contact en cours (pas en dur)
-                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: "",emergency: emergency,id:"5a1ebbe3bcee2b07a5b5b575", token: token)
+                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:"5a1ebbe3bcee2b07a5b5b575", token: token)
             }
             self.backAction()
         }else{
             alertChamps()
         }
     }
-    
+    func getGravatar(mail: String)->String{
+        var email = mail.lowercased()
+        email = email.trimmingCharacters(in: .whitespaces)
+        let mailmd5 = email.toMD5()
+        let gravatar = "https://www.gravatar.com/avatar/"+mailmd5
+        return gravatar
+    }
     @IBAction func deleteContact(_ sender: Any) {
         guard let token = netProvider.token else{
             return
