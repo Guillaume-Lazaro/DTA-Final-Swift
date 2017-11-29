@@ -118,16 +118,7 @@ class ContactListTableViewController: UITableViewController {
         //detailViewController.delegate = self
         detailViewController.contact = contact
         self.navigationController?.pushViewController(detailViewController, animated: true)
-//
-//
-//
-//
-//
-//
-//
-//        let detailViewController = DetailViewController(nibName: nil, bundle: nil)
-//        //detailViewController.delegate = self
-//        self.navigationController?.pushViewController(detailViewController, animated: true)
+
     }
     
     /*
