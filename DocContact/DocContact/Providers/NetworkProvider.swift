@@ -129,10 +129,9 @@ class NetworkProvider{
                     return
                 }
                 print(resp)
-                let managerDB = ManageDbProvider.init()
+                let managerDB = ManageDbProvider.sharedInstance
                 managerDB.fillCoreDataWithContacts(json: resp)
                 //return resp
-                
             }
         }
         task.resume()

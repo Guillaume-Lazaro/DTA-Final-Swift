@@ -9,40 +9,26 @@
 import Foundation
 import CoreData
 
+private let sharedManageDbProvider = ManageDbProvider()
+
 class ManageDbProvider{
     
-    
+    class var sharedInstance: ManageDbProvider {
+        return sharedManageDbProvider
+    }    
     
     func fillCoreDataWithContacts(json: [[String : Any]]){                    // Passed in data from remote DB
         let sort = NSSortDescriptor(key: "lastName", ascending: true)
         let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
         fetchRequest.sortDescriptors = [sort]
         
-        //let appDelegate = self.appDelegate()
         let netProvider = NetworkProvider.sharedInstance
         let appDelegate = netProvider.persistentContainer
         let context = appDelegate.viewContext
-      //  let context = appDelegate.persistentContainer.viewContext
         let contacts : [Contact] = try! context.fetch(fetchRequest)           // Data from local DB
-        // Create an array of id
-//        let personIds = contacts.map({ (p) -> String? in
-//            return p.id
-//        })
-        // Create another array of id
-//        let serversId = json.map { (dict) -> String in
-//            return dict["id"] as? String ?? "0"
-//        }
-        
-        //Delete data that is not in the server
-//        for contact in contacts {
-//            if !serversId.contains(String(describing: contact.id)){
-//                context.delete(contact)
-//            }
-//        }
-        
+
         // create
         for jsonPerson in json{
-           //print("une personne ===>", jsonPerson)
             let contact = Contact(context: context)
             contact.lastName = jsonPerson["lastName"] as? String
             contact.firstName = jsonPerson["firstName"] as? String
@@ -50,7 +36,6 @@ class ManageDbProvider{
             contact.phone = jsonPerson["phone"] as? String
             contact.profile = jsonPerson["profile"] as? String
             contact.gravatar = jsonPerson["gravatar"] as? String
-            
             contact.id = jsonPerson["_id"] as? String
 
             guard let emergencyUser = jsonPerson["isEmergencyUser"] as? Int else{
@@ -83,11 +68,25 @@ class ManageDbProvider{
             }
 
         }
- 
     }
     
-    func appDelegate() -> AppDelegate{
-        return (UIApplication.shared.delegate as? AppDelegate)!
+    func wipeContacts(){
+        let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
+        let netProvider = NetworkProvider.sharedInstance
+        let appDelegate = netProvider.persistentContainer
+        let context = appDelegate.viewContext
+        let contacts : [Contact] = try! context.fetch(fetchRequest)
+        
+        contacts.forEach { (contact) in
+            context.delete(contact)
+            do{
+                if context.hasChanges{
+                    try context.save()
+                }
+            }catch{
+                print(error)
+            }
+        }        
     }
 }
 
