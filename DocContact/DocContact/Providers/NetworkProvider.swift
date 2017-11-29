@@ -43,8 +43,6 @@ class NetworkProvider{
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let task = session.dataTask(with: request){data, response, error in
-            // TODO : vérifier réponse serveur(response)
-            // TODO : si erreur-> notifier
             // TODO : si ok -> stocker token(data) et passer à la liste (charger contacts)
             do {
                 guard let data = data, error == nil else {
@@ -167,7 +165,7 @@ class NetworkProvider{
         }
         task.resume()
     }
-
+    
     //TODO : tester l'update
     func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, id: String, token: String ){
         var json = [String:Any]()
@@ -197,7 +195,7 @@ class NetworkProvider{
                 if let responseJSON = responseJSON as? [String: Any]{
                     if let message = responseJSON["message"]{
                         print(message)
-
+                        
                         return
                     }
                     print("Contact modifié")
@@ -245,9 +243,10 @@ class NetworkProvider{
         }
         task.resume()
     }
-
+    
     // TODO : l'utiliser pour les profiles d'inscription
-    func getProfiles(){
+    func getProfiles(success: @escaping ([String])->()) -> (){
+        var profiles: [String]=[""]
         let urlString = API_URL+publicModifier+"/profiles"
         let url = URL(string: urlString)!
         let session = URLSession.shared
@@ -262,7 +261,9 @@ class NetworkProvider{
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let responseJSON = responseJSON as? [String]{
-                        print(responseJSON)
+                    // print(responseJSON)
+                    profiles=responseJSON
+                    success(profiles)
                 }
             }
         }
