@@ -146,14 +146,11 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
     @objc func keyboardWillHide(noti: Notification) {
         let contentInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }
-    
     
     @objc func keyboardWillShow(noti: Notification) {
         
