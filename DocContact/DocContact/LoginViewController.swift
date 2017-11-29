@@ -8,24 +8,29 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        //TextField:
+        phoneTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func alertForgottenPassword(_ sender: Any) {
         //Création de l'alert
         let alertController = UIAlertController(title: "Mot de passe oublié", message: "Veuillez entrez votre numéro de téléphone pour récupérer votre mot de passe.", preferredStyle: .alert)
@@ -43,14 +48,12 @@ class LoginViewController: UIViewController {
             
             self.dismiss(animated: true, completion: nil)
             self.forgottenPassword(phoneNumber: (textField?.text)!)
-            
         })
         
         alertController.addAction(cancelAction)
         alertController.addAction(OK)
         
         self.present(alertController, animated:true)
-        
     }
     
     @IBAction func navToInscription(_ sender: Any) {
