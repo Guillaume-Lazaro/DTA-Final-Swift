@@ -98,9 +98,7 @@ class ContactListTableViewController: UITableViewController {
             let contact = resultController.object(at: indexPath)
             contactCell.firstNameLabel.text = contact.firstName
             contactCell.lastNameLabel.text = contact.lastName
-          //  contactCell.profileImageView = contact.gravatar
-            
-            
+            contactCell.gravatarHash = contact.gravatar     //Envoie le hash Gravatar à la cellule
         }
         return cell
     }

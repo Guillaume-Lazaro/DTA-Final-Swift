@@ -19,18 +19,34 @@ class ContactTableViewCell: UITableViewCell {
         print("Le bouton call a été appuyé")
     }
    
-
+    var gravatarHash : String? {
+        didSet {
+            //task?.cancel()
+            self.downloadGravatar()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+
+    func downloadGravatar() {
+        guard let hashString = gravatarHash else {
+            return
+        }
+        DispatchQueue.main.async() {
+            let strUrl = "https://www.gravatar.com/avatar/"+hashString+"?s=200"
+            print("URL: ",strUrl)
+            let url = URL(string: strUrl)
+            let data = try? Data(contentsOf: url!)
+            self.profileImageView.image = UIImage(data: data!)
+        }
+    }
     
-
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
 }
