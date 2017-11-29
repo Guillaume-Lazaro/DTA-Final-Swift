@@ -179,12 +179,12 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         return gravatar
     }
     @IBAction func deleteContact(_ sender: Any) {
-        guard let token = netProvider.token else{
+        guard let token = netProvider.token, let id = contact?.id else{
             return
         }
         // TODO : faire en fonction de l'id du contact en cours
         // TODO : revenir à la liste
-        netProvider.deleteContact(id: "5a1ebbe3bcee2b07a5b5b575", token: token)
+        netProvider.deleteContact(id: id, token: token)
         
         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
