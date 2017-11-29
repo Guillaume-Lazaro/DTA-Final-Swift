@@ -75,25 +75,47 @@ class LoginViewController: UIViewController {
     }
     
     func forgottenPassword(phoneNumber: String) {
-        let alertController:UIAlertController
-        let OK:UIAlertAction
-        if(phoneNumber == "0655545546") {
-            //L'utilisateur existe dans la bdd!
-            alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
-            
-            OK = UIAlertAction(title: "OK", style: .default){ _ in
-                self.dismiss(animated: true, completion: nil)
+        
+        netProvider.forgotPassword(phone: phoneNumber, success: {
+            DispatchQueue.main.async{
+                let alertController:UIAlertController
+                let OK:UIAlertAction
+                alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
+                
+                OK = UIAlertAction(title: "OK", style: .default){ _ in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alertController.addAction(OK)
+                self.present(alertController, animated:true)
             }
-        } else {
-            //L'utilisateur n'existe pas :(
+        }, failure: {DispatchQueue.main.async {
+            let alertController:UIAlertController
+            let OK:UIAlertAction
             alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
             
             OK = UIAlertAction(title: "OK", style: .default){ _ in
                 self.dismiss(animated: true, completion: nil)
             }
-        }
-        alertController.addAction(OK)
-        self.present(alertController, animated:true)
+            alertController.addAction(OK)
+            self.present(alertController, animated:true)
+            }})
+        
+//        if(phoneNumber == "0655545546") {
+//            //L'utilisateur existe dans la bdd!
+//            alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
+//
+//            OK = UIAlertAction(title: "OK", style: .default){ _ in
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//        } else {
+//            //L'utilisateur n'existe pas :(
+//            alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
+//
+//            OK = UIAlertAction(title: "OK", style: .default){ _ in
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//        }
+        
     }
     func goToList(){
         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)

@@ -104,6 +104,37 @@ class NetworkProvider{
         task.resume()
     }
     
+    func forgotPassword(phone: String, success: @escaping () -> (), failure: @escaping () -> ()){
+        var json = [String:String]()
+        json["phone"] = phone
+        let urlString = self.API_URL+self.publicModifier+"/forgot-password";
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    failure()
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String:String]{
+                    if let message = responseJSON["message"]{
+                        print(message)
+                        failure()
+                        return
+                    }
+                    print("user valide donc envoi mdp")
+                    success()
+                }
+            }
+        }
+        task.resume()
+    }
+    
     // TODO : Renvoyer la liste reçue
     func getContacts(){
         guard let token: String = self.token! else{
@@ -269,5 +300,11 @@ class NetworkProvider{
         }
         task.resume()
     }
+    
+    
+    
+    
+    
+    
     
 }
