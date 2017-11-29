@@ -147,7 +147,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 // TODO : gérer via l'id du contact en cours (pas en dur)
                 netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:"5a1ebbe3bcee2b07a5b5b575", token: token)
             }
-            self.backAction()
+            
+            let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+            let navVC = UINavigationController(rootViewController: contactVC)
+            self.present(navVC, animated: true, completion: nil)
         }else{
             alertChamps()
         }
@@ -166,7 +169,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         // TODO : faire en fonction de l'id du contact en cours
         // TODO : revenir à la liste
         netProvider.deleteContact(id: "5a1ebbe3bcee2b07a5b5b575", token: token)
-        self.backAction()
+        
+        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+        let navVC = UINavigationController(rootViewController: contactVC)
+        self.present(navVC, animated: true, completion: nil)
     }
     
     func alertChamps(){
