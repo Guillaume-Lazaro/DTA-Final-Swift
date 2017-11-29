@@ -206,7 +206,7 @@ class NetworkProvider{
     }
     
     // TODO : tester la création
-    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, id: String, token: String ){
+    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, token: String ){
         var json = [String:Any]()
         json["phone"] = phone
         json["firstName"] = firstname
@@ -216,11 +216,11 @@ class NetworkProvider{
         json["gravatar"] = gravatar
         json["isFamilinkUser"] = false
         json["isEmergencyUser"] = false
-        let urlString = API_URL + protectedModifier + "/"+id;
+        let urlString = API_URL + protectedModifier+"/contacts"
         let url = URL(string: urlString)!
         let session = URLSession.shared
         var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
+        request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
