@@ -21,8 +21,15 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
-    var pickOption = ["_", "SENIOR", "MEDECIN", "FAMILLE"]
+    var pickOption = ["_"]
+    
     let pickerView = UIPickerView()
+    
+    func fillPickerOptions(){
+        netProvider.getProfiles(){ profiles in
+            self.pickOption += profiles
+        }
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -47,6 +54,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.fillPickerOptions()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

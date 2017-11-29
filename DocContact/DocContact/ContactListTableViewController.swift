@@ -20,7 +20,8 @@ class ContactListTableViewController: UITableViewController {
         
         //POUR LES TEST
         let netProvider = NetworkProvider.sharedInstance
-        netProvider.getContacts()
+        // netProvider.getContacts()
+        // netProvider.getProfiles()
                 
         // Setup the Search Controller
         searchController.obscuresBackgroundDuringPresentation = false
