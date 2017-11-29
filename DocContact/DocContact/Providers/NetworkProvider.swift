@@ -90,9 +90,9 @@ class NetworkProvider{
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let responseJSON = responseJSON as? [String: Any]{
+                if let responseJSON = responseJSON as? [String: String]{
                     if let message = responseJSON["message"]{
-                        print(message)
+                        print(message)                        
                         failure()
                         return
                     }

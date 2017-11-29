@@ -87,22 +87,35 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text, let firstname: String = firstNameTextField.text, let lastname: String = nameTextField.text, let mail: String = emailTextField.text, let profile: String = pickerTextField.text else {
             return
         }
-        if password == confirmPasswordTextField.text {
+        if password == confirmPasswordTextField.text && firstNameTextField.text != "" {
             self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
                 self.netProvider.loginOnServer(phone: phone, password: password, success: {
                     DispatchQueue.main.async {
-                        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                        let navVC = UINavigationController(rootViewController: contactVC)
-                        self.present(navVC, animated: true, completion: nil)
+                        let alertWelcome = UIAlertController(title: "Inscription réussie", message: "Bienvenue dans votre annuaire", preferredStyle: UIAlertControllerStyle.alert)
+                        alertWelcome.addAction(UIAlertAction(title:"Commençons", style: UIAlertActionStyle.default, handler: {
+                            alert -> Void in
+                            
+                            self.goToList()
+                        }))
+                        self.present(alertWelcome, animated: true)
                     }
                 }, failure: {})
             },failure: { DispatchQueue.main.async {
                 self.alertFailed()}
             })
         } else {
-            self.alertPwd()
+            if firstNameTextField.text == "" {
+                self.alertFailed()
+            }else{
+                self.alertPwd()
+            }
         }
-        
+    }
+    
+    func goToList(){
+        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+        let navVC = UINavigationController(rootViewController: contactVC)
+        self.present(navVC, animated: true, completion: nil)
     }
     
     func alertPwd(){
@@ -115,7 +128,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func alertFailed(){
-        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veillez à remplir tous les champs avec des informations correctes", preferredStyle: .alert)
+        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veillez à remplir correctement tous les champs", preferredStyle: .alert)
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
