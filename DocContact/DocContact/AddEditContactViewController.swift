@@ -22,6 +22,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     var pickOption = ["-"]
     let pickerView = UIPickerView()
     var isInEditionMode:Bool = true
+    var contact : Contact?
     
     func fillPickerOptions(){
         netProvider.getProfiles(){ profiles in
@@ -53,6 +54,9 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fillPickerOptions()
+        
+        //TEST PRINT
+        print("Le contact reçu par le Modify ", contact)
         
         if isInEditionMode {
             self.title = "Edition du contact"
