@@ -20,6 +20,9 @@ class ContactListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let managerDb = ManageDbProvider.sharedInstance
+        managerDb.wipeContacts()
+        
         let netProvider = NetworkProvider.sharedInstance
         netProvider.getContacts()
         
