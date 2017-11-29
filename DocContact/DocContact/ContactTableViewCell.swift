@@ -36,7 +36,7 @@ class ContactTableViewCell: UITableViewCell {
             return
         }
         DispatchQueue.main.async() {
-            let strUrl = "https://www.gravatar.com/avatar/"+hashString+"?s=200"
+            let strUrl = hashString
             print("URL: ",strUrl)
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)
