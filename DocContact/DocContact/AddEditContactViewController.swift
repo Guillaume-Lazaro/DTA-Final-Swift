@@ -146,13 +146,20 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 // TODO : gérer via l'id du contact en cours (pas en dur)
                 netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: "",emergency: emergency,id:"5a1ebbe3bcee2b07a5b5b575", token: token)
             }
+            self.backAction()
         }else{
             alertChamps()
         }
-        // TODO : Add or modify the contact
     }
     
     @IBAction func deleteContact(_ sender: Any) {
+        guard let token = netProvider.token else{
+            return
+        }
+        // TODO : faire en fonction de l'id du contact en cours
+        // TODO : revenir à la liste
+        netProvider.deleteContact(id: "5a1ebbe3bcee2b07a5b5b575", token: token)
+        self.backAction()
     }
     
     func alertChamps(){
