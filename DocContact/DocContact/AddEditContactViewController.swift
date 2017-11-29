@@ -9,7 +9,7 @@
 import UIKit
 
 class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
-
+    
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -52,6 +52,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.fillPickerOptions()
         
         if isInEditionMode {
             self.title = "Edition du contact"
@@ -67,6 +68,8 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
         
+        
+        
         //TextField:
         nameTextField.delegate = self
         firstNameTextField.delegate = self
@@ -80,6 +83,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
         
         pickerTextField.inputView = pickerView
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -94,10 +98,64 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     @objc func editContact(){
+        var valid: Bool = true
+        // vérification des champs
+        guard let name = nameTextField.text else{
+            return
+        }
+        if name == ""{
+            valid = false
+        }
+        
+        guard let firstname = firstNameTextField.text else{
+            return
+        }
+        if firstname == ""{
+            valid = false
+        }
+        
+        guard let phone = phoneTextField.text else{
+            return
+        }
+        if phone == ""{
+            valid = false
+        }
+        
+        guard let mail = emailTextField.text else{
+            return
+        }
+        if mail == ""{
+            valid = false
+        }
+        
+        guard let profile = pickerTextField.text else{
+            return
+        }
+        if profile == ""{
+            valid = false
+        }
+        let emergency = emergencyUserSwitch.isOn
+        
+        if valid{
+            if !self.isInEditionMode{
+                guard let token = netProvider.token else{
+                    return
+                }
+                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: "",emergency: emergency, token: token)
+            }
+        }else{
+            alertChamps()
+        }
         // TODO : Add or modify the contact
     }
     
     @IBAction func deleteContact(_ sender: Any) {
+    }
+    
+    func alertChamps(){
+        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veuillez remplir tous les champs", preferredStyle: .alert)
+        alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+        self.present(alertSignUp, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,13 +164,13 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

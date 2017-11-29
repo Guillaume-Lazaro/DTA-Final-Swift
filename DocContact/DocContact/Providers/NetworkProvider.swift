@@ -106,8 +106,9 @@ class NetworkProvider{
     
     // TODO : Renvoyer la liste reçue
     func getContacts(){
-        guard let token: String = self.token! else{
+        guard let token: String = self.token else{
             print("Le token n'est pas défini")
+            return
         }
         let urlString = API_URL + protectedModifier + "/contacts"
         let url = URL(string: urlString)!
@@ -206,7 +207,7 @@ class NetworkProvider{
     }
     
     // TODO : tester la création
-    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, id: String, token: String ){
+    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, token: String ){
         var json = [String:Any]()
         json["phone"] = phone
         json["firstName"] = firstname
@@ -214,13 +215,13 @@ class NetworkProvider{
         json["email"] = mail
         json["profile"] = profile
         json["gravatar"] = gravatar
-        json["isFamilinkUser"] = false
-        json["isEmergencyUser"] = false
-        let urlString = API_URL + protectedModifier + "/"+id;
+        json["isFamilinkUser"] = emergency
+        json["isEmergencyUser"] = emergency
+        let urlString = API_URL + protectedModifier+"/contacts"
         let url = URL(string: urlString)!
         let session = URLSession.shared
         var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
+        request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
