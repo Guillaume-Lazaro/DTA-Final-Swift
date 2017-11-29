@@ -112,6 +112,7 @@ class NetworkProvider{
         let session = URLSession.shared
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let task = session.dataTask(with: request){data, response, error in
             do{
@@ -127,9 +128,9 @@ class NetworkProvider{
                         failure()
                         return
                     }
-                    print("user valide donc envoi mdp")
-                    success()
                 }
+                print("user valide donc envoi mdp")
+                success()
             }
         }
         task.resume()

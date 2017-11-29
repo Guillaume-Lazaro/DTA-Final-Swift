@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
         let alertController = UIAlertController(title: "Mot de passe oublié", message: "Veuillez entrez votre numéro de téléphone pour récupérer votre mot de passe.", preferredStyle: .alert)
         
         //Ajout de l'input text:
-        var phoneToSendPassword:String = ""
+        //var phoneToSendPassword:String = ""
         alertController.addTextField { (textField) in
             textField.keyboardType = UIKeyboardType.phonePad
             textField.placeholder = "Numéro de téléphone"
@@ -39,10 +39,13 @@ class LoginViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Retour", style: .cancel)
         let OK = UIAlertAction(title: "OK", style: .default, handler: { [weak alertController] (_) in
             let textField = alertController?.textFields![0] //On sait qu'il existe (si si!)
-            print("Test du textField: ", textField?.text)
+            guard let phoneToSendPassword = textField?.text else{
+                return
+            }
+            print("Test du textField: ", phoneToSendPassword)
             
             self.dismiss(animated: true, completion: nil)
-            self.forgottenPassword(phoneNumber: (textField?.text)!)
+            self.forgottenPassword(phoneNumber: phoneToSendPassword)
             
         })
         
@@ -75,13 +78,15 @@ class LoginViewController: UIViewController {
     }
     
     func forgottenPassword(phoneNumber: String) {
-        
+//        let alertController:UIAlertController
+//                       let OK:UIAlertAction
+//        
         netProvider.forgotPassword(phone: phoneNumber, success: {
             DispatchQueue.main.async{
                 let alertController:UIAlertController
                 let OK:UIAlertAction
                 alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
-                
+
                 OK = UIAlertAction(title: "OK", style: .default){ _ in
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -92,7 +97,7 @@ class LoginViewController: UIViewController {
             let alertController:UIAlertController
             let OK:UIAlertAction
             alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
-            
+
             OK = UIAlertAction(title: "OK", style: .default){ _ in
                 self.dismiss(animated: true, completion: nil)
             }
@@ -104,19 +109,22 @@ class LoginViewController: UIViewController {
 //            //L'utilisateur existe dans la bdd!
 //            alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
 //
-//            OK = UIAlertAction(title: "OK", style: .default){ _ in
+//             OK = UIAlertAction(title: "OK", style: .default){ _ in
 //                self.dismiss(animated: true, completion: nil)
 //            }
 //        } else {
 //            //L'utilisateur n'existe pas :(
-//            alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
+//             alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
 //
-//            OK = UIAlertAction(title: "OK", style: .default){ _ in
+//             OK = UIAlertAction(title: "OK", style: .default){ _ in
 //                self.dismiss(animated: true, completion: nil)
 //            }
 //        }
-        
+//        alertController.addAction(OK)
+//        self.present(alertController, animated:true)
     }
+    
+    
     func goToList(){
         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
