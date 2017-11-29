@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ContactListTableViewController: UITableViewController {
     
- 
+    var contacts = [Contact]()
+    var resultController : NSFetchedResultsController<Contact>!
     
     // SearchBar
     let searchController = UISearchController(searchResultsController: nil)
@@ -18,9 +20,20 @@ class ContactListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //POUR LES TEST
         let netProvider = NetworkProvider.sharedInstance
         netProvider.getContacts()
+        
+        // Get the list of contacts
+        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
+        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
+        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController.delegate = self
+        try? resultController.performFetch()
+        self.tableView.reloadData()
+        
+        
                 
         // Setup the Search Controller
         searchController.obscuresBackgroundDuringPresentation = false
@@ -59,13 +72,18 @@ class ContactListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        if let frc = self.resultController {
+            return frc.sections!.count
+        }
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 8 
+        guard let sections = self.resultController?.sections else {
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
 
     
@@ -73,14 +91,16 @@ class ContactListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
         
         if let contactCell = cell as? ContactTableViewCell {
-       
+            let contact = resultController.object(at: indexPath)
+            contactCell.firstNameLabel.text = contact.firstName
+            contactCell.lastNameLabel.text = contact.lastName
+          //  contactCell.profileImageView = contact.gravatar
+            
             
         }
-
-        // Configure the cell...
-
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -136,5 +156,11 @@ class ContactListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+}
+extension ContactListTableViewController : NSFetchedResultsControllerDelegate{
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.reloadData()
+    }
     
 }

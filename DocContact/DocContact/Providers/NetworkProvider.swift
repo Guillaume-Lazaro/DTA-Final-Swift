@@ -16,6 +16,7 @@ class NetworkProvider{
     let API_URL: String = "http://familink.cleverapps.io"
     let publicModifier: String = "/public"
     let protectedModifier: String = "/secured/users"
+    var token : String?
     
     class var sharedInstance: NetworkProvider {
         return sharedNetServices
@@ -58,6 +59,7 @@ class NetworkProvider{
                         failure()
                         return
                     }
+                    self.token = token as? String
                     print(token)
                     success()
                 }
@@ -106,14 +108,15 @@ class NetworkProvider{
     
     // TODO : Renvoyer la liste reçue
     func getContacts(){
+        guard let token: String = self.token! else{
+            print("Le token n'est pas défini")
+        }
         let urlString = API_URL + protectedModifier + "/contacts"
         let url = URL(string: urlString)!
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjA2MDAwMDAwMDIiLCJpYXQiOjE1MTE4ODMzODEsImV4cCI6MTUxMTg4MzY4MX0.6yawEdkZ8lba4F0BBDPT9p6OEb2jOShWV5MTy2-suro"
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in
             do {
@@ -123,13 +126,14 @@ class NetworkProvider{
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                print(responseJSON)
-                if let responseJSON = responseJSON as? [String: Any] {
-                    print(responseJSON)
+                guard let resp = responseJSON as? [[String:Any]] else{
+                    return
                 }
+                print(resp)
+                let managerDB = ManageDbProvider.init()
+                managerDB.fillCoreDataWithContacts(json: resp)
+                //return resp
                 
-            } catch let error as NSError {
-                print("json error: \(error.localizedDescription)")
             }
         }
         task.resume()
