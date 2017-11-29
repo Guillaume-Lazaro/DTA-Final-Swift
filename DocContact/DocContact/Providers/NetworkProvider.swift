@@ -106,8 +106,9 @@ class NetworkProvider{
     
     // TODO : Renvoyer la liste reçue
     func getContacts(){
-        guard let token: String = self.token! else{
+        guard let token: String = self.token else{
             print("Le token n'est pas défini")
+            return
         }
         let urlString = API_URL + protectedModifier + "/contacts"
         let url = URL(string: urlString)!

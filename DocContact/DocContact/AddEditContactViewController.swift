@@ -9,7 +9,7 @@
 import UIKit
 
 class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
-
+    
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -67,6 +67,8 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
+        
+        
         
         //TextField:
         nameTextField.delegate = self
@@ -134,7 +136,12 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         }
         
         if valid{
-            
+            if !self.isInEditionMode{
+                guard let token = netProvider.token else{
+                    return
+                }
+                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: "", token: token)
+            }
         }else{
             alertChamps()
         }
@@ -156,13 +163,13 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
