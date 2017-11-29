@@ -137,11 +137,14 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         let emergency = emergencyUserSwitch.isOn
         
         if valid{
+            guard let token = netProvider.token else{
+            return
+            }
             if !self.isInEditionMode{
-                guard let token = netProvider.token else{
-                    return
-                }
                 netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: "",emergency: emergency, token: token)
+            } else {
+                // TODO : gérer via l'id du contact en cours (pas en dur)
+                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: "",emergency: emergency,id:"5a1ebbe3bcee2b07a5b5b575", token: token)
             }
         }else{
             alertChamps()

@@ -140,7 +140,7 @@ class NetworkProvider{
     
     // TODO : Que faire en cas de suppression
     func deleteContact(id: String, token: String){
-        let urlString = API_URL + protectedModifier + "/contacts/id"
+        let urlString = API_URL + protectedModifier + "/contacts/" + id
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -168,7 +168,7 @@ class NetworkProvider{
     }
     
     //TODO : tester l'update
-    func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, id: String, token: String ){
+    func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, id: String, token: String ){
         var json = [String:Any]()
         json["phone"] = phone
         json["firstName"] = firstname
@@ -176,9 +176,9 @@ class NetworkProvider{
         json["email"] = mail
         json["profile"] = profile
         json["gravatar"] = gravatar
-        json["isFamilinkUser"] = false
-        json["isEmergencyUser"] = false
-        let urlString = API_URL + protectedModifier + "/"+id;
+        json["isFamilinkUser"] = emergency
+        json["isEmergencyUser"] = emergency
+        let urlString = API_URL + protectedModifier + "/contacts/"+id;
         let url = URL(string: urlString)!
         let session = URLSession.shared
         var request = URLRequest(url: url)
@@ -206,7 +206,6 @@ class NetworkProvider{
         task.resume()
     }
     
-    // TODO : tester la création
     func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, token: String ){
         var json = [String:Any]()
         json["phone"] = phone
@@ -245,7 +244,6 @@ class NetworkProvider{
         task.resume()
     }
     
-    // TODO : l'utiliser pour les profiles d'inscription
     func getProfiles(success: @escaping ([String])->()) -> (){
         var profiles: [String]=[""]
         let urlString = API_URL+publicModifier+"/profiles"
