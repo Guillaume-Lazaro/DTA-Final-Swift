@@ -10,14 +10,21 @@ import UIKit
 
 class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
+    let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var pickerTextField: UITextField!
     
-    var pickOption = ["SENIOR", "MEDECIN", "FAMILLE"]
+    var pickOption = ["-"]
     let pickerView = UIPickerView()
+    
+    func fillPickerOptions(){
+        netProvider.getProfiles(){ profiles in
+            self.pickOption += profiles
+        }
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
