@@ -111,9 +111,25 @@ class ContactListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let contact = self.resultController?.object(at: indexPath) else{
+            return
+        }
+        
         let detailViewController = DetailViewController(nibName: nil, bundle: nil)
         //detailViewController.delegate = self
+        detailViewController.contact = contact
         self.navigationController?.pushViewController(detailViewController, animated: true)
+//
+//
+//
+//
+//
+//
+//
+//        let detailViewController = DetailViewController(nibName: nil, bundle: nil)
+//        //detailViewController.delegate = self
+//        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     /*
