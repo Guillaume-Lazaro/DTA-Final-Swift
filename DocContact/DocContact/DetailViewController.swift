@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailViewControllerDelegate: AnyObject {
+    func deleteContact()
+}
+
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: RoundedImage!
@@ -15,11 +19,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var emailView: UILabel!
     @IBOutlet weak var typeView: UILabel!
     @IBOutlet weak var emergencyUserView: UILabel!
+    @IBOutlet weak var firstAndLastNameLabel: UILabel!
+    
+    weak var contact: Contact?
+    weak var delegate: DetailViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("le contact est ",self.contact ?? "no contact")
         self.title = "Mon Contact"
+        
+        fillTheFields()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Modifier", style: .plain, target: self, action: #selector(goToEditContact))
         
@@ -50,6 +60,20 @@ class DetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func fillTheFields(){
+        phoneView.text = contact?.phone
+        emailView.text = contact?.email
+        typeView.text = contact?.profile
+        guard let firstName = contact?.firstName as? String, let lastName = contact?.lastName as? String else{
+            print("Les noms ne sont pas valides")
+            return
+        }
+        let firstAndLastName = "\(lastName) \(firstName)"
+        firstAndLastNameLabel.text = firstAndLastName
+        
+        // TODO : gérer le emergency + gravatar
     }
     
     /*
