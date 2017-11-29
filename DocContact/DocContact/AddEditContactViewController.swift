@@ -15,6 +15,8 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var pickerTextField: UITextField!
+    @IBOutlet weak var emergencyUserSwitch: UISwitch!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var pickOption = ["SENIOR", "MEDECIN", "FAMILLE"]
     let pickerView = UIPickerView()
@@ -77,12 +79,14 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         // TODO : Add or modify the contact
     }
     
+    @IBAction func deleteContact(_ sender: Any) {
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

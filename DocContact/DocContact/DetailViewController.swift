@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var phoneView: UILabel!
     @IBOutlet weak var emailView: UILabel!
     @IBOutlet weak var typeView: UILabel!
+    @IBOutlet weak var emergencyUserView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
