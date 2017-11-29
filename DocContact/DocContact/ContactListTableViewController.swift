@@ -10,8 +10,6 @@ import UIKit
 
 class ContactListTableViewController: UITableViewController {
     
- 
-    
     // SearchBar
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -48,6 +46,8 @@ class ContactListTableViewController: UITableViewController {
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
+        
+        contactVC.isInEditionMode = false   //On précise à la view AddEdit qu'il s'agit d'un ajout
         self.present(navVC, animated: true, completion: nil)
     }
     
@@ -67,7 +67,6 @@ class ContactListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 8 
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
@@ -125,16 +124,10 @@ class ContactListTableViewController: UITableViewController {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     */
-    
 }
