@@ -19,11 +19,10 @@ class ContactTableViewCell: UITableViewCell {
         print("Le bouton call a été appuyé")
     }
    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
     
 

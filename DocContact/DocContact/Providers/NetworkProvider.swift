@@ -160,7 +160,6 @@ class NetworkProvider{
                 guard let resp = responseJSON as? [[String:Any]] else{
                     return
                 }
-                print(resp)
                 let managerDB = ManageDbProvider.sharedInstance
                 managerDB.fillCoreDataWithContacts(json: resp)
                 //return resp

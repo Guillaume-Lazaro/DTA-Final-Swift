@@ -25,7 +25,7 @@ class ManageDbProvider{
         let netProvider = NetworkProvider.sharedInstance
         let appDelegate = netProvider.persistentContainer
         let context = appDelegate.viewContext
-        let contacts : [Contact] = try! context.fetch(fetchRequest)           // Data from local DB
+  
 
         // create
         for jsonPerson in json{
@@ -61,13 +61,14 @@ class ManageDbProvider{
             do{
                 if context.hasChanges{
                     try context.save()
-                    print("contact bien enregistré en base ")
                 }
             }catch{
                 print(error)
             }
-
+            
         }
+        
+        print("Les contacts ont bien été ajoutés à la base de données locale")
     }
     
     func wipeContacts(){
