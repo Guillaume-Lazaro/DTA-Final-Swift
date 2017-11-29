@@ -42,6 +42,8 @@ class DetailViewController: UIViewController {
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
+        
+        contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
         self.present(navVC, animated: true, completion: nil)
     }
 

@@ -20,6 +20,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     
     var pickOption = ["SENIOR", "MEDECIN", "FAMILLE"]
     let pickerView = UIPickerView()
+    var isInEditionMode:Bool = true
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -45,7 +46,17 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Edition du contact"
+        if isInEditionMode {
+            self.title = "Edition du contact"
+            deleteButton.isEnabled = true
+            deleteButton.isHidden = false
+            //TODO: Pré-remplir les données
+        } else {
+            self.title = "Ajouter un contact"
+            deleteButton.isEnabled = false
+            deleteButton.isHidden = true
+        }
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
         
