@@ -12,7 +12,9 @@ import CoreData
 class ContactListTableViewController: UITableViewController {
     
     var contacts = [Contact]()
+    var filteredContact = [Contact]()
     var resultController : NSFetchedResultsController<Contact>!
+    
     
     // SearchBar
     let searchController = UISearchController(searchResultsController: nil)
@@ -39,10 +41,14 @@ class ContactListTableViewController: UITableViewController {
         
                 
         // Setup the Search Controller
+        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Recherche"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        searchController.searchBar.scopeButtonTitles = ["Nom Et Prenom", "Téléphone"]
+        searchController.searchBar.delegate = self
         
         self.title = "Mes contacts"
         let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
@@ -164,10 +170,92 @@ class ContactListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+   /* func filterContentForSearchText(_ searchText: String, scope: String) {
+        self.filteredContact = contacts.filter({( contact : Contact) -> Contact in
+            if(!searchBarIsEmpty()){
+                if(scope == "Nom"){
+                    guard let firstName = contact.firstName , let lastName = contact.lastName else{
+                        print("error with the name ")
+                        return nil
+                    }
+                    if(firstName.starts(with: searchText) || lastName.starts(with: searchText)){
+                        return contact
+                    }
+                }
+            }
+            if(scope == "Téléphone"){
+                guard let phone = contact.phone else{
+                   print("error with the phone")
+                }
+                if(phone.starts(with: searchText)){
+                    return contact
+                }
+            }
+        })
+        tableView.reloadData()
+    }
+    
+  
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }*/
+    
+    func searchBarResearch(research : String , scope : String ){
+        print("La recherche est \(research) et le scope \(scope)")
+        
+        
+        let lastNamePredicate = NSPredicate(format: "lastName CONTAINS[cd] %@", research)
+        let firstNamePredicate = NSPredicate(format: "firstName CONTAINS[cd] %@", research)
+
+        let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [lastNamePredicate,firstNamePredicate])
+        
+        let netProvider = NetworkProvider.sharedInstance
+        // Get the list of contacts
+        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
+        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
+        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
+        fetchRequest.predicate = predicate
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController.delegate = self
+        
+        do {
+            try resultController.performFetch()
+        } catch {
+            print(error)
+        }
+        self.tableView.reloadData()
+  
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
 }
 extension ContactListTableViewController : NSFetchedResultsControllerDelegate{
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.reloadData()
     }
     
+}
+extension ContactListTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+      //  filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+extension ContactListTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        let empty = searchBarIsEmpty()
+        if(!empty){
+            let research = searchController.searchBar.text!
+            searchBarResearch(research: research,scope:  scope)
+        }
+        //filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+    }
 }
