@@ -90,12 +90,18 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                    <connections>
+                                        <action selector="phoneVerifRealTime:" destination="-1" eventType="editingChanged" id="ryD-Rh-l05"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXW-Im-o5N">
                                     <rect key="frame" x="0.0" y="150" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                    <connections>
+                                        <action selector="mailVerifRealTime:" destination="-1" eventType="editingChanged" id="kW0-jW-tHM"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P9u-5f-OM0">
                                     <rect key="frame" x="0.0" y="200" width="142.5" height="30"/>

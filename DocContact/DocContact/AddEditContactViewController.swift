@@ -103,6 +103,29 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func mailVerifRealTime(_ sender: Any) {
+        guard let mailText = emailTextField.text else {
+            return
+        }
+        if !verifReg(mail: mailText){
+            emailTextField.backgroundColor = UIColor.red
+        } else {
+            emailTextField.backgroundColor = UIColor.clear
+        }
+    }
+    func verifReg(mail: String)->Bool{
+        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
+        return test.evaluate(with:mail)
+    }
+    @IBAction func phoneVerifRealTime(_ sender: Any) {
+        if self.phoneTextField.text?.count != 10{
+            phoneTextField.backgroundColor = UIColor.red
+        } else {
+            phoneTextField.backgroundColor = UIColor.clear
+        }
+    }
+    
     @objc func editContact(){
         var valid: Bool = true
         // vérification des champs
