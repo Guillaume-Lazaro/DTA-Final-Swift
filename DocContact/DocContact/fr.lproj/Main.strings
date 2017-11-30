@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Numéro de téléphone"; ObjectID = "0S9-pZ-I2W"; */
+"0S9-pZ-I2W.text" = "Numéro de téléphone";
+
+/* Class = "UIButton"; normalTitle = "Connexion"; ObjectID = "9qA-lP-Arj"; */
+"9qA-lP-Arj.normalTitle" = "Connexion";
+
+/* Class = "UIButton"; normalTitle = "Inscription"; ObjectID = "Gkm-TE-9Gz"; */
+"Gkm-TE-9Gz.normalTitle" = "Inscription";
+
+/* Class = "UILabel"; text = "DocContact"; ObjectID = "OOP-tb-Fmd"; */
+"OOP-tb-Fmd.text" = "DocContact";
+
+/* Class = "UIButton"; normalTitle = "Mot de passe oublié"; ObjectID = "P2h-cc-M8s"; */
+"P2h-cc-M8s.normalTitle" = "Mot de passe oublié";
+
+/* Class = "UILabel"; text = "Mot de passe"; ObjectID = "kEk-yq-lJc"; */
+"kEk-yq-lJc.text" = "Mot de passe";

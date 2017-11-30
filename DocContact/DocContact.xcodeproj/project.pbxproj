@@ -23,17 +23,17 @@
 		BC1448D41FCC18DB00528F85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */; };
 		BC1448DF1FCC18DB00528F85 /* DocContactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448DE1FCC18DB00528F85 /* DocContactTests.swift */; };
 		BC1448EA1FCC18DB00528F85 /* DocContactUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448E91FCC18DB00528F85 /* DocContactUITests.swift */; };
+		BCF6516E1FD015A100BF502F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651701FD015A100BF502F /* DetailViewController.xib */; };
+		BCF651761FD01AC400BF502F /* AddEditContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651781FD01AC400BF502F /* AddEditContactViewController.xib */; };
+		BCF6517E1FD01C5200BF502F /* ContactListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651801FD01C5200BF502F /* ContactListTableViewController.xib */; };
+		BCF651851FD01DE900BF502F /* InscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651871FD01DE900BF502F /* InscriptionViewController.xib */; };
 		DE21E7AC9FD5AACD8931CF20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6499F95E45B78F3DA8333EFE /* CoreTelephony.framework */; };
 		E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F214A1FCEB59700A28284 /* manageDBProvider.swift */; };
 		E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */; };
 		E984FAFE1FCC1B0500BD7F09 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */; };
-		E984FAFF1FCC1B0500BD7F09 /* InscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */; };
 		E984FB021FCC1B2B00BD7F09 /* ContactListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */; };
-		E984FB031FCC1B2B00BD7F09 /* ContactListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */; };
 		E984FB061FCC361800BD7F09 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB041FCC361800BD7F09 /* DetailViewController.swift */; };
-		E984FB071FCC361800BD7F09 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB051FCC361800BD7F09 /* DetailViewController.xib */; };
 		E984FB0A1FCC366900BD7F09 /* AddEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */; };
-		E984FB0B1FCC366900BD7F09 /* AddEditContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */; };
 		E984FB101FCC514800BD7F09 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB0E1FCC514800BD7F09 /* ContactTableViewCell.swift */; };
 		E984FB111FCC514800BD7F09 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E984FB0F1FCC514800BD7F09 /* ContactTableViewCell.xib */; };
 		E984FB131FCC590100BD7F09 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB121FCC590100BD7F09 /* RoundedButton.swift */; };
@@ -80,18 +80,24 @@
 		BC1448E51FCC18DB00528F85 /* DocContactUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DocContactUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1448E91FCC18DB00528F85 /* DocContactUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocContactUITests.swift; sourceTree = "<group>"; };
 		BC1448EB1FCC18DB00528F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCF6516C1FD014E200BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BCF6516D1FD014E200BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		BCF651731FD0177100BF502F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		BCF651751FD0179600BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DetailViewController.strings; sourceTree = "<group>"; };
+		BCF651791FD01AD000BF502F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddEditContactViewController.xib; sourceTree = "<group>"; };
+		BCF6517A1FD01ADF00BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AddEditContactViewController.strings; sourceTree = "<group>"; };
+		BCF651811FD01C6400BF502F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ContactListTableViewController.xib; sourceTree = "<group>"; };
+		BCF651821FD01C7200BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ContactListTableViewController.strings; sourceTree = "<group>"; };
+		BCF651881FD01DEB00BF502F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InscriptionViewController.xib; sourceTree = "<group>"; };
+		BCF651891FD01DEF00BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InscriptionViewController.strings; sourceTree = "<group>"; };
 		BCFB45E21FCDAD4C00947336 /* DocContact-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DocContact-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA4CE5D847BAEC84E88AB741 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		E94F214A1FCEB59700A28284 /* manageDBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manageDBProvider.swift; sourceTree = "<group>"; };
 		E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
-		E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InscriptionViewController.xib; sourceTree = "<group>"; };
 		E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewController.swift; sourceTree = "<group>"; };
-		E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListTableViewController.xib; sourceTree = "<group>"; };
 		E984FB041FCC361800BD7F09 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		E984FB051FCC361800BD7F09 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		E984FB081FCC366900BD7F09 /* AddEditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditContactViewController.swift; sourceTree = "<group>"; };
-		E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditContactViewController.xib; sourceTree = "<group>"; };
 		E984FB0E1FCC514800BD7F09 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		E984FB0F1FCC514800BD7F09 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		E984FB121FCC590100BD7F09 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -183,11 +189,11 @@
 				E984FB041FCC361800BD7F09 /* DetailViewController.swift */,
 				E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */,
 				BC1448C81FCC18DB00528F85 /* LoginViewController.swift */,
+				BCF651871FD01DE900BF502F /* InscriptionViewController.xib */,
 				BC1448D01FCC18DB00528F85 /* Assets.xcassets */,
-				E984FB091FCC366900BD7F09 /* AddEditContactViewController.xib */,
-				E984FB011FCC1B2B00BD7F09 /* ContactListTableViewController.xib */,
-				E984FB051FCC361800BD7F09 /* DetailViewController.xib */,
-				E984FAFD1FCC1B0500BD7F09 /* InscriptionViewController.xib */,
+				BCF651781FD01AC400BF502F /* AddEditContactViewController.xib */,
+				BCF651801FD01C5200BF502F /* ContactListTableViewController.xib */,
+				BCF651701FD015A100BF502F /* DetailViewController.xib */,
 				BC1448CD1FCC18DB00528F85 /* DocContact.xcdatamodeld */,
 				BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */,
 				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
@@ -333,13 +339,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E984FB111FCC514800BD7F09 /* ContactTableViewCell.xib in Resources */,
-				E984FAFF1FCC1B0500BD7F09 /* InscriptionViewController.xib in Resources */,
-				E984FB071FCC361800BD7F09 /* DetailViewController.xib in Resources */,
+				BCF6516E1FD015A100BF502F /* DetailViewController.xib in Resources */,
 				BC1448D41FCC18DB00528F85 /* LaunchScreen.storyboard in Resources */,
-				E984FB0B1FCC366900BD7F09 /* AddEditContactViewController.xib in Resources */,
+				BCF651761FD01AC400BF502F /* AddEditContactViewController.xib in Resources */,
 				BC1448D11FCC18DB00528F85 /* Assets.xcassets in Resources */,
-				E984FB031FCC1B2B00BD7F09 /* ContactListTableViewController.xib in Resources */,
+				BCF6517E1FD01C5200BF502F /* ContactListTableViewController.xib in Resources */,
 				BC1448CC1FCC18DB00528F85 /* Main.storyboard in Resources */,
+				BCF651851FD01DE900BF502F /* InscriptionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +421,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BC1448CB1FCC18DB00528F85 /* Base */,
+				BCF6516D1FD014E200BF502F /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -423,8 +430,45 @@
 			isa = PBXVariantGroup;
 			children = (
 				BC1448D31FCC18DB00528F85 /* Base */,
+				BCF6516C1FD014E200BF502F /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BCF651701FD015A100BF502F /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCF651731FD0177100BF502F /* Base */,
+				BCF651751FD0179600BF502F /* fr */,
+			);
+			name = DetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		BCF651781FD01AC400BF502F /* AddEditContactViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCF651791FD01AD000BF502F /* Base */,
+				BCF6517A1FD01ADF00BF502F /* fr */,
+			);
+			name = AddEditContactViewController.xib;
+			sourceTree = "<group>";
+		};
+		BCF651801FD01C5200BF502F /* ContactListTableViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCF651811FD01C6400BF502F /* Base */,
+				BCF651821FD01C7200BF502F /* fr */,
+			);
+			name = ContactListTableViewController.xib;
+			sourceTree = "<group>";
+		};
+		BCF651871FD01DE900BF502F /* InscriptionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCF651881FD01DEB00BF502F /* Base */,
+				BCF651891FD01DEF00BF502F /* fr */,
+			);
+			name = InscriptionViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -434,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -491,6 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

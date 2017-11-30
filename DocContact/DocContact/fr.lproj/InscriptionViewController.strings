@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "LgM-wt-ApZ"; */
+"LgM-wt-ApZ.text" = "Email";
+
+/* Class = "UILabel"; text = "Nom"; ObjectID = "b0j-5F-C9g"; */
+"b0j-5F-C9g.text" = "Nom";
+
+/* Class = "UILabel"; text = "Prénom"; ObjectID = "ceo-pu-1sK"; */
+"ceo-pu-1sK.text" = "Prénom";
+
+/* Class = "UILabel"; text = "Téléphone"; ObjectID = "ewC-2H-HBC"; */
+"ewC-2H-HBC.text" = "Téléphone";
+
+/* Class = "UILabel"; text = "Type de profil"; ObjectID = "gGr-Zd-uiI"; */
+"gGr-Zd-uiI.text" = "Type de profil";
+
+/* Class = "UILabel"; text = "Confimation"; ObjectID = "oc1-ch-tV9"; */
+"oc1-ch-tV9.text" = "Confimation";
+
+/* Class = "UILabel"; text = "Mot de passe"; ObjectID = "zFE-hn-Tqf"; */
+"zFE-hn-Tqf.text" = "Mot de passe";

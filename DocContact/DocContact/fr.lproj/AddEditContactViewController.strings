@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Urgence"; ObjectID = "CQz-gE-6el"; */
+"CQz-gE-6el.text" = "Urgence";
+
+/* Class = "UILabel"; text = "Téléphone"; ObjectID = "Cfa-fO-Wes"; */
+"Cfa-fO-Wes.text" = "Téléphone";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "EIO-da-LX3"; */
+"EIO-da-LX3.text" = "Email";
+
+/* Class = "UILabel"; text = "Nom"; ObjectID = "UMu-1m-GHt"; */
+"UMu-1m-GHt.text" = "Nom";
+
+/* Class = "UILabel"; text = "Type de profil"; ObjectID = "cM3-UV-V9q"; */
+"cM3-UV-V9q.text" = "Type de profil";
+
+/* Class = "UILabel"; text = "Prénom"; ObjectID = "qLe-Zl-AhH"; */
+"qLe-Zl-AhH.text" = "Prénom";
+
+/* Class = "UIButton"; normalTitle = "Supprimer"; ObjectID = "qh3-Bh-Gep"; */
+"qh3-Bh-Gep.normalTitle" = "Supprimer";
