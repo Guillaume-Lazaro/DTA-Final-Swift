@@ -13,6 +13,9 @@
         <array key="KaushanScript-Regular.ttf">
             <string>KaushanScript-Regular</string>
         </array>
+        <array key="Ubuntu-Regular.ttf">
+            <string>Ubuntu-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Login View Controller-->
@@ -47,8 +50,8 @@
                                 <rect key="frame" x="0.0" y="206" width="320" height="156"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0S9-pZ-I2W">
-                                        <rect key="frame" x="116" y="0.0" width="88.5" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="106.5" y="0.0" width="107" height="30"/>
+                                        <fontDescription key="fontDescription" name="Ubuntu-Regular" family="Ubuntu" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -59,8 +62,8 @@
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEk-yq-lJc">
-                                        <rect key="frame" x="131" y="84" width="58.5" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="125.5" y="84" width="69.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="Ubuntu-Regular" family="Ubuntu" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -85,21 +88,26 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-lP-Arj">
-                                <rect key="frame" x="121" y="387" width="79" height="30"/>
+                                <rect key="frame" x="10" y="397" width="300" height="30"/>
+                                <color key="backgroundColor" red="0.099148593842983246" green="0.43635743856430054" blue="0.94763630628585815" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CR2-Bw-j3y"/>
                                 </constraints>
-                                <state key="normal" title="Connection"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Connection">
+                                    <color key="titleColor" red="0.99596923589706421" green="0.99621754884719849" blue="0.99182158708572388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="navToContactList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bCT-0Q-wcs"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92941969633102417" green="0.93650984764099121" blue="0.97438877820968628" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fnS-Jo-Q4P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0yt-6S-M56"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P2h-cc-M8s" secondAttribute="trailing" constant="91" id="1fO-h9-O4z"/>
                             <constraint firstItem="fnS-Jo-Q4P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4VU-Kc-I3H"/>
+                            <constraint firstItem="9qA-lP-Arj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="7Qi-uk-wA8"/>
                             <constraint firstItem="OOP-tb-Fmd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="ALq-0a-eVP"/>
                             <constraint firstItem="9qA-lP-Arj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EhA-Ju-FQu"/>
                             <constraint firstItem="Gkm-TE-9Gz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="KPf-WD-U9O"/>
@@ -112,7 +120,8 @@
                             <constraint firstItem="C6L-IK-wgk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="Zvg-mc-aNg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fnS-Jo-Q4P" secondAttribute="trailing" id="d2C-q2-4Vs"/>
                             <constraint firstItem="fnS-Jo-Q4P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jTB-bZ-bsc"/>
-                            <constraint firstItem="9qA-lP-Arj" firstAttribute="top" secondItem="fnS-Jo-Q4P" secondAttribute="bottom" constant="25" id="nwe-YT-45C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9qA-lP-Arj" secondAttribute="trailing" constant="10" id="kh0-jR-CTJ"/>
+                            <constraint firstItem="9qA-lP-Arj" firstAttribute="top" secondItem="fnS-Jo-Q4P" secondAttribute="bottom" constant="35" id="nwe-YT-45C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gkm-TE-9Gz" secondAttribute="trailing" constant="120" id="xcb-Y7-Gbd"/>
                             <constraint firstItem="Gkm-TE-9Gz" firstAttribute="top" secondItem="P2h-cc-M8s" secondAttribute="bottom" constant="29" id="yBe-IR-E7U"/>
                         </constraints>

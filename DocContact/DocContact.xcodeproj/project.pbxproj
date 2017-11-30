@@ -32,6 +32,8 @@
 		CE8D164303F99CB4D20A6EBE /* Pods_DocContactUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B08FBA52851F85D1CF4502 /* Pods_DocContactUITests.framework */; };
 		DE21E7AC9FD5AACD8931CF20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6499F95E45B78F3DA8333EFE /* CoreTelephony.framework */; };
 		E913643E1FD05B3F0076A1BD /* KaushanScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E913643D1FD05B3F0076A1BD /* KaushanScript-Regular.ttf */; };
+		E91364421FD065170076A1BD /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E91364411FD065170076A1BD /* Ubuntu-Regular.ttf */; };
+		E91364441FD065250076A1BD /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E91364431FD065250076A1BD /* Ubuntu-Medium.ttf */; };
 		E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F214A1FCEB59700A28284 /* manageDBProvider.swift */; };
 		E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */; };
 		E984FAFE1FCC1B0500BD7F09 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */; };
@@ -105,6 +107,8 @@
 		DA4CE5D847BAEC84E88AB741 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		DC6FABDF034877CA58D51F87 /* Pods_DocContactTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocContactTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E913643D1FD05B3F0076A1BD /* KaushanScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaushanScript-Regular.ttf"; sourceTree = "<group>"; };
+		E91364411FD065170076A1BD /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		E91364431FD065250076A1BD /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		E94F214A1FCEB59700A28284 /* manageDBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manageDBProvider.swift; sourceTree = "<group>"; };
 		E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				E913643D1FD05B3F0076A1BD /* KaushanScript-Regular.ttf */,
+				E91364431FD065250076A1BD /* Ubuntu-Medium.ttf */,
+				E91364411FD065170076A1BD /* Ubuntu-Regular.ttf */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -398,7 +404,9 @@
 				E913643E1FD05B3F0076A1BD /* KaushanScript-Regular.ttf in Resources */,
 				BCF6517E1FD01C5200BF502F /* ContactListTableViewController.xib in Resources */,
 				BC1448CC1FCC18DB00528F85 /* Main.storyboard in Resources */,
+				E91364421FD065170076A1BD /* Ubuntu-Regular.ttf in Resources */,
 				BCF651851FD01DE900BF502F /* InscriptionViewController.xib in Resources */,
+				E91364441FD065250076A1BD /* Ubuntu-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
