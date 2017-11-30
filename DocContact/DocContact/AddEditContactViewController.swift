@@ -155,18 +155,26 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 return
             }
             if !self.isInEditionMode{
-                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token)
+                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
+                    DispatchQueue.main.async {
+                        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+                        let navVC = UINavigationController(rootViewController: contactVC)
+                        self.present(navVC, animated: true, completion: nil)
+                    }
+                })
             } else {
                 guard let id = contact?.id else{
                     return
                 }
-                // TODO : gérer via l'id du contact en cours (pas en dur)
-                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token)
+                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
+                    let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+                    let navVC = UINavigationController(rootViewController: contactVC)
+                    self.present(navVC, animated: true, completion: nil)
+                    }
+                })
             }
             
-            let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-            let navVC = UINavigationController(rootViewController: contactVC)
-            self.present(navVC, animated: true, completion: nil)
+            
         }else{
             alertChamps()
         }
@@ -191,10 +199,14 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func deletetOnServer(id: String, token: String){
-        self.netProvider.deleteContact(id: id, token: token)
-        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-        let navVC = UINavigationController(rootViewController: contactVC)
-        self.present(navVC, animated: true, completion: nil)
+        self.netProvider.deleteContact(id: id, token: token, success: {
+            DispatchQueue.main.async {
+                let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+                let navVC = UINavigationController(rootViewController: contactVC)
+                self.present(navVC, animated: true, completion: nil)
+            }
+        })
+        
     }
     
     func alertChamps(){
