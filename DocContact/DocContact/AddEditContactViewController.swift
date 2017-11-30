@@ -55,8 +55,6 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         super.viewDidLoad()
         self.fillPickerOptions()
         
-        //TEST PRINT
-        print("Le contact reçu par le Modify ", contact)
         
         if isInEditionMode {
             self.title = "Edition du contact"
