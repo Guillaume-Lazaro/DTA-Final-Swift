@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactListTableViewController" customModule="DocContact" customModuleProvider="target">
             <connections>
+                <outlet property="searchBarView" destination="8tY-AA-yTq" id="adf-XE-bZr"/>
+                <outlet property="searchDisplayController" destination="H66-mL-kQb" id="fjJ-ZF-9uD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,10 +22,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vLr-E1-eTs"/>
+            <searchBar key="tableHeaderView" contentMode="redraw" id="8tY-AA-yTq">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <textInputTraits key="textInputTraits"/>
+                <connections>
+                    <outlet property="delegate" destination="-1" id="5a4-KE-W48"/>
+                </connections>
+            </searchBar>
             <connections>
                 <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>
                 <outlet property="delegate" destination="-1" id="9aC-8N-iBw"/>
             </connections>
         </tableView>
+        <searchDisplayController id="ytW-8y-1zO">
+            <connections>
+                <outlet property="delegate" destination="-1" id="7rh-R3-Rti"/>
+                <outlet property="searchContentsController" destination="-1" id="C5k-QA-6Ae"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="SAG-o4-rNN"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="klO-zW-Pzq"/>
+            </connections>
+        </searchDisplayController>
+        <searchDisplayController id="H66-mL-kQb">
+            <connections>
+                <outlet property="delegate" destination="-1" id="aw1-my-xIN"/>
+                <outlet property="searchBar" destination="8tY-AA-yTq" id="M15-4K-mFw"/>
+                <outlet property="searchContentsController" destination="-1" id="FEP-Z0-7CA"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="uzq-pg-B3z"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="z5u-6M-eyt"/>
+            </connections>
+        </searchDisplayController>
     </objects>
 </document>
