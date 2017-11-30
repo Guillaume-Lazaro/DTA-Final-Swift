@@ -169,7 +169,7 @@ class NetworkProvider{
     }
     
     // TODO : Que faire en cas de suppression
-    func deleteContact(id: String, token: String){
+    func deleteContact(id: String, token: String, success: @escaping ()->()){
         let urlString = API_URL + protectedModifier + "/contacts/" + id
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
@@ -179,17 +179,11 @@ class NetworkProvider{
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in
             do {
-                print(data ?? "Pas de data")
-                guard let data = data, error == nil else {
-                    print(error?.localizedDescription ?? "No data")
+                guard error == nil else {
+                    print(error?.localizedDescription ?? "error")
                     return
                 }
-                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                print(responseJSON)
-                if let responseJSON = responseJSON as? [String: Any] {
-                    print(responseJSON)
-                }
-                
+                success()
             } catch let error as NSError {
                 print("json error: \(error.localizedDescription)")
             }
@@ -198,7 +192,7 @@ class NetworkProvider{
     }
     
     //TODO : tester l'update
-    func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, id: String, token: String ){
+    func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, id: String, token: String, success: @escaping ()->() ){
         var json = [String:Any]()
         json["phone"] = phone
         json["firstName"] = firstname
@@ -230,13 +224,14 @@ class NetworkProvider{
                         return
                     }
                     print("Contact modifié")
+                    success()
                 }
             }
         }
         task.resume()
     }
     
-    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, token: String ){
+    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, token: String, success: @escaping ()->() ){
         var json = [String:Any]()
         json["phone"] = phone
         json["firstName"] = firstname
@@ -268,6 +263,7 @@ class NetworkProvider{
                         return
                     }
                     print("Contact crééé")
+                    success()
                 }
             }
         }
