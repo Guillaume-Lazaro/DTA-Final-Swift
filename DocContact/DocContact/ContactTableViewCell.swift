@@ -17,12 +17,15 @@ class ContactTableViewCell: UITableViewCell {
     
     @IBAction func callButtonPressed(_ sender: Any) {
         print("Le bouton call a été appuyé")
-        self.makeAcall(phoneNumber: phoneNumber!)
-        
+        guard let phone = phoneNumber else {
+            print("Pas de numero")
+            return
+        }
+            self.makeAcall(phoneNumber: phone)
     }
     
     //Numéro de téléphone:
-    var phoneNumber : String? 
+    var phoneNumber : String?
    
     var gravatarHash : String? {
         didSet {
