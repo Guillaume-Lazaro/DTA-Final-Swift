@@ -78,11 +78,6 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             deleteButton.isHidden = true
         }
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
-        
-        
-        
         //TextField:
         nameTextField.delegate = self
         firstNameTextField.delegate = self
