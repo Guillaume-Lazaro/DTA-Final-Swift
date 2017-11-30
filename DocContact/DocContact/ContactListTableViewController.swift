@@ -14,6 +14,7 @@ class ContactListTableViewController: UITableViewController {
     
     var contacts = [Contact]()
     var resultController : NSFetchedResultsController<Contact>!
+    let netProvider = NetworkProvider.sharedInstance
     
     
     // SearchBar
@@ -47,8 +48,8 @@ class ContactListTableViewController: UITableViewController {
         let managerDb = ManageDbProvider.sharedInstance
         managerDb.wipeContacts()
         
-        let netProvider = NetworkProvider.sharedInstance
-        netProvider.getContacts()
+        //let netProvider = NetworkProvider.sharedInstance
+        self.netProvider.getContacts()
         
         // Get the list of contacts
         let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
@@ -214,14 +215,14 @@ class ContactListTableViewController: UITableViewController {
         
         
         
-        let netProvider = NetworkProvider.sharedInstance
+        //let netProvider = NetworkProvider.sharedInstance
         // Get the list of contacts
         let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
         let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
         let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
         fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
         fetchRequest.predicate = predicate
-        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         resultController.delegate = self
         
         do {
