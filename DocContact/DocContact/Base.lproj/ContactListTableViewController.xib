@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactListTableViewController" customModule="DocContact" customModuleProvider="target">
             <connections>
-                <outlet property="searchBarView" destination="8tY-AA-yTq" id="adf-XE-bZr"/>
+                <outlet property="searchBarView" destination="8tY-AA-yTq" id="ScX-8C-4s1"/>
                 <outlet property="searchDisplayController" destination="H66-mL-kQb" id="fjJ-ZF-9uD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
