@@ -18,7 +18,8 @@ class ContactListTableViewController: UITableViewController {
     
     
     // SearchBar
-    let searchController = UISearchController(searchResultsController: nil)
+//    let searchController = UISearchController(searchResultsController: nil)
+    @IBOutlet weak var searchBarView: UISearchBar!
     
     
     
@@ -63,16 +64,18 @@ class ContactListTableViewController: UITableViewController {
         
         
         
-        // Setup the Search Controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Nom ou Numéro de téléphone"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+//        // Setup the Search Controller
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Nom ou Numéro de téléphone"
+//        navigationItem.searchController = searchController
+//        definesPresentationContext = true
         
         self.title = "Mes contacts"
         let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ContactCell")
+        
+        searchBarView.delegate = self
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
@@ -252,7 +255,7 @@ class ContactListTableViewController: UITableViewController {
     }
     
     func searchBarIsEmpty() -> Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
+        return searchBarView.text?.isEmpty ?? true
     }
     
 }
@@ -263,14 +266,14 @@ extension ContactListTableViewController : NSFetchedResultsControllerDelegate{
     
 }
 
-extension ContactListTableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        let empty = searchBarIsEmpty()
-        if(!empty){
-            let research = searchController.searchBar.text!
-            searchBarResearch(research: research)
-        }else{
-            displayAllContacts()
-        }
+extension ContactListTableViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            let empty = searchBarIsEmpty()
+            if(!empty){
+                let research = searchBarView.text!
+                searchBarResearch(research: research)
+            }else{
+                displayAllContacts()
+            }
     }
 }
