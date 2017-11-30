@@ -195,7 +195,6 @@ class ContactListTableViewController: UITableViewController {
 
     
     func searchBarResearch(research : String){
-        print("La recherche est \(research) ")
         var predicate : NSPredicate?
         let lastNamePredicate = NSPredicate(format: "lastName CONTAINS[cd] %@", research)
         let firstNamePredicate = NSPredicate(format: "firstName CONTAINS[cd] %@", research)
