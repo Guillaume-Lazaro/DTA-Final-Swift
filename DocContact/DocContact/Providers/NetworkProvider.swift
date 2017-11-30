@@ -220,12 +220,11 @@ class NetworkProvider{
                 if let responseJSON = responseJSON as? [String: Any]{
                     if let message = responseJSON["message"]{
                         print(message)
-                        
                         return
                     }
-                    print("Contact modifié")
-                    success()
                 }
+                print("Contact modifié")
+                success()
             }
         }
         task.resume()
