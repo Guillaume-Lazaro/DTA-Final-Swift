@@ -152,7 +152,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         
         if valid{
             guard let token = netProvider.token else{
-            return
+                return
             }
             if !self.isInEditionMode{
                 netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token)
@@ -182,10 +182,16 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let token = netProvider.token, let id = contact?.id else{
             return
         }
-        // TODO : faire en fonction de l'id du contact en cours
-        // TODO : revenir à la liste
-        netProvider.deleteContact(id: id, token: token)
-        
+        let alertDelelete = UIAlertController(title: "confirmation", message : "Voulez vous vraiment suprrimer ce contact", preferredStyle: .alert )
+        alertDelelete.addAction(UIAlertAction(title: "non", style: .cancel, handler: nil))
+        alertDelelete.addAction(UIAlertAction(title: "oui", style: .default, handler: { (alertDelete) in
+            self.deletetOnServer(id: id, token: token)
+        }))
+        self.present(alertDelelete, animated: true, completion: nil)
+    }
+    
+    func deletetOnServer(id: String, token: String){
+        self.netProvider.deleteContact(id: id, token: token)
         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
         self.present(navVC, animated: true, completion: nil)
