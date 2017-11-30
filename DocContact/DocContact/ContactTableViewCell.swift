@@ -21,8 +21,10 @@ class ContactTableViewCell: UITableViewCell {
    
     var gravatarHash : String? {
         didSet {
-            //task?.cancel()
-            self.downloadGravatar()
+            DispatchQueue.global(qos: .userInitiated).async {
+                //task?.cancel()    //TODO : Ajouter la task en attribut
+                self.downloadGravatar()
+            }
         }
     }
     
@@ -35,10 +37,11 @@ class ContactTableViewCell: UITableViewCell {
         guard let hashString = gravatarHash else {
             return
         }
-        DispatchQueue.main.async() {
-            let strUrl = hashString
-            let url = URL(string: strUrl)
-            let data = try? Data(contentsOf: url!)
+        
+        let strUrl = hashString
+        let url = URL(string: strUrl)
+        let data = try? Data(contentsOf: url!)
+        DispatchQueue.main.async {
             self.profileImageView.image = UIImage(data: data!)
         }
     }
