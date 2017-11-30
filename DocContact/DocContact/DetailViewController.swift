@@ -33,15 +33,12 @@ class DetailViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Modifier", style: .plain, target: self, action: #selector(goToEditContact))
         
-        //Transformation de l'email en hash MD5:
-        var email = "guillaume.lazaro@gmail.com"    //Entrez l'email de l'utilisateur ici
-        email = email.lowercased()
-        email = email.trimmingCharacters(in: .whitespaces)
-        var hashGravatar:String = email.toMD5()
-        
         //Changement de l'image de profil:
+        guard let hashGravatar:String = self.contact?.gravatar else {
+            return
+        }
         DispatchQueue.main.async() {
-            let strUrl = "https://www.gravatar.com/avatar/"+hashGravatar+"?s=200"
+            let strUrl = hashGravatar+"?s=200"
             print("URL: ",strUrl)
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)

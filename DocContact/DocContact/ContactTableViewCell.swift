@@ -37,7 +37,6 @@ class ContactTableViewCell: UITableViewCell {
         }
         DispatchQueue.main.async() {
             let strUrl = hashString
-            print("URL: ",strUrl)
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)
             self.profileImageView.image = UIImage(data: data!)
