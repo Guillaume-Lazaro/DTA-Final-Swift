@@ -17,7 +17,12 @@ class ContactTableViewCell: UITableViewCell {
     
     @IBAction func callButtonPressed(_ sender: Any) {
         print("Le bouton call a été appuyé")
+        self.makeAcall(phoneNumber: phoneNumber!)
+        
     }
+    
+    //Numéro de téléphone:
+    var phoneNumber : String? 
    
     var gravatarHash : String? {
         didSet {
@@ -30,9 +35,15 @@ class ContactTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialization code 
     }
 
+    func makeAcall(phoneNumber: String){
+        let url: NSURL = URL(string: "TEL://\(phoneNumber)")! as NSURL
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+
+    }
+    
     func downloadGravatar() {
         guard let hashString = gravatarHash else {
             return

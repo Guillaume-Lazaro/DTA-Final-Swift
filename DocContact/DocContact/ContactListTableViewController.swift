@@ -98,11 +98,13 @@ class ContactListTableViewController: UITableViewController {
             let contact = resultController.object(at: indexPath)
             contactCell.firstNameLabel.text = contact.firstName
             contactCell.lastNameLabel.text = contact.lastName
+            contactCell.phoneNumber = contact.phone
+            
             if contact.gravatar == ""{
                 contactCell.gravatarHash = "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
-            }else {
-            contactCell.gravatarHash = contact.gravatar     //Envoie le hash Gravatar à la cellule
-        }
+            } else {
+                contactCell.gravatarHash = contact.gravatar     //Envoie le hash Gravatar à la cellule
+            }
         }
         return cell
     }
