@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SideMenu
 
 class ContactListTableViewController: UITableViewController {
     
@@ -18,8 +19,30 @@ class ContactListTableViewController: UITableViewController {
     // SearchBar
     let searchController = UISearchController(searchResultsController: nil)
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Creation menu (Bloc à mettre dans chaque controlleur qui doit afficher le menu, voir pour externaliser (fonction)
+        // TODO : Interface Menu
+        /*
+         let [Controlleur interface menu] = AddEditContactViewController(nibName: nil, bundle: nil)
+         
+         // Menu a gauche
+         let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: [Controlleur interface menu])
+         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+         
+         //Menu à droite
+         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: [Controlleur interface menu])
+         SideMenuManager.default.menuRightNavigationController = menuRightNavigationController
+         
+         //Type d'apparition
+         SideMenuManager.default.menuPresentMode = .viewSlideInOut
+         
+         //Ajout du slide to open
+         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
+         */
         
         let managerDb = ManageDbProvider.sharedInstance
         managerDb.wipeContacts()
@@ -38,7 +61,7 @@ class ContactListTableViewController: UITableViewController {
         self.tableView.reloadData()
         
         
-                
+        
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -52,17 +75,17 @@ class ContactListTableViewController: UITableViewController {
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
-
+    
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
@@ -75,16 +98,16 @@ class ContactListTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         if let frc = self.resultController {
             return frc.sections!.count
         }
         return 0
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = self.resultController?.sections else {
             fatalError("No sections in fetchedResultsController")
@@ -126,36 +149,36 @@ class ContactListTableViewController: UITableViewController {
         //detailViewController.delegate = self
         detailViewController.contact = contact
         self.navigationController?.pushViewController(detailViewController, animated: true)
-
+        
     }
     
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
