@@ -14,6 +14,7 @@ class ContactListTableViewController: UITableViewController {
     var contacts = [Contact]()
     var resultController : NSFetchedResultsController<Contact>!
     
+    
     // SearchBar
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -39,8 +40,9 @@ class ContactListTableViewController: UITableViewController {
         
                 
         // Setup the Search Controller
+        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Recherche"
+        searchController.searchBar.placeholder = "Nom ou Numéro de téléphone"
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
@@ -166,10 +168,86 @@ class ContactListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    
+    func searchBarResearch(research : String){
+        print("La recherche est \(research) ")
+        var predicate : NSPredicate?
+        let lastNamePredicate = NSPredicate(format: "lastName CONTAINS[cd] %@", research)
+        let firstNamePredicate = NSPredicate(format: "firstName CONTAINS[cd] %@", research)
+        predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [lastNamePredicate,firstNamePredicate])
+     
+        
+        let phoneRegexPattern = "^[0-9]+$"
+        let phoneRegex = try! NSRegularExpression(pattern: phoneRegexPattern,
+                                                  options: .caseInsensitive)
+        let matches = phoneRegex.matches(in: research, range: NSMakeRange(0, research.count))
+        if(matches.count>0){
+            let phonePredicate = NSPredicate(format: "phone BEGINSWITH %@", research)
+            predicate = phonePredicate
+        }
+        
+      
+        
+        
+        
+        let netProvider = NetworkProvider.sharedInstance
+        // Get the list of contacts
+        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
+        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
+        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
+        fetchRequest.predicate = predicate
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController.delegate = self
+        
+        do {
+            try resultController.performFetch()
+        } catch {
+            print(error)
+        }
+        self.tableView.reloadData()
+       
+  
+    }
+    
+    func displayAllContacts(){
+        let netProvider = NetworkProvider.sharedInstance
+        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
+        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
+        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController.delegate = self
+        
+        do {
+            try resultController.performFetch()
+        } catch {
+            print(error)
+        }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
 }
 extension ContactListTableViewController : NSFetchedResultsControllerDelegate{
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.reloadData()
     }
     
+}
+
+extension ContactListTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let empty = searchBarIsEmpty()
+        if(!empty){
+            let research = searchController.searchBar.text!
+            searchBarResearch(research: research)
+        }else{
+            displayAllContacts()
+        }
+    }
 }
