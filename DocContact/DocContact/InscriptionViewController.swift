@@ -141,6 +141,34 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.present(alertSignUp, animated: true, completion: nil)
     }
     
+    @IBAction func verifyPhone(_ sender: Any) {
+        if self.phoneTextField.text?.count != 10{
+            phoneTextField.backgroundColor = UIColor.red
+        } else {
+            phoneTextField.backgroundColor = UIColor.clear
+        }
+    }
+    
+    @IBAction func verifyMail(_ sender: Any) {
+        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
+        guard let mail = emailTextField.text else{
+            return
+        }
+        if test.evaluate(with:mail){
+            emailTextField.backgroundColor = UIColor.clear
+        } else{
+            emailTextField.backgroundColor = UIColor.red
+        }
+    }
+    @IBAction func verifyPassword(_ sender: Any) {
+        if self.passwordTextField.text?.count != 4{
+            passwordTextField.backgroundColor = UIColor.red
+        } else {
+            passwordTextField.backgroundColor = UIColor.clear
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
