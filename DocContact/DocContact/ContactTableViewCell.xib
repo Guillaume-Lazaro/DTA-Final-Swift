@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="665" height="124.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="profileImage" image="chuck" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-Ol-vPm" customClass="RoundedImage" customModule="DocContact" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="profileImage" image="profile" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-Ol-vPm" customClass="RoundedImage" customModule="DocContact" customModuleProvider="target">
                         <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="QmT-Ol-vPm" secondAttribute="height" multiplier="1:1" id="tmm-fD-zWW"/>
@@ -78,7 +78,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chuck" width="600" height="345"/>
         <image name="phoneIcon" width="16" height="16"/>
+        <image name="profile" width="128" height="128"/>
     </resources>
 </document>
