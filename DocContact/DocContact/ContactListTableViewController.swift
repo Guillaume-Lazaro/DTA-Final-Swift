@@ -16,12 +16,8 @@ class ContactListTableViewController: UITableViewController {
     var resultController : NSFetchedResultsController<Contact>!
     let netProvider = NetworkProvider.sharedInstance
     
-    
     // SearchBar
-//    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var searchBarView: UISearchBar!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,20 +58,12 @@ class ContactListTableViewController: UITableViewController {
         try? resultController.performFetch()
         self.tableView.reloadData()
         
-        
-        
-//        // Setup the Search Controller
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Nom ou Numéro de téléphone"
-//        navigationItem.searchController = searchController
-//        definesPresentationContext = true
-        
         self.title = "Mes contacts"
         let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ContactCell")
         
         searchBarView.delegate = self
+        searchBarView.placeholder = "Nom ou Numéro de téléphone"
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
@@ -213,11 +201,6 @@ class ContactListTableViewController: UITableViewController {
             predicate = phonePredicate
         }
         
-      
-        
-        
-        
-        //let netProvider = NetworkProvider.sharedInstance
         // Get the list of contacts
         let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
         let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
@@ -238,12 +221,11 @@ class ContactListTableViewController: UITableViewController {
     }
     
     func displayAllContacts(){
-        let netProvider = NetworkProvider.sharedInstance
         let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
         let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
         let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
         fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
-        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         resultController.delegate = self
         
         do {
