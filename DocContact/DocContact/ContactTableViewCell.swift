@@ -22,11 +22,7 @@ class ContactTableViewCell: UITableViewCell {
     }
     
     //Numéro de téléphone:
-    var phoneNumber : String? {
-        didSet {
-            print("Test: ",phoneNumber)
-        }
-    }
+    var phoneNumber : String? 
    
     var gravatarHash : String? {
         didSet {
