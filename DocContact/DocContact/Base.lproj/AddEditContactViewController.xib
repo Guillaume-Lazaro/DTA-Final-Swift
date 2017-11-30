@@ -32,20 +32,20 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="iy2-bb-M8j">
                             <rect key="frame" x="0.0" y="0.0" width="142.5" height="278"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMu-1m-GHt">
-                                    <rect key="frame" x="98.5" y="0.0" width="44" height="25.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMu-1m-GHt">
+                                    <rect key="frame" x="44.5" y="0.0" width="98" height="25.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prénom" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLe-Zl-AhH">
-                                    <rect key="frame" x="72" y="50.5" width="70.5" height="25.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLe-Zl-AhH">
+                                    <rect key="frame" x="44" y="50.5" width="98.5" height="25.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Téléphone" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfa-fO-Wes">
-                                    <rect key="frame" x="48" y="101" width="94.5" height="25.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfa-fO-Wes">
+                                    <rect key="frame" x="6" y="101" width="136.5" height="25.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -56,14 +56,14 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type de profil" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM3-UV-V9q">
-                                    <rect key="frame" x="20.5" y="202" width="122" height="25.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM3-UV-V9q">
+                                    <rect key="frame" x="85" y="202" width="57.5" height="25.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Urgence" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQz-gE-6el">
-                                    <rect key="frame" x="64.5" y="252.5" width="78" height="25.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQz-gE-6el">
+                                    <rect key="frame" x="40" y="252.5" width="102.5" height="25.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -112,9 +112,9 @@
                     <viewLayoutGuide key="safeArea" id="JKE-Ob-Bzy"/>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh3-Bh-Gep">
-                    <rect key="frame" x="112.5" y="392" width="95" height="38"/>
+                    <rect key="frame" x="130.5" y="392" width="59" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <state key="normal" title="Supprimer">
+                    <state key="normal" title="Delete">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
