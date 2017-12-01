@@ -149,7 +149,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let name = nameTextField.text else{
             return
         }
-        if name == ""{
+        if name.isEmpty{
             nameTextField.backgroundColor = UIColor.red
             valid = false
         }
@@ -157,7 +157,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let firstname = firstNameTextField.text else{
             return
         }
-        if firstname == ""{
+        if firstname.isEmpty{
             firstNameTextField.backgroundColor = UIColor.red
             valid = false
         }
@@ -173,7 +173,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let mail = emailTextField.text else{
             return
         }
-        if mail == "" && !isMailValid(mail: mail){
+        if mail.isEmpty && !isMailValid(mail: mail){
             emailTextField.backgroundColor = UIColor.red
             valid = false
         }
@@ -182,7 +182,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let profile = pickerTextField.text else{
             return
         }
-        if profile == "-" || profile == ""{
+        if profile.isEmpty || profile == "-"{
             valid = false
             pickerTextField.backgroundColor = UIColor.red
         }
