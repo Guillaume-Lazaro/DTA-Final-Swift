@@ -22,7 +22,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let mailText = emailTextField.text else {
             return
         }
-        if !isMailValid(mail: mailText){
+        if !DataValidation.isMailValid(mail: mailText){
             self.setBorderRed(textfield: emailTextField)
         } else {
             self.resetBorder(textfield: emailTextField)
@@ -32,7 +32,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let number = phoneTextField.text else{
             return
         }
-        if !self.isPhoneValid(number: number){
+        if !DataValidation.isPhoneValid(phone: number){
             self.setBorderRed(textfield: phoneTextField)
         } else {
             self.resetBorder(textfield: phoneTextField)
@@ -141,15 +141,15 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     // Verify Valid Functions
-    func isMailValid(mail: String)->Bool{
+    /*func isMailValid(mail: String)->Bool{
         let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
         return test.evaluate(with:mail)
-    }
+    }*/
     
-    func isPhoneValid(number: String)->Bool{
+    /*func isPhoneValid(number: String)->Bool{
         return number.count == 10
-    }
+    }*/
     
     @objc func editContact(){
         var valid: Bool = true
@@ -173,7 +173,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let phone = phoneTextField.text else{
             return
         }
-        if phone.isEmpty && !isPhoneValid(number: phone){
+        if phone.isEmpty && !DataValidation.isPhoneValid(phone: phone){
             self.setBorderRed(textfield: phoneTextField)
             valid = false
         }
@@ -181,7 +181,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let mail = emailTextField.text else{
             return
         }
-        if mail.isEmpty && !isMailValid(mail: mail){
+        if mail.isEmpty && !DataValidation.isMailValid(mail: mail){
             self.setBorderRed(textfield: emailTextField)
             valid = false
         }
