@@ -230,6 +230,33 @@ class NetworkProvider{
         task.resume()
     }
     
+    func getUser(succes: @escaping() -> ()){
+        let urlString = API_URL + protectedModifier + "/current";
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        guard let token = self.token else{
+            return
+        }
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let userJson = responseJSON as? [String: String]{
+                    print(userJson)
+                    succes()
+                }
+            }
+        }
+        task.resume()
+    }
+    
     func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, token: String, success: @escaping ()->() ){
         var json = [String:Any]()
         json["phone"] = phone
