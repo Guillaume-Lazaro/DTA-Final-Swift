@@ -13,13 +13,78 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pickerTextField: UITextField!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBAction func verifPhoneRealTime(_ sender: Any) {
+        guard let phone = phoneTextField.text else{
+            return
+        }
+        if self.isPhoneValid(phone: phone){
+            self.resetBorder(textfield: phoneTextField)
+        } else {
+            self.setBorderRed(textfield: phoneTextField)
+        }
+    }
+    @IBAction func verifMailRealTime(_ sender: Any) {
+        guard let mail = emailTextField.text else{
+            return
+        }
+        if self.isMailValid(mail: mail){
+            self.resetBorder(textfield: emailTextField)
+        } else{
+            self.setBorderRed(textfield: emailTextField)
+        }
+    }
+    @IBAction func verifPasswordRealTime(_ sender: Any) {
+        guard let pass = passwordTextField.text else{
+            return
+        }
+        if self.isPasswordValid(pass: pass){
+            self.resetBorder(textfield: passwordTextField)
+        } else {
+            self.setBorderRed(textfield: passwordTextField)
+        }
+    }
+    @IBAction func verifConfirmRealTime(_ sender: Any) {
+        guard let pass = passwordTextField.text, let confirm = confirmPasswordTextField.text else{
+            return
+        }
+        if confirm == pass{
+            self.resetBorder(textfield: confirmPasswordTextField)
+        } else {
+            self.setBorderRed(textfield: confirmPasswordTextField)
+        }
+    }
+    @IBAction func editlastName(_ sender: Any) {
+        self.resetBorder(textfield: nameTextField)
+    }
+    @IBAction func editFirstName(_ sender: Any) {
+        self.resetBorder(textfield: firstNameTextField)
+    }
+    
+    func isPhoneValid(phone: String)->Bool{
+        return phone.count == 10
+    }
+    func isMailValid(mail: String)->Bool{
+        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
+        return test.evaluate(with: mail)
+    }
+    func isPasswordValid(pass: String)->Bool{
+        return pass.count == 4
+    }
+    func setBorderRed(textfield: UITextField){
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.red.cgColor
+    }
+    func resetBorder(textfield: UITextField){
+        textfield.layer.borderWidth = 0.0
+        textfield.layer.borderColor = UIColor.clear.cgColor
+    }
     
     var pickOption = ["_"]
     
@@ -95,14 +160,13 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text, let firstname: String = firstNameTextField.text, let lastname: String = nameTextField.text, let mail: String = emailTextField.text, let profile: String = pickerTextField.text else {
             return
         }
-        if password == confirmPasswordTextField.text && firstNameTextField.text != "" {
+        if checkInputText(firstname: firstname, lastname: lastname, phone: phone, mail: mail, password: password, profile: profile){
             self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
                 self.netProvider.loginOnServer(phone: phone, password: password, success: {
                     DispatchQueue.main.async {
                         let alertWelcome = UIAlertController(title: "Inscription réussie", message: "Bienvenue dans votre annuaire", preferredStyle: UIAlertControllerStyle.alert)
                         alertWelcome.addAction(UIAlertAction(title:"Commençons", style: UIAlertActionStyle.default, handler: {
                             alert -> Void in
-                            
                             self.goToList()
                         }))
                         self.present(alertWelcome, animated: true)
@@ -112,12 +176,76 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
                 self.alertFailed()}
             })
         } else {
-            if firstNameTextField.text == "" {
-                self.alertFailed()
-            }else{
+            self.alertFailed()
+        }
+    }
+    
+    func checkInputText(firstname: String, lastname: String, phone: String, mail: String, password: String, profile: String) -> Bool{
+        if checkName(firstname: firstname, lastname: lastname) && checkNum(phone: phone) && checkMail(email: mail) && checkPassword(password: password) && checkProfile(profile: profile) {
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func checkName(firstname: String, lastname: String) -> Bool{
+        if firstname.isEmpty || lastname.isEmpty {
+            let alertName = UIAlertController(title: "Erreur Inscription", message:"Veillez à remplir correctement Nom et/ou Prénom", preferredStyle: UIAlertControllerStyle.alert)
+            alertName.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alertName, animated: true, completion: nil)
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func checkMail(email: String)-> Bool{
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if emailTest.evaluate(with: email) {
+            return true
+        }else{
+            let alertMail = UIAlertController(title: "Erreur Mail", message:"Veillez à respecter le format 'example@example.ex' ", preferredStyle: UIAlertControllerStyle.alert)
+            alertMail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alertMail, animated: true, completion: nil)
+            return false
+        }
+    }
+    
+    func checkNum(phone: String) -> Bool{
+        if phone.count != 10 {
+            let alertCount = UIAlertController(title: "Erreur Inscription", message:"Veillez à rentrer 10 chiffres au numéro de téléphone", preferredStyle: UIAlertControllerStyle.alert)
+            alertCount.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alertCount, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
+    func checkPassword(password: String) -> Bool{
+        if password.count != 4 {
+            let alertCountPwd = UIAlertController(title: "Erreur Mot de passe", message:"Veillez à avoir un mot de passe à 4 caractères", preferredStyle:UIAlertControllerStyle.alert)
+            alertCountPwd.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil))
+            self.present(alertCountPwd, animated: true, completion: nil)
+            return false
+        }else{
+            if password != confirmPasswordTextField.text{
                 self.alertPwd()
+                return false
             }
         }
+        return true
+    }
+    
+    func checkProfile(profile: String) -> Bool{
+        if profile == "_"{
+            let alertProfile = UIAlertController(title: "Erreur Profil", message:"Veillez à choisir un profil valide", preferredStyle: UIAlertControllerStyle.alert)
+            alertProfile.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alertProfile, animated: true, completion: nil)
+            return false
+        }
+        return true
     }
     
     func goToList(){
@@ -127,7 +255,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func alertPwd(){
-        let alertMdp = UIAlertController(title: "Erreur Mot de pase", message:
+        let alertMdp = UIAlertController(title: "Erreur Mot de passe", message:
             "Confirmation mot de passe incorrecte", preferredStyle: UIAlertControllerStyle.alert)
         alertMdp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         
@@ -136,10 +264,15 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func alertFailed(){
-        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veillez à remplir correctement tous les champs", preferredStyle: .alert)
+        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Numéro de téléphone déjà utilisé", preferredStyle: .alert)
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
+    
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -178,5 +311,3 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
      */
     
 }
-
-

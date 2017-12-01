@@ -18,6 +18,34 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var pickerTextField: UITextField!
     @IBOutlet weak var emergencyUserSwitch: UISwitch!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBAction func mailVerifRealTime(_ sender: Any) {
+        guard let mailText = emailTextField.text else {
+            return
+        }
+        if !isMailValid(mail: mailText){
+            self.setBorderRed(textfield: emailTextField)
+        } else {
+            self.resetBorder(textfield: emailTextField)
+        }
+    }
+    @IBAction func phoneVerifRealTime(_ sender: Any) {
+        guard let number = phoneTextField.text else{
+            return
+        }
+        if !self.isPhoneValid(number: number){
+            self.setBorderRed(textfield: phoneTextField)
+        } else {
+            self.resetBorder(textfield: phoneTextField)
+        }
+    }
+    @IBAction func editLastName(_ sender: Any) {
+        self.resetBorder(textfield: nameTextField)    }
+    @IBAction func editFirstName(_ sender: Any) {
+        self.resetBorder(textfield: firstNameTextField)
+    }
+    @IBAction func editProfile(_ sender: Any) {
+        self.resetBorder(textfield: pickerTextField)
+    }
     
     var pickOption = ["-"]
     let pickerView = UIPickerView()
@@ -28,6 +56,15 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         netProvider.getProfiles(){ profiles in
             self.pickOption += profiles
         }
+    }
+    
+    func setBorderRed(textfield: UITextField){
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.red.cgColor
+    }
+    func resetBorder(textfield: UITextField){
+        textfield.layer.borderWidth = 0.0
+        textfield.layer.borderColor = UIColor.clear.cgColor
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -103,34 +140,49 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         dismiss(animated: true, completion: nil)
     }
     
+    // Verify Valid Functions
+    func isMailValid(mail: String)->Bool{
+        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
+        return test.evaluate(with:mail)
+    }
+    
+    func isPhoneValid(number: String)->Bool{
+        return number.count == 10
+    }
+    
     @objc func editContact(){
         var valid: Bool = true
         // vérification des champs
         guard let name = nameTextField.text else{
             return
         }
-        if name == ""{
+        if name.isEmpty{
+            self.setBorderRed(textfield: nameTextField)
             valid = false
         }
         
         guard let firstname = firstNameTextField.text else{
             return
         }
-        if firstname == ""{
+        if firstname.isEmpty{
+            self.setBorderRed(textfield: firstNameTextField)
             valid = false
         }
         
         guard let phone = phoneTextField.text else{
             return
         }
-        if phone == ""{
+        if phone.isEmpty && !isPhoneValid(number: phone){
+            self.setBorderRed(textfield: phoneTextField)
             valid = false
         }
         
         guard let mail = emailTextField.text else{
             return
         }
-        if mail == ""{
+        if mail.isEmpty && !isMailValid(mail: mail){
+            self.setBorderRed(textfield: emailTextField)
             valid = false
         }
         let gravatar = self.getGravatar(mail: mail)
@@ -138,8 +190,9 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let profile = pickerTextField.text else{
             return
         }
-        if profile == ""{
+        if profile.isEmpty || profile == "-"{
             valid = false
+            self.setBorderRed(textfield: pickerTextField)
         }
         let emergency = emergencyUserSwitch.isOn
         
@@ -148,6 +201,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 return
             }
             if !self.isInEditionMode{
+                // Create contact
                 netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
                     DispatchQueue.main.async {
                         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
@@ -159,6 +213,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 guard let id = contact?.id else{
                     return
                 }
+                // Update contact
                 netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
                     let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
                     let navVC = UINavigationController(rootViewController: contactVC)
@@ -203,7 +258,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func alertChamps(){
-        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veuillez remplir tous les champs", preferredStyle: .alert)
+        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veuillez vérifier les champs surlignés", preferredStyle: .alert)
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
