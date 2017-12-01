@@ -68,6 +68,7 @@ class ContactListTableViewController: UITableViewController {
         
         searchBarView.delegate = self
         searchBarView.placeholder = "Nom ou Numéro de téléphone"
+        searchBarView.barTintColor = UIColor.DocColors.blue
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
@@ -115,6 +116,13 @@ class ContactListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
         
+        // Change cell color
+        if (indexPath.row+1)%2 == 0 {
+            cell.contentView.backgroundColor = UIColor.DocColors.cellDarkBlue
+        } else {
+            cell.contentView.backgroundColor = UIColor.DocColors.cellLightBlue
+        }
+        
         if let contactCell = cell as? ContactTableViewCell {
             let contact = resultController.object(at: indexPath)
             contactCell.firstNameLabel.text = contact.firstName
@@ -147,6 +155,7 @@ class ContactListTableViewController: UITableViewController {
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
+
     
     /*
      // Override to support conditional editing of the table view.

@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Domine-Regular.ttf">
+            <string>Domine-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,17 +31,17 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PO8-Fs-eRJ">
-                        <rect key="frame" x="114.5" y="42" width="431" height="41"/>
+                        <rect key="frame" x="114.5" y="41" width="431" height="43.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nj-cW-JO4">
-                                <rect key="frame" x="0.0" y="0.0" width="431" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="431" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
-                                <rect key="frame" x="0.0" y="20.5" width="431" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="23.5" width="431" height="20"/>
+                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -54,6 +59,7 @@
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" red="0.44705882349999998" green="0.57647058819999997" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="PO8-Fs-eRJ" secondAttribute="trailing" id="5Lc-Yh-wxN"/>
                     <constraint firstItem="PO8-Fs-eRJ" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="AMt-U9-mLc"/>
