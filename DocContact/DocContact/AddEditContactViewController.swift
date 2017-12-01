@@ -165,7 +165,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let phone = phoneTextField.text else{
             return
         }
-        if phone == "" && !isPhoneValid(number: phone){
+        if phone.isEmpty && !isPhoneValid(number: phone){
             phoneTextField.backgroundColor = UIColor.red
             valid = false
         }
