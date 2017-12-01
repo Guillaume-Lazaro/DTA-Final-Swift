@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate  {
     
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var scrollView: UIScrollView!
@@ -100,6 +100,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         textfield.layer.borderColor = UIColor.clear.cgColor
     }
     
+    
     var pickOption = ["_"]
     
     let pickerView = UIPickerView()
@@ -139,8 +140,12 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
-        
+  
+        // Change the navBar color
         self.title = "Inscription"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+
         
         //TextField:
         nameTextField.delegate = self
