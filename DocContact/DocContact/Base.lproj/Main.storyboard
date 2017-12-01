@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2h-cc-M8s" customClass="LightBlueButton" customModule="DocContact" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2h-cc-M8s" customClass="DiscreteButton" customModule="DocContact" customModuleProvider="target">
                                 <rect key="frame" x="50" y="442" width="220" height="30"/>
                                 <state key="normal" title="Forgotten password">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,7 +35,7 @@
                                     <action selector="alertForgottenPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kBb-vq-NMf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkm-TE-9Gz" customClass="LightBlueButton" customModule="DocContact" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkm-TE-9Gz" customClass="NewDefaultButton" customModule="DocContact" customModuleProvider="target">
                                 <rect key="frame" x="50" y="518" width="220" height="30"/>
                                 <state key="normal" title="Inscription">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -91,7 +91,7 @@
                                     <constraint firstAttribute="width" secondItem="C6L-IK-wgk" secondAttribute="height" multiplier="1:1" id="3HO-zz-FFx"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-lP-Arj" customClass="LightBlueButton" customModule="DocContact" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-lP-Arj" customClass="NewDefaultButton" customModule="DocContact" customModuleProvider="target">
                                 <rect key="frame" x="50" y="397" width="220" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CR2-Bw-j3y"/>

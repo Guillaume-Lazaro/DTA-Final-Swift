@@ -33,6 +33,8 @@
 		DE21E7AC9FD5AACD8931CF20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6499F95E45B78F3DA8333EFE /* CoreTelephony.framework */; };
 		E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F214A1FCEB59700A28284 /* manageDBProvider.swift */; };
 		E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */; };
+		E96BE4511FD175A60005ADEC /* NewDefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4501FD175A60005ADEC /* NewDefaultButton.swift */; };
+		E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */; };
 		E984FAFE1FCC1B0500BD7F09 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */; };
 		E984FB021FCC1B2B00BD7F09 /* ContactListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */; };
 		E984FB061FCC361800BD7F09 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB041FCC361800BD7F09 /* DetailViewController.swift */; };
@@ -42,7 +44,6 @@
 		E984FB131FCC590100BD7F09 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB121FCC590100BD7F09 /* RoundedButton.swift */; };
 		E9934BCB1FD1577600B5DCD6 /* Domine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9934BCA1FD1577500B5DCD6 /* Domine-Regular.ttf */; };
 		E9934BCD1FD1577E00B5DCD6 /* Domine-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9934BCC1FD1577D00B5DCD6 /* Domine-Bold.ttf */; };
-		E9934BD11FD1666E00B5DCD6 /* LightBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9934BD01FD1666E00B5DCD6 /* LightBlueButton.swift */; };
 		FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,8 @@
 		DC6FABDF034877CA58D51F87 /* Pods_DocContactTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocContactTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F214A1FCEB59700A28284 /* manageDBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manageDBProvider.swift; sourceTree = "<group>"; };
 		E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
+		E96BE4501FD175A60005ADEC /* NewDefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDefaultButton.swift; sourceTree = "<group>"; };
+		E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteButton.swift; sourceTree = "<group>"; };
 		E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewController.swift; sourceTree = "<group>"; };
 		E984FB041FCC361800BD7F09 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +120,6 @@
 		E984FB121FCC590100BD7F09 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E9934BCA1FD1577500B5DCD6 /* Domine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Domine-Regular.ttf"; sourceTree = "<group>"; };
 		E9934BCC1FD1577D00B5DCD6 /* Domine-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Domine-Bold.ttf"; sourceTree = "<group>"; };
-		E9934BD01FD1666E00B5DCD6 /* LightBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBlueButton.swift; sourceTree = "<group>"; };
 		F3E01EE02F7065C7E9ADAC93 /* Pods-DocContactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocContactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DocContactTests/Pods-DocContactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +206,7 @@
 		BC1448C51FCC18DB00528F85 /* DocContact */ = {
 			isa = PBXGroup;
 			children = (
+				E96BE4521FD188B30005ADEC /* Style */,
 				E913643C1FD05B1D0076A1BD /* Ressources */,
 				FC50F38D1FCDA7FA0028FB12 /* Providers */,
 				BC1448D51FCC18DB00528F85 /* Info.plist */,
@@ -223,9 +226,6 @@
 				BC1448CD1FCC18DB00528F85 /* DocContact.xcdatamodeld */,
 				BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */,
 				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
-				E984FB121FCC590100BD7F09 /* RoundedButton.swift */,
-				E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */,
-				E9934BD01FD1666E00B5DCD6 /* LightBlueButton.swift */,
 			);
 			path = DocContact;
 			sourceTree = "<group>";
@@ -268,6 +268,17 @@
 				E9934BCA1FD1577500B5DCD6 /* Domine-Regular.ttf */,
 			);
 			path = Ressources;
+			sourceTree = "<group>";
+		};
+		E96BE4521FD188B30005ADEC /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */,
+				E984FB121FCC590100BD7F09 /* RoundedButton.swift */,
+				E96BE4501FD175A60005ADEC /* NewDefaultButton.swift */,
+				E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		FC50F38D1FCDA7FA0028FB12 /* Providers */ = {
@@ -590,8 +601,9 @@
 				E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */,
 				E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */,
 				FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */,
+				E96BE4511FD175A60005ADEC /* NewDefaultButton.swift in Sources */,
 				BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */,
-				E9934BD11FD1666E00B5DCD6 /* LightBlueButton.swift in Sources */,
+				E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */,
 				BC1448C71FCC18DB00528F85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
