@@ -90,7 +90,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="142.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
                                                     <connections>
                                                         <action selector="editlastName:" destination="-1" eventType="editingDidBegin" id="lJZ-wY-wZy"/>
                                                     </connections>
@@ -99,7 +99,7 @@
                                                     <rect key="frame" x="0.0" y="50" width="142.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                                                     <connections>
                                                         <action selector="editFirstName:" destination="-1" eventType="editingDidBegin" id="bc7-VS-FG7"/>
                                                     </connections>
@@ -117,7 +117,7 @@
                                                     <rect key="frame" x="0.0" y="150" width="142.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
                                                     <connections>
                                                         <action selector="verifMailRealTime:" destination="-1" eventType="editingChanged" id="Y05-a8-72R"/>
                                                     </connections>
@@ -126,7 +126,7 @@
                                                     <rect key="frame" x="0.0" y="200" width="142.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <action selector="verifPasswordRealTime:" destination="-1" eventType="editingChanged" id="qga-WO-mgl"/>
                                                     </connections>
@@ -135,7 +135,7 @@
                                                     <rect key="frame" x="0.0" y="250" width="142.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <action selector="verifConfirmRealTime:" destination="-1" eventType="editingChanged" id="lcM-AR-Z96"/>
                                                     </connections>

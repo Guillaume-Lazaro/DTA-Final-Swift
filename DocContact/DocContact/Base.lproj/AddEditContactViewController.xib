@@ -77,7 +77,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
                                     <connections>
                                         <action selector="editLastName:" destination="-1" eventType="editingDidBegin" id="vT7-PO-sid"/>
                                     </connections>
@@ -86,7 +86,7 @@
                                     <rect key="frame" x="0.0" y="50" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <textInputTraits key="textInputTraits" textContentType="name"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                                     <connections>
                                         <action selector="editFirstName:" destination="-1" eventType="editingDidBegin" id="Xlm-Vj-KNQ"/>
                                     </connections>
@@ -104,7 +104,7 @@
                                     <rect key="frame" x="0.0" y="150" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
                                     <connections>
                                         <action selector="mailVerifRealTime:" destination="-1" eventType="editingChanged" id="kW0-jW-tHM"/>
                                     </connections>
