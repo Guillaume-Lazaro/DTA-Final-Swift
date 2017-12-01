@@ -31,9 +31,8 @@
 	<string>Main</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Ubuntu-Medium.ttf</string>
-		<string>Ubuntu-Regular.ttf</string>
-		<string>KaushanScript-Regular.ttf</string>
+		<string>Domine-Bold.ttf</string>
+		<string>Domine-Regular.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
