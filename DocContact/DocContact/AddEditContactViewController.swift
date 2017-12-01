@@ -190,7 +190,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let profile = pickerTextField.text else{
             return
         }
-        if DataValidation.isProfileValid(profile: <#T##String#>){
+        if DataValidation.isProfileValid(profile: profile){
             valid = false
             self.setBorderRed(textfield: pickerTextField)
         }
