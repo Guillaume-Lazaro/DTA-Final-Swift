@@ -13,13 +13,70 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pickerTextField: UITextField!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBAction func verifPhoneRealTime(_ sender: Any) {
+        guard let phone = phoneTextField.text else{
+            return
+        }
+        if self.isPhoneValid(phone: phone){
+            phoneTextField.backgroundColor = UIColor.clear
+        } else {
+            phoneTextField.backgroundColor = UIColor.red
+        }
+    }
+    @IBAction func verifMailRealTime(_ sender: Any) {
+        guard let mail = emailTextField.text else{
+            return
+        }
+        if self.isMailValid(mail: mail){
+            emailTextField.backgroundColor = UIColor.clear
+        } else{
+            emailTextField.backgroundColor = UIColor.red
+        }
+    }
+    @IBAction func verifPasswordRealTime(_ sender: Any) {
+        guard let pass = passwordTextField.text else{
+            return
+        }
+        if self.isPasswordValid(pass: pass){
+            passwordTextField.backgroundColor = UIColor.clear
+        } else {
+            passwordTextField.backgroundColor = UIColor.red
+        }
+    }
+    @IBAction func verifConfirmRealTime(_ sender: Any) {
+        guard let pass = passwordTextField.text, let confirm = confirmPasswordTextField.text else{
+            return
+        }
+        if confirm == pass{
+            confirmPasswordTextField.backgroundColor = UIColor.clear
+        } else {
+            confirmPasswordTextField.backgroundColor = UIColor.red
+        }
+    }
+    @IBAction func editlastName(_ sender: Any) {
+        nameTextField.backgroundColor = UIColor.clear
+    }
+    @IBAction func editFirstName(_ sender: Any) {
+        firstNameTextField.backgroundColor = UIColor.clear
+    }
+    
+    func isPhoneValid(phone: String)->Bool{
+        return phone.count == 10
+    }
+    func isMailValid(mail: String)->Bool{
+        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
+        return test.evaluate(with: mail)
+    }
+    func isPasswordValid(pass: String)->Bool{
+        return pass.count == 4
+    }
     
     var pickOption = ["_"]
     
@@ -141,33 +198,10 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.present(alertSignUp, animated: true, completion: nil)
     }
     
-    @IBAction func verifyPhone(_ sender: Any) {
-        if self.phoneTextField.text?.count != 10{
-            phoneTextField.backgroundColor = UIColor.red
-        } else {
-            phoneTextField.backgroundColor = UIColor.clear
-        }
-    }
     
-    @IBAction func verifyMail(_ sender: Any) {
-        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
-        guard let mail = emailTextField.text else{
-            return
-        }
-        if test.evaluate(with:mail){
-            emailTextField.backgroundColor = UIColor.clear
-        } else{
-            emailTextField.backgroundColor = UIColor.red
-        }
-    }
-    @IBAction func verifyPassword(_ sender: Any) {
-        if self.passwordTextField.text?.count != 4{
-            passwordTextField.backgroundColor = UIColor.red
-        } else {
-            passwordTextField.backgroundColor = UIColor.clear
-        }
-    }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
