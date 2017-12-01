@@ -18,21 +18,7 @@ class DataValidation{
         }
     }
     static func isPhoneValid(phone: String)->Bool{
-        do {
-            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
-            let matches = detector.matches(in: phone, options: [], range: NSMakeRange(0, phone.count))
-            if let res = matches.first {
-                let result = res.resultType == .phoneNumber && res.range.location == 0 && res.range.length == phone.count
-                print("Phone OK")
-                return result
-            } else {
-                print("Phone not OK")
-                return false
-            }
-        } catch {
-            print(error)
-        }
-        return false;
+        return phone.count == 10
     }
     static func isPasswordValid(password: String)->Bool{
         return password.count == 4

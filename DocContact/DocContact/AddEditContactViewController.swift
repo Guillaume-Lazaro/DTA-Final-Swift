@@ -157,7 +157,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let name = nameTextField.text else{
             return
         }
-        if name.isEmpty{
+        if DataValidation.isLastNameValid(lastName: name){
             self.setBorderRed(textfield: nameTextField)
             valid = false
         }
@@ -165,7 +165,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let firstname = firstNameTextField.text else{
             return
         }
-        if firstname.isEmpty{
+        if DataValidation.isFirstNameValid(firstName: firstname){
             self.setBorderRed(textfield: firstNameTextField)
             valid = false
         }
@@ -173,7 +173,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let phone = phoneTextField.text else{
             return
         }
-        if phone.isEmpty && !DataValidation.isPhoneValid(phone: phone){
+        if !DataValidation.isPhoneValid(phone: phone){
             self.setBorderRed(textfield: phoneTextField)
             valid = false
         }
@@ -181,7 +181,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let mail = emailTextField.text else{
             return
         }
-        if mail.isEmpty && !DataValidation.isMailValid(mail: mail){
+        if !DataValidation.isMailValid(mail: mail){
             self.setBorderRed(textfield: emailTextField)
             valid = false
         }
@@ -190,7 +190,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let profile = pickerTextField.text else{
             return
         }
-        if profile.isEmpty || profile == "-"{
+        if DataValidation.isProfileValid(profile: <#T##String#>){
             valid = false
             self.setBorderRed(textfield: pickerTextField)
         }
@@ -221,8 +221,6 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                     }
                 })
             }
-            
-            
         }else{
             alertChamps()
         }
