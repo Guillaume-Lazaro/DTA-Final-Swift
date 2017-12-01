@@ -13,6 +13,7 @@ import UIKit
 private let sharedNetServices = NetworkProvider()
 
 class NetworkProvider{
+    
     let API_URL: String = "http://familink.cleverapps.io"
     let publicModifier: String = "/public"
     let protectedModifier: String = "/secured/users"
@@ -31,7 +32,7 @@ class NetworkProvider{
     }
     
     // TODO : Garder le token en base locale, récupérer le profil
-    func loginOnServer(phone: String, password: String, success: @escaping () -> (), failure: @escaping () ->()){
+    func loginOnServer(phone: String, password: String, success: @escaping ([String: String]) -> (), failure: @escaping () ->()){
         var json = [String:String]()
         json["phone"] = phone
         json["password"] = password
@@ -59,7 +60,11 @@ class NetworkProvider{
                     }
                     self.token = token as? String
                     print(token)
-                    success()
+                    var user: [String: String] = ["":""]
+                    self.getUser(succes: { userJson in
+                        user = userJson
+                    })
+                    success(user)
                 }
             }
         }
@@ -230,7 +235,7 @@ class NetworkProvider{
         task.resume()
     }
     
-    func getUser(succes: @escaping() -> ()){
+    func getUser(succes: @escaping([String: String]) -> ()){
         let urlString = API_URL + protectedModifier + "/current";
         let url = URL(string: urlString)!
         let session = URLSession.shared
@@ -250,7 +255,7 @@ class NetworkProvider{
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let userJson = responseJSON as? [String: String]{
                     print(userJson)
-                    succes()
+                    succes(userJson)
                 }
             }
         }

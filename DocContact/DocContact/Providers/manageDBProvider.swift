@@ -13,8 +13,6 @@ private let sharedManageDbProvider = ManageDbProvider()
 
 class ManageDbProvider{
     let netProvider = NetworkProvider.sharedInstance
-    
-    
     class var sharedInstance: ManageDbProvider {
         return sharedManageDbProvider
     }
@@ -47,17 +45,12 @@ class ManageDbProvider{
         let sort = NSSortDescriptor(key: "lastName", ascending: true)
         let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
         fetchRequest.sortDescriptors = [sort]
-        
         let appDelegate = netProvider.persistentContainer
         let context = appDelegate.viewContext
-        
-        
-  
-
         // create
         for jsonPerson in json{
             let contact = Contact(context: context)
-            contact.user = context
+            // contact.user = context
             contact.lastName = jsonPerson["lastName"] as? String
             contact.firstName = jsonPerson["firstName"] as? String
             contact.email = jsonPerson["email"] as? String

@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     let netProvider = NetworkProvider.sharedInstance
+    let DBManager = ManageDbProvider.sharedInstance
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -73,7 +74,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         netProvider.loginOnServer(phone: phone, password: password,
-                                  success: {DispatchQueue.main.async {
+                                  success: { user in
+                                    self.DBManager.createCoreDataUser(userJson: user)
+                                    DispatchQueue.main.async {
                                     self.goToList()}
         },
                                   failure: { DispatchQueue.main.async {
