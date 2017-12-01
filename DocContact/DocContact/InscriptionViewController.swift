@@ -124,7 +124,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func checkName(firstname: String, lastname: String) -> Bool{
-        if firstname == "" || lastname == "" {
+        if firstname.isEmpty || lastname.isEmpty {
             let alertName = UIAlertController(title: "Erreur Inscription", message:"Veillez à remplir correctement Nom et/ou Prénom", preferredStyle: UIAlertControllerStyle.alert)
             alertName.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
             self.present(alertName, animated: true, completion: nil)
