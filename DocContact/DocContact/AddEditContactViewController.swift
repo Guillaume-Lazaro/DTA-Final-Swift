@@ -23,9 +23,9 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             return
         }
         if !isMailValid(mail: mailText){
-            emailTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: emailTextField)
         } else {
-            emailTextField.backgroundColor = UIColor.clear
+            self.resetBorder(textfield: emailTextField)
         }
     }
     @IBAction func phoneVerifRealTime(_ sender: Any) {
@@ -33,19 +33,18 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             return
         }
         if !self.isPhoneValid(number: number){
-            phoneTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: phoneTextField)
         } else {
-            phoneTextField.backgroundColor = UIColor.clear
+            self.resetBorder(textfield: phoneTextField)
         }
     }
     @IBAction func editLastName(_ sender: Any) {
-        nameTextField.backgroundColor = UIColor.clear
-    }
+        self.resetBorder(textfield: nameTextField)    }
     @IBAction func editFirstName(_ sender: Any) {
-        firstNameTextField.backgroundColor = UIColor.clear
+        self.resetBorder(textfield: firstNameTextField)
     }
     @IBAction func editProfile(_ sender: Any) {
-        pickerTextField.backgroundColor = UIColor.clear
+        self.resetBorder(textfield: pickerTextField)
     }
     
     var pickOption = ["-"]
@@ -57,6 +56,15 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         netProvider.getProfiles(){ profiles in
             self.pickOption += profiles
         }
+    }
+    
+    func setBorderRed(textfield: UITextField){
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.red.cgColor
+    }
+    func resetBorder(textfield: UITextField){
+        textfield.layer.borderWidth = 0.0
+        textfield.layer.borderColor = UIColor.clear.cgColor
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -150,7 +158,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             return
         }
         if name.isEmpty{
-            nameTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: nameTextField)
             valid = false
         }
         
@@ -158,7 +166,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             return
         }
         if firstname.isEmpty{
-            firstNameTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: firstNameTextField)
             valid = false
         }
         
@@ -166,7 +174,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             return
         }
         if phone.isEmpty && !isPhoneValid(number: phone){
-            phoneTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: phoneTextField)
             valid = false
         }
         
@@ -174,7 +182,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             return
         }
         if mail.isEmpty && !isMailValid(mail: mail){
-            emailTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: emailTextField)
             valid = false
         }
         let gravatar = self.getGravatar(mail: mail)
@@ -184,7 +192,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         }
         if profile.isEmpty || profile == "-"{
             valid = false
-            pickerTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: pickerTextField)
         }
         let emergency = emergencyUserSwitch.isOn
         

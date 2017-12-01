@@ -24,9 +24,9 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         if self.isPhoneValid(phone: phone){
-            phoneTextField.backgroundColor = UIColor.clear
+            self.resetBorder(textfield: phoneTextField)
         } else {
-            phoneTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: phoneTextField)
         }
     }
     @IBAction func verifMailRealTime(_ sender: Any) {
@@ -34,9 +34,9 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         if self.isMailValid(mail: mail){
-            emailTextField.backgroundColor = UIColor.clear
+            self.resetBorder(textfield: emailTextField)
         } else{
-            emailTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: emailTextField)
         }
     }
     @IBAction func verifPasswordRealTime(_ sender: Any) {
@@ -44,9 +44,9 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         if self.isPasswordValid(pass: pass){
-            passwordTextField.backgroundColor = UIColor.clear
+            self.resetBorder(textfield: passwordTextField)
         } else {
-            passwordTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: passwordTextField)
         }
     }
     @IBAction func verifConfirmRealTime(_ sender: Any) {
@@ -54,16 +54,16 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         if confirm == pass{
-            confirmPasswordTextField.backgroundColor = UIColor.clear
+            self.resetBorder(textfield: confirmPasswordTextField)
         } else {
-            confirmPasswordTextField.backgroundColor = UIColor.red
+            self.setBorderRed(textfield: confirmPasswordTextField)
         }
     }
     @IBAction func editlastName(_ sender: Any) {
-        nameTextField.backgroundColor = UIColor.clear
+        self.resetBorder(textfield: nameTextField)
     }
     @IBAction func editFirstName(_ sender: Any) {
-        firstNameTextField.backgroundColor = UIColor.clear
+        self.resetBorder(textfield: firstNameTextField)
     }
     
     func isPhoneValid(phone: String)->Bool{
@@ -76,6 +76,14 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     func isPasswordValid(pass: String)->Bool{
         return pass.count == 4
+    }
+    func setBorderRed(textfield: UITextField){
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.red.cgColor
+    }
+    func resetBorder(textfield: UITextField){
+        textfield.layer.borderWidth = 0.0
+        textfield.layer.borderColor = UIColor.clear.cgColor
     }
     
     var pickOption = ["_"]
