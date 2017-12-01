@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate  {
     
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var scrollView: UIScrollView!
@@ -20,6 +20,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    
     
     var pickOption = ["_"]
     
@@ -59,7 +60,9 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
-        
+  
+        // Change the navBar color
+//        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 65.0/255.0, green:75.0/255.0, blue: 168.0/255.0, alpha: 1.0)
         self.title = "Inscription"
         
         //TextField:
@@ -77,6 +80,11 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(validateInscription))
         
         pickerTextField.inputView = pickerView
+    }
+    
+    // Changes the color of the status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
