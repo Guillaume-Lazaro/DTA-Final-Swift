@@ -86,13 +86,13 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         textfield.layer.borderColor = UIColor.clear.cgColor
     }
     
-    var pickOption = ["_"]
+    var pickOption = [""]
     
     let pickerView = UIPickerView()
     
     func fillPickerOptions(){
         netProvider.getProfiles(){ profiles in
-            self.pickOption += profiles
+            self.pickOption = profiles
         }
     }
     
@@ -109,6 +109,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       
         pickerTextField.text = pickOption[row]
         pickerTextField.resignFirstResponder()
     }
@@ -142,6 +143,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(validateInscription))
         
         pickerTextField.inputView = pickerView
+        pickerTextField.text = "SENIOR"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
