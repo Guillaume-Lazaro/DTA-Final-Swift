@@ -78,30 +78,45 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                    <connections>
+                                        <action selector="editLastName:" destination="-1" eventType="editingDidBegin" id="vT7-PO-sid"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fY-Xq-gMT">
                                     <rect key="frame" x="0.0" y="50" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" textContentType="name"/>
+                                    <connections>
+                                        <action selector="editFirstName:" destination="-1" eventType="editingDidBegin" id="Xlm-Vj-KNQ"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Su-ZE-nGR">
                                     <rect key="frame" x="0.0" y="100" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                    <connections>
+                                        <action selector="phoneVerifRealTime:" destination="-1" eventType="editingChanged" id="ryD-Rh-l05"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXW-Im-o5N">
                                     <rect key="frame" x="0.0" y="150" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                    <connections>
+                                        <action selector="mailVerifRealTime:" destination="-1" eventType="editingChanged" id="kW0-jW-tHM"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P9u-5f-OM0">
                                     <rect key="frame" x="0.0" y="200" width="142.5" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                    <connections>
+                                        <action selector="editProfile:" destination="-1" eventType="editingDidBegin" id="Wft-5g-ld5"/>
+                                    </connections>
                                 </textField>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rrw-tG-Dav">
                                     <rect key="frame" x="0.0" y="250" width="144.5" height="31"/>

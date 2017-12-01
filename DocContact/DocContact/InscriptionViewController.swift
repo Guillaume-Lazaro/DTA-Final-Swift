@@ -13,13 +13,78 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pickerTextField: UITextField!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBAction func verifPhoneRealTime(_ sender: Any) {
+        guard let phone = phoneTextField.text else{
+            return
+        }
+        if self.isPhoneValid(phone: phone){
+            self.resetBorder(textfield: phoneTextField)
+        } else {
+            self.setBorderRed(textfield: phoneTextField)
+        }
+    }
+    @IBAction func verifMailRealTime(_ sender: Any) {
+        guard let mail = emailTextField.text else{
+            return
+        }
+        if self.isMailValid(mail: mail){
+            self.resetBorder(textfield: emailTextField)
+        } else{
+            self.setBorderRed(textfield: emailTextField)
+        }
+    }
+    @IBAction func verifPasswordRealTime(_ sender: Any) {
+        guard let pass = passwordTextField.text else{
+            return
+        }
+        if self.isPasswordValid(pass: pass){
+            self.resetBorder(textfield: passwordTextField)
+        } else {
+            self.setBorderRed(textfield: passwordTextField)
+        }
+    }
+    @IBAction func verifConfirmRealTime(_ sender: Any) {
+        guard let pass = passwordTextField.text, let confirm = confirmPasswordTextField.text else{
+            return
+        }
+        if confirm == pass{
+            self.resetBorder(textfield: confirmPasswordTextField)
+        } else {
+            self.setBorderRed(textfield: confirmPasswordTextField)
+        }
+    }
+    @IBAction func editlastName(_ sender: Any) {
+        self.resetBorder(textfield: nameTextField)
+    }
+    @IBAction func editFirstName(_ sender: Any) {
+        self.resetBorder(textfield: firstNameTextField)
+    }
+    
+    func isPhoneValid(phone: String)->Bool{
+        return phone.count == 10
+    }
+    func isMailValid(mail: String)->Bool{
+        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
+        return test.evaluate(with: mail)
+    }
+    func isPasswordValid(pass: String)->Bool{
+        return pass.count == 4
+    }
+    func setBorderRed(textfield: UITextField){
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.borderColor = UIColor.red.cgColor
+    }
+    func resetBorder(textfield: UITextField){
+        textfield.layer.borderWidth = 0.0
+        textfield.layer.borderColor = UIColor.clear.cgColor
+    }
     
     var pickOption = ["_"]
     
@@ -140,6 +205,11 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
+    
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
