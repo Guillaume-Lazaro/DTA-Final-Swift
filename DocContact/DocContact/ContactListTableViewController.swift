@@ -58,7 +58,11 @@ class ContactListTableViewController: UITableViewController {
         try? resultController.performFetch()
         self.tableView.reloadData()
         
+        // Set the title with correct parameters
         self.title = "Mes contacts"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+        
         let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ContactCell")
         
