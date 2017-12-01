@@ -118,9 +118,9 @@ class ContactListTableViewController: UITableViewController {
         
         // Change cell color
         if (indexPath.row+1)%2 == 0 {
-            cell.contentView.backgroundColor = UIColor.DocColors.cellDarkBlue
+            cell.contentView.backgroundColor = UIColor.DocColors.cellDarkColor
         } else {
-            cell.contentView.backgroundColor = UIColor.DocColors.cellLightBlue
+            cell.contentView.backgroundColor = UIColor.DocColors.cellLightColor
         }
         
         if let contactCell = cell as? ContactTableViewCell {
