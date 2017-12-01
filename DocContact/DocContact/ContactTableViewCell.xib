@@ -56,7 +56,7 @@
                             <constraint firstAttribute="width" secondItem="fOr-S7-Q6J" secondAttribute="height" multiplier="1:1" id="WTj-5f-WPI"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="60"/>
-                        <state key="normal" title="">
+                        <state key="normal" title="">
                             <color key="titleColor" white="0.25267132785585189" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
