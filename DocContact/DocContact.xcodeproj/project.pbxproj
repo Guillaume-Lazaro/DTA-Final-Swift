@@ -33,7 +33,7 @@
 		DE21E7AC9FD5AACD8931CF20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6499F95E45B78F3DA8333EFE /* CoreTelephony.framework */; };
 		E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F214A1FCEB59700A28284 /* manageDBProvider.swift */; };
 		E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */; };
-		E96BE4511FD175A60005ADEC /* NewDefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4501FD175A60005ADEC /* NewDefaultButton.swift */; };
+		E96BE4511FD175A60005ADEC /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4501FD175A60005ADEC /* DefaultButton.swift */; };
 		E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */; };
 		E96BE4561FD1A4800005ADEC /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4551FD1A4800005ADEC /* ProjectColors.swift */; };
 		E984FAFE1FCC1B0500BD7F09 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */; };
@@ -110,7 +110,7 @@
 		DC6FABDF034877CA58D51F87 /* Pods_DocContactTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocContactTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F214A1FCEB59700A28284 /* manageDBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manageDBProvider.swift; sourceTree = "<group>"; };
 		E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
-		E96BE4501FD175A60005ADEC /* NewDefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDefaultButton.swift; sourceTree = "<group>"; };
+		E96BE4501FD175A60005ADEC /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteButton.swift; sourceTree = "<group>"; };
 		E96BE4551FD1A4800005ADEC /* ProjectColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectColors.swift; path = ../../../../../Documents/ProjectColors.swift; sourceTree = "<group>"; };
 		E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 			children = (
 				E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */,
 				E984FB121FCC590100BD7F09 /* RoundedButton.swift */,
-				E96BE4501FD175A60005ADEC /* NewDefaultButton.swift */,
+				E96BE4501FD175A60005ADEC /* DefaultButton.swift */,
 				E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */,
 				E96BE4551FD1A4800005ADEC /* ProjectColors.swift */,
 			);
@@ -604,7 +604,7 @@
 				E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */,
 				E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */,
 				FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */,
-				E96BE4511FD175A60005ADEC /* NewDefaultButton.swift in Sources */,
+				E96BE4511FD175A60005ADEC /* DefaultButton.swift in Sources */,
 				BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */,
 				E96BE4561FD1A4800005ADEC /* ProjectColors.swift in Sources */,
 				E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */,

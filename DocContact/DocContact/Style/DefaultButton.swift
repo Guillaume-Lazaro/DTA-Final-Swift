@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class NewDefaultButton : UIButton{
+class DefaultButton : UIButton{
     
     override func layoutSubviews() {
         super.layoutSubviews()
