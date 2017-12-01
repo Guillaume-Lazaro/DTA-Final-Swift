@@ -39,7 +39,7 @@
                                     <action selector="alertForgottenPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kBb-vq-NMf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkm-TE-9Gz" customClass="NewDefaultButton" customModule="DocContact" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkm-TE-9Gz" customClass="DefaultButton" customModule="DocContact" customModuleProvider="target">
                                 <rect key="frame" x="30" y="508" width="260" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1RH-cT-1CK"/>
@@ -99,7 +99,7 @@
                                     <constraint firstAttribute="width" secondItem="C6L-IK-wgk" secondAttribute="height" multiplier="1:1" id="3HO-zz-FFx"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-lP-Arj" customClass="NewDefaultButton" customModule="DocContact" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-lP-Arj" customClass="DefaultButton" customModule="DocContact" customModuleProvider="target">
                                 <rect key="frame" x="30" y="397" width="260" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Pz0-EJ-IUi"/>

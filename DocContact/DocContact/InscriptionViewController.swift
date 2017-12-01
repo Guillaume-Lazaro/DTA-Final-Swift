@@ -62,8 +62,10 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         
   
         // Change the navBar color
-//        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 65.0/255.0, green:75.0/255.0, blue: 168.0/255.0, alpha: 1.0)
         self.title = "Inscription"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+
         
         //TextField:
         nameTextField.delegate = self
@@ -80,11 +82,6 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(validateInscription))
         
         pickerTextField.inputView = pickerView
-    }
-    
-    // Changes the color of the status bar
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
