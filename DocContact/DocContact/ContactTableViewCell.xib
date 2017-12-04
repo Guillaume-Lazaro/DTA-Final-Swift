@@ -28,37 +28,47 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="profileImage" image="profile" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-Ol-vPm" customClass="RoundedImage" customModule="DocContact" customModuleProvider="target">
-                        <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
+                        <rect key="frame" x="10" y="13" width="98.5" height="98.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="QmT-Ol-vPm" secondAttribute="height" multiplier="1:1" id="tmm-fD-zWW"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PO8-Fs-eRJ">
-                        <rect key="frame" x="114.5" y="41" width="431" height="43.5"/>
+                        <rect key="frame" x="108.5" y="41" width="442" height="43.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nj-cW-JO4">
-                                <rect key="frame" x="0.0" y="0.0" width="431" height="23.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="442" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
-                                <rect key="frame" x="0.0" y="23.5" width="431" height="20"/>
+
+                                <rect key="frame" x="0.0" y="23.5" width="442" height="20"/>
+
                                 <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-S7-Q6J" customClass="RoundedButton" customModule="DocContact" customModuleProvider="target">
-                        <rect key="frame" x="545.5" y="5" width="114.5" height="114.5"/>
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-S7-Q6J" customClass="ThinBorderButton" customModule="DocContact" customModuleProvider="target">
+                        <rect key="frame" x="550.5" y="10" width="104.5" height="104.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="fOr-S7-Q6J" secondAttribute="height" multiplier="1:1" id="WTj-5f-WPI"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="60"/>
+                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
                         <state key="normal" title="">
                             <color key="titleColor" white="0.25267132785585189" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.69158118963241577" green="0.69222384691238403" blue="0.93186849355697632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="callButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8I6-z9-o0O"/>
                         </connections>
@@ -68,12 +78,12 @@
                     <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="PO8-Fs-eRJ" secondAttribute="trailing" id="5Lc-Yh-wxN"/>
                     <constraint firstItem="PO8-Fs-eRJ" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="AMt-U9-mLc"/>
                     <constraint firstItem="PO8-Fs-eRJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fcr-Od-D5Z"/>
-                    <constraint firstAttribute="bottom" secondItem="fOr-S7-Q6J" secondAttribute="bottom" constant="5" id="Mjk-Bo-1NK"/>
+                    <constraint firstAttribute="bottom" secondItem="fOr-S7-Q6J" secondAttribute="bottom" constant="10" id="Mjk-Bo-1NK"/>
                     <constraint firstItem="QmT-Ol-vPm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Nwz-Jl-p3I"/>
-                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Z2V-TL-K2x"/>
-                    <constraint firstAttribute="trailing" secondItem="fOr-S7-Q6J" secondAttribute="trailing" constant="5" id="fpS-Yh-3Ih"/>
-                    <constraint firstItem="QmT-Ol-vPm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="g24-iW-0gT"/>
-                    <constraint firstAttribute="bottom" secondItem="QmT-Ol-vPm" secondAttribute="bottom" constant="10" id="z1r-gL-3iJ"/>
+                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Z2V-TL-K2x"/>
+                    <constraint firstAttribute="bottom" secondItem="QmT-Ol-vPm" secondAttribute="bottom" constant="13" id="bxt-ze-wyg"/>
+                    <constraint firstAttribute="trailing" secondItem="fOr-S7-Q6J" secondAttribute="trailing" constant="10" id="fpS-Yh-3Ih"/>
+                    <constraint firstItem="QmT-Ol-vPm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="g24-iW-0gT"/>
                 </constraints>
             </tableViewCellContentView>
             <gestureRecognizers/>

@@ -75,7 +75,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                   success: { user in
                                     self.DBManager.createCoreDataUser(userJson: user)
                                     DispatchQueue.main.async {
-                                        self.goToList()}
+
+                                    self.goToList()}
+
         },
                                   failure: { DispatchQueue.main.async {
                                     self.alertLoginFailed()}
