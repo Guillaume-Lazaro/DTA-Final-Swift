@@ -25,6 +25,7 @@
 		BC1448D41FCC18DB00528F85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */; };
 		BC1448DF1FCC18DB00528F85 /* DocContactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448DE1FCC18DB00528F85 /* DocContactTests.swift */; };
 		BC1448EA1FCC18DB00528F85 /* DocContactUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448E91FCC18DB00528F85 /* DocContactUITests.swift */; };
+		BC244C4E1FD546E600452BD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC244C4C1FD546E600452BD7 /* Localizable.strings */; };
 		BCF6516E1FD015A100BF502F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651701FD015A100BF502F /* DetailViewController.xib */; };
 		BCF651761FD01AC400BF502F /* AddEditContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651781FD01AC400BF502F /* AddEditContactViewController.xib */; };
 		BCF6517E1FD01C5200BF502F /* ContactListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651801FD01C5200BF502F /* ContactListTableViewController.xib */; };
@@ -90,6 +91,8 @@
 		BC1448E51FCC18DB00528F85 /* DocContactUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DocContactUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1448E91FCC18DB00528F85 /* DocContactUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocContactUITests.swift; sourceTree = "<group>"; };
 		BC1448EB1FCC18DB00528F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC244C4D1FD546E600452BD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BC244C4F1FD546F300452BD7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BCF6516C1FD014E200BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BCF6516D1FD014E200BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		BCF651731FD0177100BF502F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DetailViewController.xib; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 				E984FB041FCC361800BD7F09 /* DetailViewController.swift */,
 				E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */,
 				BC1448C81FCC18DB00528F85 /* LoginViewController.swift */,
+				BC244C4C1FD546E600452BD7 /* Localizable.strings */,
 				BCF651871FD01DE900BF502F /* InscriptionViewController.xib */,
 				BC1448D01FCC18DB00528F85 /* Assets.xcassets */,
 				BCF651781FD01AC400BF502F /* AddEditContactViewController.xib */,
@@ -364,6 +368,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = BC1448BA1FCC18DB00528F85;
 			productRefGroup = BC1448C41FCC18DB00528F85 /* Products */;
@@ -386,6 +391,7 @@
 				BCF6516E1FD015A100BF502F /* DetailViewController.xib in Resources */,
 				BC1448D41FCC18DB00528F85 /* LaunchScreen.storyboard in Resources */,
 				BCF651761FD01AC400BF502F /* AddEditContactViewController.xib in Resources */,
+				BC244C4E1FD546E600452BD7 /* Localizable.strings in Resources */,
 				BC1448D11FCC18DB00528F85 /* Assets.xcassets in Resources */,
 				BCF6517E1FD01C5200BF502F /* ContactListTableViewController.xib in Resources */,
 				BC1448CC1FCC18DB00528F85 /* Main.storyboard in Resources */,
@@ -628,6 +634,15 @@
 				BCF6516C1FD014E200BF502F /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BC244C4C1FD546E600452BD7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC244C4D1FD546E600452BD7 /* Base */,
+				BC244C4F1FD546F300452BD7 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		BCF651701FD015A100BF502F /* DetailViewController.xib */ = {
