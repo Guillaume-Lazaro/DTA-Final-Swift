@@ -6,7 +6,6 @@
 //  Copyright © 2017 Cuba Libre. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import MessageUI
 
@@ -59,21 +58,27 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
     @IBAction func pressedSendMail(_ sender: Any) {
+  
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
-            
             // Configure the fields of the interface.
             composeVC.setToRecipients(["address@example.com"])
             composeVC.setSubject("Hello!")
             composeVC.setMessageBody("Hello from California!", isHTML: false)
             
             // Present the view controller modally.
-            self.present(composeVC, animated: true, completion: nil)
+            present(composeVC, animated: true)
+            
+            
         } else {
             print("Mail services are not available")
             return
         }
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
+        
+        controller.dismiss(animated: true)
     }
     
     @objc func goToEditContact(){
