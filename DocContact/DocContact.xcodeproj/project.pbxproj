@@ -47,6 +47,7 @@
 		E9934BCB1FD1577600B5DCD6 /* Domine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9934BCA1FD1577500B5DCD6 /* Domine-Regular.ttf */; };
 		E9934BCD1FD1577E00B5DCD6 /* Domine-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9934BCC1FD1577D00B5DCD6 /* Domine-Bold.ttf */; };
 		E9F262421FD541C400A5BEF7 /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262411FD541C400A5BEF7 /* ProjectColors.swift */; };
+		E9F262451FD5862900A5BEF7 /* ThinBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */; };
 		FC4C28371FD190AB00F10D93 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4C28361FD190AB00F10D93 /* DataValidation.swift */; };
 		FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		E9934BCA1FD1577500B5DCD6 /* Domine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Domine-Regular.ttf"; sourceTree = "<group>"; };
 		E9934BCC1FD1577D00B5DCD6 /* Domine-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Domine-Bold.ttf"; sourceTree = "<group>"; };
 		E9F262411FD541C400A5BEF7 /* ProjectColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectColors.swift; sourceTree = "<group>"; };
+		E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinBorderButton.swift; sourceTree = "<group>"; };
 		F3E01EE02F7065C7E9ADAC93 /* Pods-DocContactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocContactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DocContactTests/Pods-DocContactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC4C28361FD190AB00F10D93 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
 		FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				E96BE4501FD175A60005ADEC /* DefaultButton.swift */,
 				E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */,
 				E9F262411FD541C400A5BEF7 /* ProjectColors.swift */,
+				E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				E96BE4511FD175A60005ADEC /* DefaultButton.swift in Sources */,
 				BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */,
 				E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */,
+				E9F262451FD5862900A5BEF7 /* ThinBorderButton.swift in Sources */,
 				BC1448C71FCC18DB00528F85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
