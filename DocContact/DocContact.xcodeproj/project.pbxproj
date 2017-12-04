@@ -35,7 +35,6 @@
 		E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */; };
 		E96BE4511FD175A60005ADEC /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4501FD175A60005ADEC /* DefaultButton.swift */; };
 		E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */; };
-		E96BE4561FD1A4800005ADEC /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4551FD1A4800005ADEC /* ProjectColors.swift */; };
 		E96BE4581FD1B64D0005ADEC /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E96BE4571FD1B64D0005ADEC /* fontawesome-webfont.ttf */; };
 		E984FAFE1FCC1B0500BD7F09 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */; };
 		E984FB021FCC1B2B00BD7F09 /* ContactListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */; };
@@ -46,6 +45,7 @@
 		E984FB131FCC590100BD7F09 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984FB121FCC590100BD7F09 /* RoundedButton.swift */; };
 		E9934BCB1FD1577600B5DCD6 /* Domine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9934BCA1FD1577500B5DCD6 /* Domine-Regular.ttf */; };
 		E9934BCD1FD1577E00B5DCD6 /* Domine-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9934BCC1FD1577D00B5DCD6 /* Domine-Bold.ttf */; };
+		E9F262421FD541C400A5BEF7 /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262411FD541C400A5BEF7 /* ProjectColors.swift */; };
 		FC4C28371FD190AB00F10D93 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4C28361FD190AB00F10D93 /* DataValidation.swift */; };
 		FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */; };
 /* End PBXBuildFile section */
@@ -114,7 +114,6 @@
 		E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		E96BE4501FD175A60005ADEC /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteButton.swift; sourceTree = "<group>"; };
-		E96BE4551FD1A4800005ADEC /* ProjectColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectColors.swift; path = ../../../../../Documents/ProjectColors.swift; sourceTree = "<group>"; };
 		E96BE4571FD1B64D0005ADEC /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		E984FAFC1FCC1B0500BD7F09 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		E984FB001FCC1B2B00BD7F09 /* ContactListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		E984FB121FCC590100BD7F09 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E9934BCA1FD1577500B5DCD6 /* Domine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Domine-Regular.ttf"; sourceTree = "<group>"; };
 		E9934BCC1FD1577D00B5DCD6 /* Domine-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Domine-Bold.ttf"; sourceTree = "<group>"; };
+		E9F262411FD541C400A5BEF7 /* ProjectColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectColors.swift; sourceTree = "<group>"; };
 		F3E01EE02F7065C7E9ADAC93 /* Pods-DocContactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocContactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DocContactTests/Pods-DocContactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC4C28361FD190AB00F10D93 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
 		FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 				E984FB121FCC590100BD7F09 /* RoundedButton.swift */,
 				E96BE4501FD175A60005ADEC /* DefaultButton.swift */,
 				E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */,
-				E96BE4551FD1A4800005ADEC /* ProjectColors.swift */,
+				E9F262411FD541C400A5BEF7 /* ProjectColors.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -609,12 +609,12 @@
 				E984FB101FCC514800BD7F09 /* ContactTableViewCell.swift in Sources */,
 				E984FB061FCC361800BD7F09 /* DetailViewController.swift in Sources */,
 				E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */,
+				E9F262421FD541C400A5BEF7 /* ProjectColors.swift in Sources */,
 				E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */,
 				FC4C28371FD190AB00F10D93 /* DataValidation.swift in Sources */,
 				FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */,
 				E96BE4511FD175A60005ADEC /* DefaultButton.swift in Sources */,
 				BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */,
-				E96BE4561FD1A4800005ADEC /* ProjectColors.swift in Sources */,
 				E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */,
 				BC1448C71FCC18DB00528F85 /* AppDelegate.swift in Sources */,
 			);
