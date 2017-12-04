@@ -148,7 +148,6 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     // Method of the back button
     @objc func backAction(){
-        //print("Back Button Clicked")
         dismiss(animated: true, completion: nil)
     }
     
