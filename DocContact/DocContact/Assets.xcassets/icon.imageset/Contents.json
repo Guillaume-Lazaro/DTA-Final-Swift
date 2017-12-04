@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "bigLogo whiteblazzer.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "chuck.jpg",
       "scale" : "2x"
     },
     {

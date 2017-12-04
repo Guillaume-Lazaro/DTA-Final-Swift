@@ -27,7 +27,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("le contact est ",self.contact ?? "no contact")
+        // Set the title with correct parameters 
         self.title = "Mon Contact"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+        
         
         fillTheFields()
         

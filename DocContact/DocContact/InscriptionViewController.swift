@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate  {
     
     let netProvider = NetworkProvider.sharedInstance
     let DBManager = ManageDbProvider.sharedInstance
@@ -24,7 +24,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let phone = phoneTextField.text else{
             return
         }
-        if self.isPhoneValid(phone: phone){
+        if DataValidation.isPhoneValid(phone: phone){
             self.resetBorder(textfield: phoneTextField)
         } else {
             self.setBorderRed(textfield: phoneTextField)
@@ -34,7 +34,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let mail = emailTextField.text else{
             return
         }
-        if self.isMailValid(mail: mail){
+        if DataValidation.isMailValid(mail: mail){
             self.resetBorder(textfield: emailTextField)
         } else{
             self.setBorderRed(textfield: emailTextField)
@@ -44,7 +44,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let pass = passwordTextField.text else{
             return
         }
-        if self.isPasswordValid(pass: pass){
+        if DataValidation.isPasswordValid(password: pass){
             self.resetBorder(textfield: passwordTextField)
         } else {
             self.setBorderRed(textfield: passwordTextField)
@@ -54,7 +54,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let pass = passwordTextField.text, let confirm = confirmPasswordTextField.text else{
             return
         }
-        if confirm == pass{
+        if DataValidation.isConfirmValid(confirm: confirm, password: pass){
             self.resetBorder(textfield: confirmPasswordTextField)
         } else {
             self.setBorderRed(textfield: confirmPasswordTextField)
@@ -67,17 +67,31 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.resetBorder(textfield: firstNameTextField)
     }
     
-    func isPhoneValid(phone: String)->Bool{
-        return phone.count == 10
-    }
-    func isMailValid(mail: String)->Bool{
+    /*func isPhoneValid(phone: String)->Bool{
+        do {
+            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
+            let matches = detector.matches(in: phone, options: [], range: NSMakeRange(0, phone.count))
+            if let res = matches.first {
+                let result = res.resultType == .phoneNumber && res.range.location == 0 && res.range.length == phone.count
+                print("Phone OK")
+                return result
+            } else {
+                print("Phone not OK")
+                return false
+            }
+        } catch {
+            print(error)
+        }
+        return false;
+    }*/
+    /*func isMailValid(mail: String)->Bool{
         let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
         return test.evaluate(with: mail)
-    }
-    func isPasswordValid(pass: String)->Bool{
+    }*/
+    /*func isPasswordValid(pass: String)->Bool{
         return pass.count == 4
-    }
+    }*/
     func setBorderRed(textfield: UITextField){
         textfield.layer.borderWidth = 1.0
         textfield.layer.borderColor = UIColor.red.cgColor
@@ -88,7 +102,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     var pickOption = [""]
-    
+
     let pickerView = UIPickerView()
     
     func fillPickerOptions(){
@@ -115,6 +129,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         pickerTextField.resignFirstResponder()
     }
     
+    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -126,8 +141,12 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
-        
+  
+        // Change the navBar color
         self.title = "Inscription"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+
         
         //TextField:
         nameTextField.delegate = self
@@ -204,10 +223,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func checkMail(email: String)-> Bool{
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        if emailTest.evaluate(with: email) {
+        if DataValidation.isMailValid(mail: email) {
             return true
         }else{
             let alertMail = UIAlertController(title: "Erreur Mail", message:"Veillez à respecter le format 'example@example.ex' ", preferredStyle: UIAlertControllerStyle.alert)
@@ -218,7 +234,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func checkNum(phone: String) -> Bool{
-        if phone.count != 10 {
+        if DataValidation.isPhoneValid(phone: phone) {
             let alertCount = UIAlertController(title: "Erreur Inscription", message:"Veillez à rentrer 10 chiffres au numéro de téléphone", preferredStyle: UIAlertControllerStyle.alert)
             alertCount.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
             self.present(alertCount, animated: true, completion: nil)
@@ -228,13 +244,14 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func checkPassword(password: String) -> Bool{
-        if password.count != 4 {
+        if DataValidation.isPasswordValid(password: password){
             let alertCountPwd = UIAlertController(title: "Erreur Mot de passe", message:"Veillez à avoir un mot de passe à 4 caractères", preferredStyle:UIAlertControllerStyle.alert)
             alertCountPwd.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil))
             self.present(alertCountPwd, animated: true, completion: nil)
             return false
-        }else{
+        } else{
             if password != confirmPasswordTextField.text{
+                self.setBorderRed(textfield: confirmPasswordTextField)
                 self.alertPwd()
                 return false
             }
