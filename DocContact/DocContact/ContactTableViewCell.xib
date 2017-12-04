@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Domine-Regular.ttf">
+            <string>Domine-Regular</string>
+        </array>
+        <array key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="KGk-i7-Jjw" customClass="ContactTableViewCell" customModule="DocContact" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="665" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="665" height="124.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="profileImage" image="profile" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-Ol-vPm" customClass="RoundedImage" customModule="DocContact" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="QmT-Ol-vPm" secondAttribute="height" multiplier="1:1" id="tmm-fD-zWW"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PO8-Fs-eRJ">
+                        <rect key="frame" x="114.5" y="41.5" width="431" height="42.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nj-cW-JO4">
+                                <rect key="frame" x="0.0" y="0.0" width="431" height="23"/>
+                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
+                                <rect key="frame" x="0.0" y="23" width="431" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-S7-Q6J" customClass="RoundedButton" customModule="DocContact" customModuleProvider="target">
+                        <rect key="frame" x="545.5" y="5" width="114.5" height="114.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="fOr-S7-Q6J" secondAttribute="height" multiplier="1:1" id="WTj-5f-WPI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="60"/>
+                        <state key="normal" title="">
+                            <color key="titleColor" white="0.25267132785585189" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="callButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8I6-z9-o0O"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="leading" secondItem="PO8-Fs-eRJ" secondAttribute="trailing" id="5Lc-Yh-wxN"/>
+                    <constraint firstItem="PO8-Fs-eRJ" firstAttribute="leading" secondItem="QmT-Ol-vPm" secondAttribute="trailing" id="AMt-U9-mLc"/>
+                    <constraint firstItem="PO8-Fs-eRJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fcr-Od-D5Z"/>
+                    <constraint firstAttribute="bottom" secondItem="fOr-S7-Q6J" secondAttribute="bottom" constant="5" id="Mjk-Bo-1NK"/>
+                    <constraint firstItem="QmT-Ol-vPm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Nwz-Jl-p3I"/>
+                    <constraint firstItem="fOr-S7-Q6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Z2V-TL-K2x"/>
+                    <constraint firstAttribute="trailing" secondItem="fOr-S7-Q6J" secondAttribute="trailing" constant="5" id="fpS-Yh-3Ih"/>
+                    <constraint firstItem="QmT-Ol-vPm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="g24-iW-0gT"/>
+                    <constraint firstAttribute="bottom" secondItem="QmT-Ol-vPm" secondAttribute="bottom" constant="10" id="z1r-gL-3iJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <gestureRecognizers/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="callButton" destination="fOr-S7-Q6J" id="lEW-47-YoW"/>
+                <outlet property="firstNameLabel" destination="3nj-cW-JO4" id="Qh8-lt-956"/>
+                <outlet property="lastNameLabel" destination="zaY-1Q-dTw" id="bim-H2-cQC"/>
+                <outlet property="profileImageView" destination="QmT-Ol-vPm" id="ZIl-u8-YQc"/>
+            </connections>
+            <point key="canvasLocation" x="-146.5" y="88.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="profile" width="128" height="128"/>
+    </resources>
+</document>

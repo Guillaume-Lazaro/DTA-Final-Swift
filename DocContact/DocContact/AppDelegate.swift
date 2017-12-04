@@ -16,7 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        BuddyBuildSDK.setup()
+        
+        // Status bar is set to white
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        // NavBar becomes blue and nav items are set to white
+        UINavigationBar.appearance().barTintColor = UIColor.DocColors.blue
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+        
         return true
     }
 
@@ -88,6 +96,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
