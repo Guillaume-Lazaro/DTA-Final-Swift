@@ -6,13 +6,15 @@
 //  Copyright © 2017 Cuba Libre. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import MessageUI
 
 protocol DetailViewControllerDelegate: AnyObject {
     func deleteContact()
 }
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, MFMailComposeViewControllerDelegate  {
     
     @IBOutlet weak var imageView: RoundedImage!
     @IBOutlet weak var phoneView: UILabel!
@@ -47,6 +49,30 @@ class DetailViewController: UIViewController {
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)
             self.imageView.image = UIImage(data: data!)
+        }
+    }
+    @IBAction func pressedCallButton(_ sender: Any) {
+        guard let phone = self.contact?.phone else{
+            return
+        }
+        let url: NSURL = URL(string: "TEL://\(phone)")! as NSURL
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+    }
+    @IBAction func pressedSendMail(_ sender: Any) {
+        if MFMailComposeViewController.canSendMail() {
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            
+            // Configure the fields of the interface.
+            composeVC.setToRecipients(["address@example.com"])
+            composeVC.setSubject("Hello!")
+            composeVC.setMessageBody("Hello from California!", isHTML: false)
+            
+            // Present the view controller modally.
+            self.present(composeVC, animated: true, completion: nil)
+        } else {
+            print("Mail services are not available")
+            return
         }
     }
     

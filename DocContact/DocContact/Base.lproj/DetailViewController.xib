@@ -44,31 +44,31 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqh-p4-4bq">
-                    <rect key="frame" x="10" y="204" width="394" height="29.666666666666657"/>
+                    <rect key="frame" x="10" y="204" width="394" height="30.333333333333343"/>
                     <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="26"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Senior" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq0-0p-39b">
-                    <rect key="frame" x="10" y="243.66666666666666" width="394" height="23.666666666666657"/>
+                    <rect key="frame" x="10" y="244.33333333333334" width="394" height="23.666666666666657"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="E8c-94-Bg9">
-                    <rect key="frame" x="10" y="287.33333333333331" width="394" height="52"/>
+                    <rect key="frame" x="10" y="288" width="394" height="60.666666666666686"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KV4-7T-izX">
-                            <rect key="frame" x="0.0" y="0.0" width="394" height="26"/>
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="30.333333333333332"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-1f-zIb">
-                                    <rect key="frame" x="0.0" y="0.0" width="57" height="26"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="77.666666666666671" height="30.333333333333332"/>
                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="26"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0102030405" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU3-jG-Jdm">
-                                    <rect key="frame" x="57" y="0.0" width="337" height="26"/>
+                                    <rect key="frame" x="77.666666666666657" y="2.3333333333333144" width="316.33333333333337" height="26"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -76,16 +76,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kah-Hw-rNz">
-                            <rect key="frame" x="0.0" y="26" width="394" height="26"/>
+                            <rect key="frame" x="0.0" y="30.333333333333314" width="394" height="30.333333333333329"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nal-2U-hgB">
-                                    <rect key="frame" x="0.0" y="0.0" width="58" height="26"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="30.333333333333332"/>
                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="26"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abc@hmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFX-mY-Try">
-                                    <rect key="frame" x="58" y="0.0" width="336" height="26"/>
+                                    <rect key="frame" x="65.333333333333343" y="2.3333333333333712" width="328.66666666666663" height="26"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -110,6 +110,9 @@
                             <state key="normal" title=" ">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="pressedSendMail:" destination="-1" eventType="touchUpInside" id="qVe-hj-483"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUb-I6-Rs8" customClass="RoundedButton" customModule="DocContact" customModuleProvider="target">
                             <rect key="frame" x="212" y="0.0" width="162" height="162"/>
@@ -121,6 +124,9 @@
                             <state key="normal" title="">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="pressedCallButton:" destination="-1" eventType="touchUpInside" id="MqE-vt-r1C"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
