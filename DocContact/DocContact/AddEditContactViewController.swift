@@ -95,7 +95,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         
         if isInEditionMode {
             // Set the title with correct parameters
-            self.title = "Edition du contact"
+            self.title = NSLocalizedString("Edit", comment: "")
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
             deleteButton.isEnabled = true
@@ -112,7 +112,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             //TODO: Pré-remplir les données
         } else {
             // Set the title with correct parameters
-            self.title = "Ajouter un contact"
+            self.title = NSLocalizedString("Add", comment: "")
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
             deleteButton.isEnabled = false
@@ -128,8 +128,8 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         //PickerView:
         pickerView.delegate = self
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(backAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .plain, target: self, action: #selector(editContact))
         
         pickerTextField.inputView = pickerView
         
@@ -242,9 +242,9 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let token = netProvider.token, let id = contact?.id else{
             return
         }
-        let alertDelelete = UIAlertController(title: "confirmation", message : "Voulez vous vraiment suprrimer ce contact", preferredStyle: .alert )
-        alertDelelete.addAction(UIAlertAction(title: "non", style: .cancel, handler: nil))
-        alertDelelete.addAction(UIAlertAction(title: "oui", style: .default, handler: { (alertDelete) in
+        let alertDelelete = UIAlertController(title: NSLocalizedString("Confirmation", comment: ""), message : NSLocalizedString("DeleteConfirmation", comment: ""), preferredStyle: .alert )
+        alertDelelete.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+        alertDelelete.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (alertDelete) in
             self.deletetOnServer(id: id, token: token)
         }))
         self.present(alertDelelete, animated: true, completion: nil)
@@ -262,7 +262,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func alertChamps(){
-        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veuillez vérifier les champs surlignés", preferredStyle: .alert)
+        let alertSignUp = UIAlertController(title: NSLocalizedString("InscriptionError", comment: ""), message: "Veuillez vérifier les champs surlignés", preferredStyle: .alert)
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }

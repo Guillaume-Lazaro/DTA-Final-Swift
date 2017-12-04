@@ -28,14 +28,14 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         print("le contact est ",self.contact ?? "no contact")
         // Set the title with correct parameters 
-        self.title = "Mon Contact"
+        self.title = NSLocalizedString("MyContact", comment: "")
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
         
         
         fillTheFields()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Modifier", style: .plain, target: self, action: #selector(goToEditContact))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
         
         //Changement de l'image de profil:
         guard let hashGravatar:String = self.contact?.gravatar else {

@@ -28,30 +28,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func alertForgottenPassword(_ sender: Any) {
         //Création de l'alert
-        let alertController = UIAlertController(title: "Mot de passe oublié", message: "Veuillez entrez votre numéro de téléphone pour récupérer votre mot de passe.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("ForgotPassword", comment: ""), message: NSLocalizedString("EnterPhoneNumber", comment: ""), preferredStyle: .alert)
         
         //Ajout de l'input text:
-        //var phoneToSendPassword:String = ""
         alertController.addTextField { (textField) in
             textField.keyboardType = UIKeyboardType.phonePad
-            textField.placeholder = "Numéro de téléphone"
+            textField.placeholder = NSLocalizedString("PhoneNumber", comment: "")
         }
-        let cancelAction = UIAlertAction(title: "Retour", style: .cancel)
-        let OK = UIAlertAction(title: "OK", style: .default, handler: { [weak alertController] (_) in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .cancel)
+        let OK = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { [weak alertController] (_) in
             let textField = alertController?.textFields![0] //On sait qu'il existe (si si!)
             guard let phoneToSendPassword = textField?.text else{
                 return
             }
-            print("Test du textField: ", phoneToSendPassword)
             
             self.dismiss(animated: true, completion: nil)
             self.forgottenPassword(phoneNumber: phoneToSendPassword)
-            
         })
         
         alertController.addAction(cancelAction)
@@ -82,16 +78,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func forgottenPassword(phoneNumber: String) {
-//        let alertController:UIAlertController
-//                       let OK:UIAlertAction
-//        
         netProvider.forgotPassword(phone: phoneNumber, success: {
             DispatchQueue.main.async{
                 let alertController:UIAlertController
                 let OK:UIAlertAction
-                alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
+                alertController = UIAlertController(title: NSLocalizedString("PasswordSent", comment: ""), message: NSLocalizedString("YourPasswordWasSent", comment: ""), preferredStyle: .alert)
 
-                OK = UIAlertAction(title: "OK", style: .default){ _ in
+                OK = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default){ _ in
                     self.dismiss(animated: true, completion: nil)
                 }
                 alertController.addAction(OK)
@@ -100,9 +93,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }, failure: {DispatchQueue.main.async {
             let alertController:UIAlertController
             let OK:UIAlertAction
-            alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
+            alertController = UIAlertController(title: NSLocalizedString("UnknownPhone", comment: ""), message: NSLocalizedString("CreateAnAccount", comment: ""), preferredStyle: .alert)
 
-            OK = UIAlertAction(title: "OK", style: .default){ _ in
+            OK = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default){ _ in
                 self.dismiss(animated: true, completion: nil)
             }
             alertController.addAction(OK)
@@ -128,7 +121,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        self.present(alertController, animated:true)
     }
     
-    
     func goToList(){
         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
@@ -136,8 +128,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func alertLoginFailed(){
-        let alertLogin = UIAlertController(title: "Login échoué", message: "Nous n'avons pas pu vous connecter, vérifiez votre numéro de téléphone et votre mot de passe puis réessayez", preferredStyle: .alert)
-        let OK = UIAlertAction(title: "OK", style: .default){ _ in
+        let alertLogin = UIAlertController(title: NSLocalizedString("LoginFailed", comment: ""), message: NSLocalizedString("CheckYourLogin", comment: ""), preferredStyle: .alert)
+        let OK = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default){ _ in
             self.dismiss(animated: true, completion: nil)
         }
         alertLogin.addAction(OK)
