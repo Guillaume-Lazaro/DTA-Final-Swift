@@ -21,6 +21,7 @@ class ContactListTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.netProvider.isTokenValid()
         
         //test verif user base
         let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
@@ -99,6 +100,7 @@ class ContactListTableViewController: UITableViewController{
     }
     
     @objc func goToEditContact(){
+        print(netProvider.isTokenValid())
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
         

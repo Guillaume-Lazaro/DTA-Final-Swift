@@ -296,11 +296,11 @@ class NetworkProvider{
                 if let responseJSON = responseJSON as? [String: Any]{
                     if let message = responseJSON["message"]{
                         print(message)
-                        
                         return
-                    }
-                    print("Contact crééé")
+                    } else{
+                    print("Contact créé")
                     success()
+                    }
                 }
             }
         }
@@ -332,10 +332,40 @@ class NetworkProvider{
         task.resume()
     }
     
-    
-    
-    
-    
-    
-    
+    func isTokenValid()->Bool{
+        // TODO : récupérer le token V
+        // TODO : prendre la partie payload V
+        // TODO : Décoder Payload V
+        // TODO : vérifier la validité (time<expiration)
+        
+        let payload = token?.components(separatedBy: ".")[1]
+        
+        //base64 encoded string i want to decode
+        guard var base64String = payload else{
+            return false
+        }
+        print(base64String) //eyJleHAiOjE0MjY4MjIxNjMsImlkIjoiNTUwYjA3NzM4ODk1NjAwZTk5MDAwMDAxIn0
+        if base64String.count % 4 != 0 {
+            let padlen = 4 - base64String.count % 4
+            //base64String += String(count: padlen, repeated: Character("="))
+            base64String += String(repeatElement("=", count: padlen))
+        }
+        
+        //attempting to convert base64 string to nsdata
+        let decodedData = NSData(base64Encoded: base64String, options:NSData.Base64DecodingOptions(rawValue: NSData.Base64DecodingOptions.RawValue(0)))
+        print(decodedData)
+        let decodedString = NSString(data: decodedData as! Data, encoding: String.Encoding.utf8.rawValue)
+        print(decodedString)
+        var expString = decodedString?.components(separatedBy: ":")[3]
+        expString = expString?.trimmingCharacters(in: ["}"])
+        guard let stringExp = expString else{
+            return false
+        }
+        guard let exp = Double(stringExp) else{
+            return false
+        }
+        print(Date().timeIntervalSince1970)
+        return Date().timeIntervalSince1970 < exp
+    }
+
 }
