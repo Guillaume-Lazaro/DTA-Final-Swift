@@ -60,6 +60,7 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             self.imageView.image = UIImage(data: data!)
         }
     }
+  
     @IBAction func pressedCallButton(_ sender: Any) {
         guard let phone = self.contact?.phone else{
             return
@@ -68,14 +69,17 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
     @IBAction func pressedSendMail(_ sender: Any) {
+        guard let mail = contact?.email else{
+            return
+        }
   
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
             // Configure the fields of the interface.
-            composeVC.setToRecipients(["address@example.com"])
-            composeVC.setSubject("Hello!")
-            composeVC.setMessageBody("Hello from California!", isHTML: false)
+            composeVC.setToRecipients(["\(mail)"])
+            composeVC.setSubject( NSLocalizedString("Greetings", comment: ""))
+            composeVC.setMessageBody(NSLocalizedString("MailFromDocContacts", comment: ""), isHTML: false)
             
             // Present the view controller modally.
             present(composeVC, animated: true)
