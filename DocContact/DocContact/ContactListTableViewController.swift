@@ -68,7 +68,7 @@ class ContactListTableViewController: UITableViewController {
         self.tableView.reloadData()
         
         // Set the title with correct parameters
-        self.title = "Mes contacts"
+        self.title = NSLocalizedString("MyContacts", comment: "")
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
         
@@ -76,7 +76,7 @@ class ContactListTableViewController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: "ContactCell")
         
         searchBarView.delegate = self
-        searchBarView.placeholder = "Nom ou Numéro de téléphone"
+        searchBarView.placeholder = NSLocalizedString("NameOrPhoneNumber", comment: "")
         searchBarView.barTintColor = UIColor.DocColors.blue
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))

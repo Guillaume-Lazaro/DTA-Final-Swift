@@ -118,7 +118,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         
   
         // Change the navBar color
-        self.title = "Inscription"
+        self.title = NSLocalizedString("Inscription", comment: "")
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
 
@@ -134,8 +134,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         //PickerView:
         pickerView.delegate = self
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(validateInscription))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(backAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .plain, target: self, action: #selector(validateInscription))
         
         pickerTextField.inputView = pickerView
         pickerTextField.text = "SENIOR"
@@ -158,12 +158,16 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         if checkInputText(firstname: firstname, lastname: lastname, phone: phone, mail: mail, password: password, profile: profile){
-            self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
-                self.netProvider.loginOnServer(phone: phone, password: password, success: {user in
+            let gravatar = self.getGravatar(mail: mail)
+            
+            self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, gravatar: gravatar, success: {
+                
+                self.netProvider.loginOnServer(phone: phone, password: password, success: {
+                    user in
                     self.DBManager.createCoreDataUser(userJson: user)
                     DispatchQueue.main.async {
-                        let alertWelcome = UIAlertController(title: "Inscription réussie", message: "Bienvenue dans votre annuaire", preferredStyle: UIAlertControllerStyle.alert)
-                        alertWelcome.addAction(UIAlertAction(title:"Commençons", style: UIAlertActionStyle.default, handler: {
+                        let alertWelcome = UIAlertController(title: NSLocalizedString("InscriptionSuccess", comment: ""), message: NSLocalizedString("Welcome", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alertWelcome.addAction(UIAlertAction(title:NSLocalizedString("Begin", comment: ""), style: UIAlertActionStyle.default, handler: {
                             alert -> Void in
                             self.goToList()
                         }))
@@ -188,8 +192,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     func checkName(firstname: String, lastname: String) -> Bool{
         if firstname.isEmpty || lastname.isEmpty {
-            let alertName = UIAlertController(title: "Erreur Inscription", message:"Veillez à remplir correctement Nom et/ou Prénom", preferredStyle: UIAlertControllerStyle.alert)
-            alertName.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            let alertName = UIAlertController(title: NSLocalizedString("InscriptionError", comment: ""), message:NSLocalizedString("CheckName", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alertName.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler:nil))
             self.present(alertName, animated: true, completion: nil)
             return false
         }else{
@@ -201,8 +205,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         if DataValidation.isMailValid(mail: email) {
             return true
         }else{
-            let alertMail = UIAlertController(title: "Erreur Mail", message:"Veillez à respecter le format 'example@example.ex' ", preferredStyle: UIAlertControllerStyle.alert)
-            alertMail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            let alertMail = UIAlertController(title: NSLocalizedString("MailError", comment: ""), message:NSLocalizedString("CheckMail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alertMail.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler:nil))
             self.present(alertMail, animated: true, completion: nil)
             return false
         }
@@ -210,8 +214,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     func checkNum(phone: String) -> Bool{
         if DataValidation.isPhoneValid(phone: phone) {
-            let alertCount = UIAlertController(title: "Erreur Inscription", message:"Veillez à rentrer 10 chiffres au numéro de téléphone", preferredStyle: UIAlertControllerStyle.alert)
-            alertCount.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            let alertCount = UIAlertController(title: NSLocalizedString("InscriptionError", comment: ""), message:NSLocalizedString("CheckPhone", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alertCount.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler:nil))
             self.present(alertCount, animated: true, completion: nil)
             return false
         }
@@ -220,8 +224,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     func checkPassword(password: String) -> Bool{
         if DataValidation.isPasswordValid(password: password){
-            let alertCountPwd = UIAlertController(title: "Erreur Mot de passe", message:"Veillez à avoir un mot de passe à 4 caractères", preferredStyle:UIAlertControllerStyle.alert)
-            alertCountPwd.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil))
+            let alertCountPwd = UIAlertController(title: NSLocalizedString("PasswordError", comment: ""), message:NSLocalizedString("CheckPassword", comment: ""), preferredStyle:UIAlertControllerStyle.alert)
+            alertCountPwd.addAction(UIAlertAction(title:NSLocalizedString("Ok", comment: ""), style:UIAlertActionStyle.default, handler:nil))
             self.present(alertCountPwd, animated: true, completion: nil)
             return false
         } else{
@@ -236,12 +240,19 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     func checkProfile(profile: String) -> Bool{
         if profile == "_"{
-            let alertProfile = UIAlertController(title: "Erreur Profil", message:"Veillez à choisir un profil valide", preferredStyle: UIAlertControllerStyle.alert)
-            alertProfile.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            let alertProfile = UIAlertController(title: NSLocalizedString("ProfileError", comment: ""), message:NSLocalizedString("CheckProfile", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alertProfile.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler:nil))
             self.present(alertProfile, animated: true, completion: nil)
             return false
         }
         return true
+    }
+    func getGravatar(mail: String)->String{
+        var email = mail.lowercased()
+        email = email.trimmingCharacters(in: .whitespaces)
+        let mailmd5 = email.toMD5()
+        let gravatar = "https://www.gravatar.com/avatar/"+mailmd5
+        return gravatar
     }
     
     func goToList(){
@@ -251,17 +262,17 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func alertPwd(){
-        let alertMdp = UIAlertController(title: "Erreur Mot de passe", message:
-            "Confirmation mot de passe incorrecte", preferredStyle: UIAlertControllerStyle.alert)
-        alertMdp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+        let alertMdp = UIAlertController(title: NSLocalizedString("PasswordError", comment: ""), message:
+            NSLocalizedString("CheckPasswordConfirm", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        alertMdp.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default,handler: nil))
         
         self.present(alertMdp, animated: true, completion: nil)
         
     }
     
     func alertFailed(){
-        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Numéro de téléphone déjà utilisé", preferredStyle: .alert)
-        alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+        let alertSignUp = UIAlertController(title: NSLocalizedString("InscriptionError", comment: ""), message: NSLocalizedString("AlreadyUsedPhone", comment: ""), preferredStyle: .alert)
+        alertSignUp.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
    
@@ -290,15 +301,4 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

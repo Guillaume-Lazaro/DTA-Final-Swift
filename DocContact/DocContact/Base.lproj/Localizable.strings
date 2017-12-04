@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  DocContact
+
+  Created by Guillaume Lazaro on 04/12/2017.
+  Copyright © 2017 Cuba Libre. All rights reserved.
+*/
+
+//Base:
+"Yes" = "Yes";
+"No" = "No";
+"Back" = "Back";
+"Done" = "Done";
+"Ok" = "OK";
+"PhoneNumber" = "Phone Number";
+
+//écran AddEditContact:
+"Edit" = "Edit a contact";
+"Add" = "Add a contact";
+"Confirmation" = "Confirmation";
+"DeleteConfirmation" = "Are you sure you want to delete this contact?";
+"InscriptionError" = "Inscription Error";
+"CheckField" = "Check the highlighted field please";
+
+//écran d'accueil:
+"MyContacts" = "My Contacts";
+"NameOrPhoneNumber" = "Name or phone number";
+
+//écran de détails:
+"MyContact" = "My Contact";
+"Modify" = "Modify";
+
+//écran d'inscription:
+"Inscription" = "Inscription";
+"InscriptionSuccess" = "Inscription successfull";
+"Welcome" = "Welcome in your annuary application";
+"Begin" = "Let's begin";
+"InscriptionError" = "Inscription Error";
+"PasswordError" = "Password Error";
+"MailError" = "Mail error";
+"ProfileError" = "Profile Error";
+"CheckName" = "Verify the first and last name fields please";
+"CheckMail" = "Verify your address mail format please";
+"CheckPhone" = "Verify your phone number please";
+"CheckPassword" ="Verify your password please (must have 4 caracters)";
+"CheckProfile" = "Verify your profile type please";
+"CheckPasswordConfirm" = "Verify your confirm password please";
+"AlreadyUsedPhone" = "This phone number is already used";
+
+//écran de login:
+"ForgotPassword" = "Forgot Password";
+"EnterPhoneNumber" = "Enter your phone number to retrieve your password";
+"PasswordSent" = "Password sent";
+"YourPasswordWasSent" = "Your password was sent to your account's mail address";
+"UnknownPhone" = "Unknown phone number";
+"CreateAnAccount" = "This phone number is unknown, please create an account";
+"LoginFailed" = "Login Failed";
+"CheckYourLogin" = "Please check your phone number and your password and retry please";

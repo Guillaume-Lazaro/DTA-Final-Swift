@@ -37,6 +37,17 @@ class ManageDbProvider{
         }
         print("L'utilisateur a été ajouté à la base")
     }
+    func getUser()->User?{
+        let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
+        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchedUser = try managedContext.fetch(fetchRequestUser)
+            print(fetchedUser.first?.lastName)
+            return fetchedUser.first
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+    }
     
     func deleteUsersFromCoreData(){
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
