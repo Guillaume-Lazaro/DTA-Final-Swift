@@ -194,9 +194,7 @@ class NetworkProvider{
                     return
                 }
                 success()
-            } catch let error as NSError {
-                print("json error: \(error.localizedDescription)")
-            }
+            } 
         }
         task.resume()
     }

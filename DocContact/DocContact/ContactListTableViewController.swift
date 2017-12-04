@@ -26,7 +26,6 @@ class ContactListTableViewController: UITableViewController {
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do {
             let fetchedUser = try managedContext.fetch(fetchRequestUser)
-            print(fetchedUser.first?.lastName)
         } catch {
             fatalError("Failed to fetch employees: \(error)")
         }

@@ -46,7 +46,6 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         fillTheFields()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(backAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
         
         //Changement de l'image de profil:
@@ -61,13 +60,8 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             self.imageView.image = UIImage(data: data!)
         }
     }
+  
     
-    // Method of the back button
-    @objc func backAction(){
-        //print("Back Button Clicked")
-        dismiss(animated: true, completion: nil)
-    }
-    <
     @IBAction func pressedCallButton(_ sender: Any) {
         guard let phone = self.contact?.phone else{
             return
@@ -85,8 +79,8 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             composeVC.mailComposeDelegate = self
             // Configure the fields of the interface.
             composeVC.setToRecipients(["\(mail)"])
-            composeVC.setSubject("Salutations")
-            composeVC.setMessageBody("Mail envoyé depuis mon app DocContact", isHTML: false)
+            composeVC.setSubject( NSLocalizedString("Greetings", comment: ""))
+            composeVC.setMessageBody(NSLocalizedString("MailFromDocContacts", comment: ""), isHTML: false)
             
             // Present the view controller modally.
             present(composeVC, animated: true)
