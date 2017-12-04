@@ -58,11 +58,14 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="E8c-94-Bg9">
                     <rect key="frame" x="10" y="287.33333333333331" width="394" height="52"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KV4-7T-izX">
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KV4-7T-izX">
                             <rect key="frame" x="0.0" y="0.0" width="394" height="26"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-1f-zIb">
                                     <rect key="frame" x="0.0" y="0.0" width="57" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="57" id="Iew-YB-eEv"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="26"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -75,17 +78,20 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kah-Hw-rNz">
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kah-Hw-rNz">
                             <rect key="frame" x="0.0" y="26" width="394" height="26"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nal-2U-hgB">
-                                    <rect key="frame" x="0.0" y="0.0" width="58" height="26"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="57" id="Yrb-Qc-WHY"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="26"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abc@hmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFX-mY-Try">
-                                    <rect key="frame" x="58" y="0.0" width="336" height="26"/>
+                                    <rect key="frame" x="57" y="0.0" width="337" height="26"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -171,6 +177,6 @@
         </view>
     </objects>
     <resources>
-        <image name="profile" width="128" height="128"/>
+        <image name="profile" width="40" height="40"/>
     </resources>
 </document>
