@@ -67,7 +67,7 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         //print("Back Button Clicked")
         dismiss(animated: true, completion: nil)
     }
-    <
+    
     @IBAction func pressedCallButton(_ sender: Any) {
         guard let phone = self.contact?.phone else{
             return
