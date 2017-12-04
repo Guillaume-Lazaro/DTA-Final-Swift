@@ -63,8 +63,12 @@ class NetworkProvider{
                     var user: [String: String] = ["":""]
                     self.getUser(succes: { userJson in
                         user = userJson
+                        print("getUserSucces user")
+                        print(user)
+                        print("login user")
+                        print(user)
+                        success(user)
                     })
-                    success(user)
                 }
             }
         }
@@ -254,6 +258,7 @@ class NetworkProvider{
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let userJson = responseJSON as? [String: String]{
+                    print("getUser user :")
                     print(userJson)
                     succes(userJson)
                 }

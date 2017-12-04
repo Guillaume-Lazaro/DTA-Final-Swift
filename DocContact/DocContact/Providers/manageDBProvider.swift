@@ -26,6 +26,8 @@ class ManageDbProvider{
         user.phone = userJson["phone"]
         user.email = userJson["email"]
         user.profile = userJson["profile"]
+        user.token = netProvider.token
+        print("user ajouté à la base locale")
         do{
             if context.hasChanges{
                 try context.save()
@@ -36,8 +38,23 @@ class ManageDbProvider{
         print("L'utilisateur a été ajouté à la base")
     }
     
-    func deleteUserFromCoreData(){
+    func deleteUsersFromCoreData(){
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        let netProvider = NetworkProvider.sharedInstance
+        let appDelegate = netProvider.persistentContainer
+        let context = appDelegate.viewContext
+        let contacts : [User] = try! context.fetch(fetchRequest)
         
+        contacts.forEach { (user) in
+            context.delete(user)
+            do{
+                if context.hasChanges{
+                    try context.save()
+                }
+            }catch{
+                print(error)
+            }
+        }
     }
     
     

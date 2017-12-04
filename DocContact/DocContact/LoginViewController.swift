@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.DBManager.deleteUsersFromCoreData()
         
         //TextField:
         phoneTextField.delegate = self
