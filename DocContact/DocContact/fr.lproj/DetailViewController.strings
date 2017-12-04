@@ -1,6 +1,5 @@
 
-/* Class = "UILabel"; text = "Téléphone"; ObjectID = "9xI-1f-zIb"; */
-"9xI-1f-zIb.text" = "Téléphone";
+
 
 /* Class = "UILabel"; text = "abc@hmail.com"; ObjectID = "BFX-mY-Try"; */
 "BFX-mY-Try.text" = "abc@hmail.com";
@@ -23,5 +22,4 @@
 /* Class = "UILabel"; text = "Type"; ObjectID = "gR1-Nz-d7L"; */
 "gR1-Nz-d7L.text" = "Type";
 
-/* Class = "UILabel"; text = "Email"; ObjectID = "nal-2U-hgB"; */
-"nal-2U-hgB.text" = "Email";
+
