@@ -183,8 +183,12 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return
         }
         if checkInputText(firstname: firstname, lastname: lastname, phone: phone, mail: mail, password: password, profile: profile){
-            self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
-                self.netProvider.loginOnServer(phone: phone, password: password, success: {user in
+            let gravatar = self.getGravatar(mail: mail)
+            
+            self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, gravatar: gravatar, success: {
+                
+                self.netProvider.loginOnServer(phone: phone, password: password, success: {
+                    user in
                     self.DBManager.createCoreDataUser(userJson: user)
                     DispatchQueue.main.async {
                         let alertWelcome = UIAlertController(title: NSLocalizedString("InscriptionSuccess", comment: ""), message: NSLocalizedString("Welcome", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -267,6 +271,13 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             return false
         }
         return true
+    }
+    func getGravatar(mail: String)->String{
+        var email = mail.lowercased()
+        email = email.trimmingCharacters(in: .whitespaces)
+        let mailmd5 = email.toMD5()
+        let gravatar = "https://www.gravatar.com/avatar/"+mailmd5
+        return gravatar
     }
     
     func goToList(){

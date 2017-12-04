@@ -76,7 +76,7 @@ class NetworkProvider{
     }
     
     // TODO : Ajouter user en base locale
-    func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String, success: @escaping () -> (), failure: @escaping () -> ()) {
+    func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, success: @escaping () -> (), failure: @escaping () -> ()) {
         var json = [String:String]()
         json["phone"] = phone
         json["password"] = password
@@ -84,6 +84,7 @@ class NetworkProvider{
         json["lastName"] = lastname
         json["email"] = mail
         json["profile"] = profile
+        json["gravatar"] = gravatar
         let urlString = API_URL+publicModifier+"/sign-in?contactsLength=0";
         let url = URL(string: urlString)!
         let session = URLSession.shared
