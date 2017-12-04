@@ -53,7 +53,7 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             return
         }
         DispatchQueue.main.async() {
-            let strUrl = hashGravatar+"?s=200"
+            let strUrl = hashGravatar+"?s=200&d=mm"
             print("URL: ",strUrl)
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)
