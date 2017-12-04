@@ -172,7 +172,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh3-Bh-Gep">
-                    <rect key="frame" x="130" y="528" width="59" height="30"/>
+                    <rect key="frame" x="10" y="528" width="300" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="EOw-OT-xIk"/>
                     </constraints>
@@ -187,11 +187,11 @@
             </subviews>
             <color key="backgroundColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="qh3-Bh-Gep" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="130" id="87f-Gi-DFx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qh3-Bh-Gep" secondAttribute="bottom" constant="10" id="FsZ-Va-PUU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qh3-Bh-Gep" secondAttribute="trailing" constant="10" id="GwN-93-LWd"/>
                 <constraint firstItem="muK-fd-ZNg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="X7q-TL-dkB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qh3-Bh-Gep" secondAttribute="trailing" constant="131" id="c1s-aa-edX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="muK-fd-ZNg" secondAttribute="trailing" constant="20" id="dTy-ky-Gxl"/>
+                <constraint firstItem="qh3-Bh-Gep" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="eRR-kH-VXJ"/>
                 <constraint firstItem="muK-fd-ZNg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="x85-im-2Mh"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
