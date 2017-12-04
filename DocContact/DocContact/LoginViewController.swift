@@ -37,10 +37,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let alertController = UIAlertController(title: NSLocalizedString("ForgotPassword", comment: ""), message: NSLocalizedString("EnterPhoneNumber", comment: ""), preferredStyle: .alert)
         
         //Ajout de l'input text:
-        
         alertController.addTextField { (textField) in
             textField.keyboardType = UIKeyboardType.phonePad
             textField.placeholder = NSLocalizedString("PhoneNumber", comment: "")
+            //Ajout du numéro de téléphone si il a déjà été tapé par l'utilisateur:
+            if(self.phoneTextField.text != "") {
+                textField.text = self.phoneTextField.text
+            }
         }
         let cancelAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .cancel)
         let OK = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { [weak alertController] (_) in
@@ -71,16 +74,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let phone: String = phoneTextField.text, let password: String = passwordTextField.text else {
             return
         }
-        netProvider.loginOnServer(phone: phone, password: password,
-                                  success: { user in
-                                    self.DBManager.createCoreDataUser(userJson: user)
-                                    DispatchQueue.main.async {
-
-                                    self.goToList()}
-
-        },
-                                  failure: { DispatchQueue.main.async {
-                                    self.alertLoginFailed()}
+        netProvider.loginOnServer(phone: phone, password: password,success: {
+            user in self.DBManager.createCoreDataUser(userJson: user)
+            DispatchQueue.main.async {
+                self.goToList()
+            }
+        }, failure: {
+            DispatchQueue.main.async {
+                self.alertLoginFailed()
+            }
         })
     }
     
@@ -108,8 +110,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             alertController.addAction(OK)
             self.present(alertController, animated:true)
-            }})
-        
+        }})
     }
     
     func goToList(){
@@ -126,7 +127,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alertLogin.addAction(OK)
         self.present(alertLogin, animated:true)
     }
-    
 }
 
 

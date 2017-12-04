@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SideMenu
 
-class ContactListTableViewController: UITableViewController {
+class ContactListTableViewController: UITableViewController{
     
     var contacts = [Contact]()
     var resultController : NSFetchedResultsController<Contact>!
@@ -21,6 +21,7 @@ class ContactListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //test verif user base
         let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -89,6 +90,11 @@ class ContactListTableViewController: UITableViewController {
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+    }
+    
+    // Method of the back button
+    @objc func backAction(){
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func goToEditContact(){
@@ -237,8 +243,6 @@ class ContactListTableViewController: UITableViewController {
             print(error)
         }
         self.tableView.reloadData()
-       
-  
     }
     
     func displayAllContacts(){
@@ -260,23 +264,27 @@ class ContactListTableViewController: UITableViewController {
     func searchBarIsEmpty() -> Bool {
         return searchBarView.text?.isEmpty ?? true
     }
-    
 }
+
 extension ContactListTableViewController : NSFetchedResultsControllerDelegate{
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.reloadData()
     }
-    
 }
 
 extension ContactListTableViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            let empty = searchBarIsEmpty()
-            if(!empty){
-                let research = searchBarView.text!
-                searchBarResearch(research: research)
-            }else{
-                displayAllContacts()
-            }
+        let empty = searchBarIsEmpty()
+        if(!empty){
+            let research = searchBarView.text!
+            searchBarResearch(research: research)
+        }else{
+            displayAllContacts()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Appui sur search")
+        self.view.endEditing(true)
     }
 }

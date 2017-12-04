@@ -61,7 +61,6 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
   
-    
     @IBAction func pressedCallButton(_ sender: Any) {
         guard let phone = self.contact?.phone else{
             return
