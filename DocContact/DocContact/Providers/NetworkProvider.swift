@@ -13,6 +13,7 @@ import UIKit
 private let sharedNetServices = NetworkProvider()
 
 class NetworkProvider{
+    
     let API_URL: String = "http://familink.cleverapps.io"
     let publicModifier: String = "/public"
     let protectedModifier: String = "/secured/users"
@@ -31,7 +32,7 @@ class NetworkProvider{
     }
     
     // TODO : Garder le token en base locale, récupérer le profil
-    func loginOnServer(phone: String, password: String, success: @escaping () -> (), failure: @escaping () ->()){
+    func loginOnServer(phone: String, password: String, success: @escaping ([String: String]) -> (), failure: @escaping () ->()){
         var json = [String:String]()
         json["phone"] = phone
         json["password"] = password
@@ -59,7 +60,15 @@ class NetworkProvider{
                     }
                     self.token = token as? String
                     print(token)
-                    success()
+                    var user: [String: String] = ["":""]
+                    self.getUser(succes: { userJson in
+                        user = userJson
+                        print("getUserSucces user")
+                        print(user)
+                        print("login user")
+                        print(user)
+                        success(user)
+                    })
                 }
             }
         }
@@ -225,6 +234,34 @@ class NetworkProvider{
                 }
                 print("Contact modifié")
                 success()
+            }
+        }
+        task.resume()
+    }
+    
+    func getUser(succes: @escaping([String: String]) -> ()){
+        let urlString = API_URL + protectedModifier + "/current";
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        guard let token = self.token else{
+            return
+        }
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let userJson = responseJSON as? [String: String]{
+                    print("getUser user :")
+                    print(userJson)
+                    succes(userJson)
+                }
             }
         }
         task.resume()

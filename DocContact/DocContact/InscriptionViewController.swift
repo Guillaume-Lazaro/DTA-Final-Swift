@@ -11,6 +11,7 @@ import UIKit
 class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate  {
     
     let netProvider = NetworkProvider.sharedInstance
+    let DBManager = ManageDbProvider.sharedInstance
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pickerTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
@@ -100,14 +101,13 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         textfield.layer.borderColor = UIColor.clear.cgColor
     }
     
-    
-    var pickOption = ["_"]
-    
+    var pickOption = [""]
+
     let pickerView = UIPickerView()
     
     func fillPickerOptions(){
         netProvider.getProfiles(){ profiles in
-            self.pickOption += profiles
+            self.pickOption = profiles
         }
     }
     
@@ -124,6 +124,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       
         pickerTextField.text = pickOption[row]
         pickerTextField.resignFirstResponder()
     }
@@ -162,6 +163,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .plain, target: self, action: #selector(validateInscription))
         
         pickerTextField.inputView = pickerView
+        pickerTextField.text = "SENIOR"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -182,7 +184,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
         if checkInputText(firstname: firstname, lastname: lastname, phone: phone, mail: mail, password: password, profile: profile){
             self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
-                self.netProvider.loginOnServer(phone: phone, password: password, success: {
+                self.netProvider.loginOnServer(phone: phone, password: password, success: {user in
+                    self.DBManager.createCoreDataUser(userJson: user)
                     DispatchQueue.main.async {
                         let alertWelcome = UIAlertController(title: NSLocalizedString("InscriptionSuccess", comment: ""), message: NSLocalizedString("Welcome", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                         alertWelcome.addAction(UIAlertAction(title:NSLocalizedString("Begin", comment: ""), style: UIAlertActionStyle.default, handler: {

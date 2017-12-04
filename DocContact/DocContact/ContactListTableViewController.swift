@@ -21,6 +21,15 @@ class ContactListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //test verif user base
+        let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
+        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchedUser = try managedContext.fetch(fetchRequestUser)
+            print(fetchedUser.first?.lastName)
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
         
         //Creation menu (Bloc à mettre dans chaque controlleur qui doit afficher le menu, voir pour externaliser (fonction)
         // TODO : Interface Menu
