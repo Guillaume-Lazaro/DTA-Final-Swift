@@ -67,31 +67,6 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.resetBorder(textfield: firstNameTextField)
     }
     
-    /*func isPhoneValid(phone: String)->Bool{
-        do {
-            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
-            let matches = detector.matches(in: phone, options: [], range: NSMakeRange(0, phone.count))
-            if let res = matches.first {
-                let result = res.resultType == .phoneNumber && res.range.location == 0 && res.range.length == phone.count
-                print("Phone OK")
-                return result
-            } else {
-                print("Phone not OK")
-                return false
-            }
-        } catch {
-            print(error)
-        }
-        return false;
-    }*/
-    /*func isMailValid(mail: String)->Bool{
-        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
-        return test.evaluate(with: mail)
-    }*/
-    /*func isPasswordValid(pass: String)->Bool{
-        return pass.count == 4
-    }*/
     func setBorderRed(textfield: UITextField){
         textfield.layer.borderWidth = 1.0
         textfield.layer.borderColor = UIColor.red.cgColor
@@ -289,12 +264,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
-    
-    
-    
-    
-    
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

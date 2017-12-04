@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return false
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let alertController = UIAlertController(title: "Mot de passe oublié", message: "Veuillez entrez votre numéro de téléphone pour récupérer votre mot de passe.", preferredStyle: .alert)
         
         //Ajout de l'input text:
-        //var phoneToSendPassword:String = ""
+        
         alertController.addTextField { (textField) in
             textField.keyboardType = UIKeyboardType.phonePad
             textField.placeholder = "Numéro de téléphone"
@@ -78,7 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                   success: { user in
                                     self.DBManager.createCoreDataUser(userJson: user)
                                     DispatchQueue.main.async {
-                                    self.goToList()}
+                                        self.goToList()}
         },
                                   failure: { DispatchQueue.main.async {
                                     self.alertLoginFailed()}
@@ -86,15 +86,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func forgottenPassword(phoneNumber: String) {
-//        let alertController:UIAlertController
-//                       let OK:UIAlertAction
-//        
+       
         netProvider.forgotPassword(phone: phoneNumber, success: {
             DispatchQueue.main.async{
                 let alertController:UIAlertController
                 let OK:UIAlertAction
                 alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
-
+                
                 OK = UIAlertAction(title: "OK", style: .default){ _ in
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -105,7 +103,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let alertController:UIAlertController
             let OK:UIAlertAction
             alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
-
+            
             OK = UIAlertAction(title: "OK", style: .default){ _ in
                 self.dismiss(animated: true, completion: nil)
             }
@@ -113,23 +111,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.present(alertController, animated:true)
             }})
         
-//        if(phoneNumber == "0655545546") {
-//            //L'utilisateur existe dans la bdd!
-//            alertController = UIAlertController(title: "Mot de passe envoyé", message: "Votre mot de passe a été envoyé à l'adresse Email de votre compte", preferredStyle: .alert)
-//
-//             OK = UIAlertAction(title: "OK", style: .default){ _ in
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//        } else {
-//            //L'utilisateur n'existe pas :(
-//             alertController = UIAlertController(title: "Numéro inconnu", message: "Ce numéro est inconnu, veuillez créez un compte.", preferredStyle: .alert)
-//
-//             OK = UIAlertAction(title: "OK", style: .default){ _ in
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//        }
-//        alertController.addAction(OK)
-//        self.present(alertController, animated:true)
     }
     
     
@@ -147,7 +128,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alertLogin.addAction(OK)
         self.present(alertLogin, animated:true)
     }
-
+    
 }
 
 
