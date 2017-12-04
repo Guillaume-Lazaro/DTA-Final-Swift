@@ -46,6 +46,7 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         fillTheFields()
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(backAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
         
         //Changement de l'image de profil:
@@ -60,6 +61,13 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             self.imageView.image = UIImage(data: data!)
         }
     }
+    
+    // Method of the back button
+    @objc func backAction(){
+        //print("Back Button Clicked")
+        dismiss(animated: true, completion: nil)
+    }
+    <
     @IBAction func pressedCallButton(_ sender: Any) {
         guard let phone = self.contact?.phone else{
             return
@@ -68,14 +76,17 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
     @IBAction func pressedSendMail(_ sender: Any) {
+        guard let mail = contact?.email else{
+            return
+        }
   
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
             // Configure the fields of the interface.
-            composeVC.setToRecipients(["address@example.com"])
-            composeVC.setSubject("Hello!")
-            composeVC.setMessageBody("Hello from California!", isHTML: false)
+            composeVC.setToRecipients(["\(mail)"])
+            composeVC.setSubject("Salutations")
+            composeVC.setMessageBody("Mail envoyé depuis mon app DocContact", isHTML: false)
             
             // Present the view controller modally.
             present(composeVC, animated: true)
