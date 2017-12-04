@@ -23,33 +23,41 @@ class ContactListTableViewController: UITableViewController{
         super.viewDidLoad()
         
         //test verif user base
-        let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
-        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        do {
-            let fetchedUser = try managedContext.fetch(fetchRequestUser)
-        } catch {
-            fatalError("Failed to fetch employees: \(error)")
-        }
+//        let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
+//        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        do {
+//            let fetchedUser = try managedContext.fetch(fetchRequestUser)
+//        } catch {
+//            fatalError("Failed to fetch employees: \(error)")
+//        }
         
         //Creation menu (Bloc à mettre dans chaque controlleur qui doit afficher le menu, voir pour externaliser (fonction)
         // TODO : Interface Menu
-        /*
-         let [Controlleur interface menu] = AddEditContactViewController(nibName: nil, bundle: nil)
-         
-         // Menu a gauche
-         let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: [Controlleur interface menu])
-         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
-         
-         //Menu à droite
-         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: [Controlleur interface menu])
-         SideMenuManager.default.menuRightNavigationController = menuRightNavigationController
-         
-         //Type d'apparition
-         SideMenuManager.default.menuPresentMode = .viewSlideInOut
-         
-         //Ajout du slide to open
-         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
-         */
+//
+//         let [Controlleur interface menu] = AddEditContactViewController(nibName: nil, bundle: nil)
+//
+//         // Menu a gauche
+//         let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: [Controlleur interface menu])
+//         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+//
+//         //Menu à droite
+//         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: [Controlleur interface menu])
+//         SideMenuManager.default.menuRightNavigationController = menuRightNavigationController
+//
+//         //Type d'apparition
+//         SideMenuManager.default.menuPresentMode = .viewSlideInOut
+//
+//         //Ajout du slide to open
+//         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
+    
+        let drawerController  = SideDrawerViewController(nibName: nil, bundle: nil)
+            // Menu a gauche
+        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: drawerController)
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
         
         let managerDb = ManageDbProvider.sharedInstance
         managerDb.wipeContacts()
