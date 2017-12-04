@@ -99,7 +99,7 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         phoneView.text = contact?.phone
         emailView.text = contact?.email
         typeView.text = contact?.profile
-        guard let firstName = contact?.firstName as? String, let lastName = contact?.lastName as? String else{
+        guard let firstName = contact?.firstName, let lastName = contact?.lastName else{
             print("Les noms ne sont pas valides")
             return
         }
