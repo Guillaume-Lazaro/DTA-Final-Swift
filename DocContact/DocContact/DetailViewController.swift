@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import MessageUI
 
 protocol DetailViewControllerDelegate: AnyObject {
     func deleteContact()
 }
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, MFMailComposeViewControllerDelegate  {
     
     @IBOutlet weak var imageView: RoundedImage!
     @IBOutlet weak var phoneView: UILabel!
@@ -49,6 +50,36 @@ class DetailViewController: UIViewController {
             self.imageView.image = UIImage(data: data!)
         }
     }
+    @IBAction func pressedCallButton(_ sender: Any) {
+        guard let phone = self.contact?.phone else{
+            return
+        }
+        let url: NSURL = URL(string: "TEL://\(phone)")! as NSURL
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+    }
+    @IBAction func pressedSendMail(_ sender: Any) {
+  
+        if MFMailComposeViewController.canSendMail() {
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            // Configure the fields of the interface.
+            composeVC.setToRecipients(["address@example.com"])
+            composeVC.setSubject("Hello!")
+            composeVC.setMessageBody("Hello from California!", isHTML: false)
+            
+            // Present the view controller modally.
+            present(composeVC, animated: true)
+            
+            
+        } else {
+            print("Mail services are not available")
+            return
+        }
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
+        
+        controller.dismiss(animated: true)
+    }
     
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
@@ -68,7 +99,7 @@ class DetailViewController: UIViewController {
         phoneView.text = contact?.phone
         emailView.text = contact?.email
         typeView.text = contact?.profile
-        guard let firstName = contact?.firstName as? String, let lastName = contact?.lastName as? String else{
+        guard let firstName = contact?.firstName, let lastName = contact?.lastName else{
             print("Les noms ne sont pas valides")
             return
         }
