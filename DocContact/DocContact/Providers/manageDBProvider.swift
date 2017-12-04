@@ -12,24 +12,62 @@ import CoreData
 private let sharedManageDbProvider = ManageDbProvider()
 
 class ManageDbProvider{
-    
+    let netProvider = NetworkProvider.sharedInstance
     class var sharedInstance: ManageDbProvider {
         return sharedManageDbProvider
-    }    
+    }
+    
+    func createCoreDataUser(userJson: [String: String]){
+        let appDelegate = netProvider.persistentContainer
+        let context = appDelegate.viewContext
+        let user = User(context: context)
+        user.lastName = userJson["lastName"]
+        user.firstName = userJson["firstName"]
+        user.phone = userJson["phone"]
+        user.email = userJson["email"]
+        user.profile = userJson["profile"]
+        user.token = netProvider.token
+        print("user ajouté à la base locale")
+        do{
+            if context.hasChanges{
+                try context.save()
+            }
+        }catch{
+            print(error)
+        }
+        print("L'utilisateur a été ajouté à la base")
+    }
+    
+    func deleteUsersFromCoreData(){
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        let netProvider = NetworkProvider.sharedInstance
+        let appDelegate = netProvider.persistentContainer
+        let context = appDelegate.viewContext
+        let contacts : [User] = try! context.fetch(fetchRequest)
+        
+        contacts.forEach { (user) in
+            context.delete(user)
+            do{
+                if context.hasChanges{
+                    try context.save()
+                }
+            }catch{
+                print(error)
+            }
+        }
+    }
+    
     
     func fillCoreDataWithContacts(json: [[String : Any]]){                    // Passed in data from remote DB
         let sort = NSSortDescriptor(key: "lastName", ascending: true)
         let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
         fetchRequest.sortDescriptors = [sort]
-        
-        let netProvider = NetworkProvider.sharedInstance
         let appDelegate = netProvider.persistentContainer
         let context = appDelegate.viewContext
-  
-
         // create
         for jsonPerson in json{
             let contact = Contact(context: context)
+            // contact.user = context
             contact.lastName = jsonPerson["lastName"] as? String
             contact.firstName = jsonPerson["firstName"] as? String
             contact.email = jsonPerson["email"] as? String
