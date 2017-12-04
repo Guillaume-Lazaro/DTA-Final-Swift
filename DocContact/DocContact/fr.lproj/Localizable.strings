@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  DocContact
+
+  Created by Guillaume Lazaro on 04/12/2017.
+  Copyright © 2017 Cuba Libre. All rights reserved.
+*/
+
+//Base:
+"Yes" = "Oui"
+"No" = "Non"
+"Back" = "Retour"
+"Done" = "Valider"
+"Ok" = "OK"
+"PhoneNumber" = "Numéro de téléphone"
+
+//écran AddEditContact:
+"Edit" = "Modifier un contact"
+"Add" = "Ajouter un contact"
+"Confirmation" = "Confirmation"
+"DeleteConfirmation" = "Voulez-vous vraiment supprimer ce contact?"
+"InscriptionError" = "Erreur d'inscription"
+"CheckField" = "Veuillez vérifier les champ surlignés"
+
+//écran d'accueil:
+"MyContacts" = "Mes Contacts"
+"NameOrPhoneNumber" = "Nom ou numéro de téléphone"
+
+//écran de détails:
+"MyContact" = "Mon Contact"
+"Modify" = "Modifier"
+
+//écran d'inscription:
+"Inscription" = "Inscription"
+"InscriptionSuccess" = "Inscription réussie"
+"Welcome" = "Bienvenue dans votre annuaire"
+"Begin" = "Commençons"
+"InscriptionError" = "Erreur Inscription"
+"PasswordError" = "Erreur Mot de passe"
+"MailError" = "Erreur Mail"
+"ProfileError" = "Erreur Profil"
+"CheckName" = "Veillez à remplir correctement Nom et/ou Prénom"
+"CheckMail" = "Veillez à respecter le format 'example@example.ex' "
+"CheckPhone" = "Veillez à rentrer 10 chiffres au numéro de téléphone"
+"CheckPassword" ="Veillez à avoir un mot de passe à 4 caractères"
+"CheckProfile" = "Veillez à choisir un profil valide"
+"CheckPasswordConfirm" = "Confirmation mot de passe incorrecte"
+"AlreadyUsedPhone" = "Numéro de téléphone déjà utilisé"
+
+//écran de login:
+"ForgotPassword" = "Mot de passe oublié"
+"EnterPhoneNumber" = "Veuillez entrez votre numéro de téléphone pour récupérer votre mot de passe"
+"PasswordSent" = "Mot de passe envoyé"
+"YourPasswordWasSent" = "Votre mot de passe a été envoyé à l'adresse Email de votre compte"
+"UnknownPhone" = "Numéro inconnu"
+"CreateAnAccount" = "Ce numéro est inconnu, veuillez créez un compte"
+"LoginFailed" = "Login échoué"
+"CheckYourLogin" = "Nous n'avons pas pu vous connecter, vérifiez votre numéro de téléphone et votre mot de passe puis réessayez"
