@@ -44,31 +44,31 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqh-p4-4bq">
-                    <rect key="frame" x="10" y="204" width="394" height="30.333333333333343"/>
+                    <rect key="frame" x="10" y="204" width="394" height="29.666666666666657"/>
                     <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="26"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Senior" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq0-0p-39b">
-                    <rect key="frame" x="10" y="244.33333333333334" width="394" height="23.666666666666657"/>
+                    <rect key="frame" x="10" y="243.66666666666666" width="394" height="23.666666666666657"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="E8c-94-Bg9">
-                    <rect key="frame" x="10" y="288" width="394" height="60.666666666666686"/>
+                    <rect key="frame" x="10" y="287.33333333333331" width="394" height="52"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KV4-7T-izX">
-                            <rect key="frame" x="0.0" y="0.0" width="394" height="30.333333333333332"/>
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="26"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-1f-zIb">
-                                    <rect key="frame" x="0.0" y="0.0" width="77.666666666666671" height="30.333333333333332"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="26"/>
                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="26"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0102030405" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU3-jG-Jdm">
-                                    <rect key="frame" x="77.666666666666657" y="2.3333333333333144" width="316.33333333333337" height="26"/>
+                                    <rect key="frame" x="57" y="0.0" width="337" height="26"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -76,16 +76,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kah-Hw-rNz">
-                            <rect key="frame" x="0.0" y="30.333333333333314" width="394" height="30.333333333333329"/>
+                            <rect key="frame" x="0.0" y="26" width="394" height="26"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nal-2U-hgB">
-                                    <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="30.333333333333332"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="58" height="26"/>
                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="26"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abc@hmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFX-mY-Try">
-                                    <rect key="frame" x="65.333333333333343" y="2.3333333333333712" width="328.66666666666663" height="26"/>
+                                    <rect key="frame" x="58" y="0.0" width="336" height="26"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -98,32 +98,46 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="0Oe-eI-7jT">
-                    <rect key="frame" x="20" y="564" width="374" height="162"/>
+                    <rect key="frame" x="35" y="569.33333333333337" width="344" height="146.66666666666663"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgO-Aq-6T2" customClass="RoundedButton" customModule="DocContact" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
-                            <color key="backgroundColor" red="1" green="0.88627450980392153" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgO-Aq-6T2" customClass="ThinBorderButton" customModule="DocContact" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="147.33333333333334" height="146.66666666666666"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="kgO-Aq-6T2" secondAttribute="height" multiplier="1:1" id="nY6-Um-8Dp"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
-                            <state key="normal" title=" ">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
+                            <state key="normal" title="">
+                                <color key="titleColor" red="0.92549019607843142" green="0.77647058823529413" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.92549019607843142" green="0.77647058823529413" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pressedSendMail:" destination="-1" eventType="touchUpInside" id="qVe-hj-483"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUb-I6-Rs8" customClass="RoundedButton" customModule="DocContact" customModuleProvider="target">
-                            <rect key="frame" x="212" y="0.0" width="162" height="162"/>
-                            <color key="backgroundColor" red="0.066666666666666666" green="0.77647058823529413" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUb-I6-Rs8" customClass="ThinBorderButton" customModule="DocContact" customModuleProvider="target">
+                            <rect key="frame" x="197.33333333333337" y="0.0" width="146.66666666666663" height="146.66666666666666"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="MUb-I6-Rs8" secondAttribute="height" multiplier="1:1" id="itv-Dr-KjN"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
                             <state key="normal" title="">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.21568627450980393" green="0.77647058823529413" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.2138671875" green="0.77647058823529413" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pressedCallButton:" destination="-1" eventType="touchUpInside" id="MqE-vt-r1C"/>
                             </connections>
@@ -141,15 +155,15 @@
                 <constraint firstItem="E8c-94-Bg9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="2pf-dw-Chq"/>
                 <constraint firstItem="Pqh-p4-4bq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="AaW-y2-1Vu"/>
                 <constraint firstItem="5M8-Ug-CDh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Ccw-XU-NfR"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0Oe-eI-7jT" secondAttribute="bottom" constant="10" id="CqX-L3-Vrv"/>
-                <constraint firstItem="0Oe-eI-7jT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="LmX-KL-znW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0Oe-eI-7jT" secondAttribute="bottom" constant="20" id="CqX-L3-Vrv"/>
+                <constraint firstItem="0Oe-eI-7jT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="LmX-KL-znW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="E8c-94-Bg9" secondAttribute="trailing" constant="10" id="Mjb-C6-Qh4"/>
                 <constraint firstItem="Iq0-0p-39b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Oq8-b2-anc"/>
                 <constraint firstItem="5M8-Ug-CDh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZrB-sw-Tu0"/>
                 <constraint firstItem="Pqh-p4-4bq" firstAttribute="top" secondItem="5M8-Ug-CDh" secondAttribute="bottom" constant="24" id="gTb-Ub-8O4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Pqh-p4-4bq" secondAttribute="trailing" constant="10" id="hah-At-mAW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iq0-0p-39b" secondAttribute="trailing" constant="10" id="lDv-9O-4DP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Oe-eI-7jT" secondAttribute="trailing" constant="20" id="oRr-FT-fzm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Oe-eI-7jT" secondAttribute="trailing" constant="35" id="oRr-FT-fzm"/>
                 <constraint firstItem="E8c-94-Bg9" firstAttribute="top" secondItem="Iq0-0p-39b" secondAttribute="bottom" constant="20" id="uxQ-Il-MV7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
