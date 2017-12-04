@@ -43,7 +43,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
+
                                 <rect key="frame" x="0.0" y="23.5" width="442" height="20"/>
+
                                 <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

@@ -16,12 +16,10 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var callButton: RoundedButton!
     
     @IBAction func callButtonPressed(_ sender: Any) {
-        print("Le bouton call a été appuyé")
         guard let phone = phoneNumber else {
-            print("Pas de numero")
             return
         }
-            self.makeAcall(phoneNumber: phone)
+        self.makeAcall(phoneNumber: phone)
     }
     
     //Numéro de téléphone:
@@ -44,7 +42,6 @@ class ContactTableViewCell: UITableViewCell {
     func makeAcall(phoneNumber: String){
         let url: NSURL = URL(string: "TEL://\(phoneNumber)")! as NSURL
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-
     }
     
     func downloadGravatar() {
@@ -52,7 +49,7 @@ class ContactTableViewCell: UITableViewCell {
             return
         }
         
-        let strUrl = hashString
+        let strUrl = hashString+"?d=mm"
         let url = URL(string: strUrl)
         let data = try? Data(contentsOf: url!)
         DispatchQueue.main.async {

@@ -25,25 +25,35 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
     weak var contact: Contact?
     weak var delegate: DetailViewControllerDelegate?
     
+    //variables pour afficher le profil de l'utilisateur
+    var user: User?
+    let DBManager = ManageDbProvider.sharedInstance
+    var isContactsDetails: Bool = false
+    
+    // TODO : Gérer si on veut afficher les détails du profil et non d'un contact
     override func viewDidLoad() {
         super.viewDidLoad()
+        // si on veut afficher le profil, on récupère l'user en cours
+        if !isContactsDetails{
+            self.user=self.DBManager.getUser()
+        }
         print("le contact est ",self.contact ?? "no contact")
         // Set the title with correct parameters 
-        self.title = "Mon Contact"
+        self.title = NSLocalizedString("MyContact", comment: "")
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
         
         
         fillTheFields()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Modifier", style: .plain, target: self, action: #selector(goToEditContact))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
         
         //Changement de l'image de profil:
         guard let hashGravatar:String = self.contact?.gravatar else {
             return
         }
         DispatchQueue.main.async() {
-            let strUrl = hashGravatar+"?s=200"
+            let strUrl = hashGravatar+"?s=200&d=mm"
             print("URL: ",strUrl)
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)

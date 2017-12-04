@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Contact" representedClassName="Contact" parentEntity="Person" syncable="YES" codeGenerationType="class">
-        <attribute name="gravatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isEmergencyUser" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isFamilinkUser" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -10,6 +9,7 @@
     <entity name="Person" representedClassName="Person" syncable="YES" codeGenerationType="class">
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="firstName" attributeType="String" syncable="YES"/>
+        <attribute name="gravatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" attributeType="String" syncable="YES"/>
         <attribute name="phone" attributeType="String" syncable="YES"/>
         <attribute name="profile" attributeType="String" syncable="YES"/>
@@ -21,6 +21,7 @@
     <elements>
         <element name="Contact" positionX="-45" positionY="36" width="128" height="120"/>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="120"/>
+
         <element name="User" positionX="-27" positionY="63" width="128" height="75"/>
     </elements>
 </model>

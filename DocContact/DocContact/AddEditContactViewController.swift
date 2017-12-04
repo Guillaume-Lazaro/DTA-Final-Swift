@@ -47,14 +47,14 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         self.resetBorder(textfield: pickerTextField)
     }
     
-    var pickOption = ["-"]
+    var pickOption = [""]
     let pickerView = UIPickerView()
     var isInEditionMode:Bool = true
     var contact : Contact?
     
     func fillPickerOptions(){
         netProvider.getProfiles(){ profiles in
-            self.pickOption += profiles
+            self.pickOption = profiles
         }
     }
     
@@ -95,7 +95,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         
         if isInEditionMode {
             // Set the title with correct parameters
-            self.title = "Edition du contact"
+            self.title = NSLocalizedString("Edit", comment: "")
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
             deleteButton.isEnabled = true
@@ -112,9 +112,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             //TODO: Pré-remplir les données
         } else {
             // Set the title with correct parameters
-            self.title = "Ajouter un contact"
+            self.title = NSLocalizedString("Add", comment: "")
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+            pickerTextField.text = "SENIOR"
             deleteButton.isEnabled = false
             deleteButton.isHidden = true
         }
@@ -128,8 +129,8 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         //PickerView:
         pickerView.delegate = self
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Retour", style: .plain, target: self, action: #selector(backAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(editContact))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(backAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .plain, target: self, action: #selector(editContact))
         
         pickerTextField.inputView = pickerView
         
@@ -146,16 +147,6 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         dismiss(animated: true, completion: nil)
     }
     
-    // Verify Valid Functions
-    /*func isMailValid(mail: String)->Bool{
-        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
-        return test.evaluate(with:mail)
-    }*/
-    
-    /*func isPhoneValid(number: String)->Bool{
-        return number.count == 10
-    }*/
     
     @objc func editContact(){
         var valid: Bool = true
@@ -163,7 +154,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let name = nameTextField.text else{
             return
         }
-        if DataValidation.isLastNameValid(lastName: name){
+        if !DataValidation.isLastNameValid(lastName: name){
             self.setBorderRed(textfield: nameTextField)
             valid = false
         }
@@ -171,7 +162,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let firstname = firstNameTextField.text else{
             return
         }
-        if DataValidation.isFirstNameValid(firstName: firstname){
+        if !DataValidation.isFirstNameValid(firstName: firstname){
             self.setBorderRed(textfield: firstNameTextField)
             valid = false
         }
@@ -196,7 +187,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let profile = pickerTextField.text else{
             return
         }
-        if DataValidation.isProfileValid(profile: profile){
+        if !DataValidation.isProfileValid(profile: profile){
             valid = false
             self.setBorderRed(textfield: pickerTextField)
         }
@@ -242,9 +233,9 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let token = netProvider.token, let id = contact?.id else{
             return
         }
-        let alertDelelete = UIAlertController(title: "confirmation", message : "Voulez vous vraiment suprrimer ce contact", preferredStyle: .alert )
-        alertDelelete.addAction(UIAlertAction(title: "non", style: .cancel, handler: nil))
-        alertDelelete.addAction(UIAlertAction(title: "oui", style: .default, handler: { (alertDelete) in
+        let alertDelelete = UIAlertController(title: NSLocalizedString("Confirmation", comment: ""), message : NSLocalizedString("DeleteConfirmation", comment: ""), preferredStyle: .alert )
+        alertDelelete.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+        alertDelelete.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (alertDelete) in
             self.deletetOnServer(id: id, token: token)
         }))
         self.present(alertDelelete, animated: true, completion: nil)
@@ -262,7 +253,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func alertChamps(){
-        let alertSignUp = UIAlertController(title: "Erreur d'inscription", message: "Veuillez vérifier les champs surlignés", preferredStyle: .alert)
+        let alertSignUp = UIAlertController(title: NSLocalizedString("InscriptionError", comment: ""), message: "Veuillez vérifier les champs surlignés", preferredStyle: .alert)
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
