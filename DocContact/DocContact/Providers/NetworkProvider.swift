@@ -54,7 +54,6 @@ class NetworkProvider{
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let responseJSON = responseJSON as? [String: Any] {
                     guard let token = responseJSON["token"] else{
-                        print("not a token")
                         failure()
                         return
                     }
@@ -63,11 +62,7 @@ class NetworkProvider{
                     var user: [String: String] = ["":""]
                     self.getUser(succes: { userJson in
                         user = userJson
-                        print("getUserSucces user")
-                        print(user)
-                        print("login user")
-                        print(user)
-                        success(user)
+                    success(user)
                     })
                 }
             }
@@ -106,7 +101,6 @@ class NetworkProvider{
                         failure()
                         return
                     }
-                    print("inscription valide")
                     success()
                 }
             }
@@ -134,12 +128,10 @@ class NetworkProvider{
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let responseJSON = responseJSON as? [String:String]{
                     if let message = responseJSON["message"]{
-                        print(message)
                         failure()
                         return
                     }
                 }
-                print("user valide donc envoi mdp")
                 success()
             }
         }
@@ -233,7 +225,6 @@ class NetworkProvider{
                         return
                     }
                 }
-                print("Contact modifié")
                 success()
             }
         }
@@ -259,8 +250,6 @@ class NetworkProvider{
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let userJson = responseJSON as? [String: String]{
-                    print("getUser user :")
-                    print(userJson)
                     succes(userJson)
                 }
             }
@@ -299,7 +288,6 @@ class NetworkProvider{
                         
                         return
                     }
-                    print("Contact crééé")
                     success()
                 }
             }

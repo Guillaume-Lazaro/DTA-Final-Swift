@@ -27,7 +27,6 @@ class ManageDbProvider{
         user.email = userJson["email"]
         user.profile = userJson["profile"]
         user.token = netProvider.token
-        print("user ajouté à la base locale")
         do{
             if context.hasChanges{
                 try context.save()
@@ -45,7 +44,7 @@ class ManageDbProvider{
             print(fetchedUser.first?.lastName)
             return fetchedUser.first
         } catch {
-            fatalError("Failed to fetch employees: \(error)")
+            fatalError("Failed to fetch Users: \(error)")
         }
     }
     
@@ -66,6 +65,7 @@ class ManageDbProvider{
                 print(error)
             }
         }
+        print("La base ne contient plus d'utilisateurs")
     }
     
     
@@ -116,7 +116,6 @@ class ManageDbProvider{
             }
             
         }
-        
         print("Les contacts ont bien été ajoutés à la base de données locale")
     }
     
@@ -136,8 +135,7 @@ class ManageDbProvider{
             }catch{
                 print(error)
             }
-        }        
+        }
+        print("les contacts ont été supprimés de la base")
     }
 }
-
- 

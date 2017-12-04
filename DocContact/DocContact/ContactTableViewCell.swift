@@ -15,8 +15,7 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var callButton: RoundedButton!
     
-    @IBAction func callButtonPressed(_ sender: Any) {
-        print("Le bouton call a été appuyé")
+    @IBAction func callButtonPressed(_ sender: Any) { 
         guard let phone = phoneNumber else {
             print("Pas de numero")
             return
