@@ -24,8 +24,18 @@ class DetailViewController: UIViewController {
     weak var contact: Contact?
     weak var delegate: DetailViewControllerDelegate?
     
+    //variables pour afficher le profil de l'utilisateur
+    var user: User?
+    let DBManager = ManageDbProvider.sharedInstance
+    var isContactsDetails: Bool = false
+    
+    // TODO : Gérer si on veut afficher les détails du profil et non d'un contact
     override func viewDidLoad() {
         super.viewDidLoad()
+        // si on veut afficher le profil, on récupère l'user en cours
+        if !isContactsDetails{
+            self.user=self.DBManager.getUser()
+        }
         print("le contact est ",self.contact ?? "no contact")
         // Set the title with correct parameters 
         self.title = "Mon Contact"
