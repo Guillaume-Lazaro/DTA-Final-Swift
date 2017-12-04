@@ -47,14 +47,14 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         self.resetBorder(textfield: pickerTextField)
     }
     
-    var pickOption = ["-"]
+    var pickOption = [""]
     let pickerView = UIPickerView()
     var isInEditionMode:Bool = true
     var contact : Contact?
     
     func fillPickerOptions(){
         netProvider.getProfiles(){ profiles in
-            self.pickOption += profiles
+            self.pickOption = profiles
         }
     }
     
@@ -115,6 +115,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             self.title = NSLocalizedString("Add", comment: "")
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+            pickerTextField.text = "SENIOR"
             deleteButton.isEnabled = false
             deleteButton.isHidden = true
         }
@@ -146,16 +147,6 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         dismiss(animated: true, completion: nil)
     }
     
-    // Verify Valid Functions
-    /*func isMailValid(mail: String)->Bool{
-        let mailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let test = NSPredicate(format: "SELF MATCHES %@", mailRegEx)
-        return test.evaluate(with:mail)
-    }*/
-    
-    /*func isPhoneValid(number: String)->Bool{
-        return number.count == 10
-    }*/
     
     @objc func editContact(){
         var valid: Bool = true
@@ -163,7 +154,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let name = nameTextField.text else{
             return
         }
-        if DataValidation.isLastNameValid(lastName: name){
+        if !DataValidation.isLastNameValid(lastName: name){
             self.setBorderRed(textfield: nameTextField)
             valid = false
         }
@@ -171,7 +162,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let firstname = firstNameTextField.text else{
             return
         }
-        if DataValidation.isFirstNameValid(firstName: firstname){
+        if !DataValidation.isFirstNameValid(firstName: firstname){
             self.setBorderRed(textfield: firstNameTextField)
             valid = false
         }
@@ -196,7 +187,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         guard let profile = pickerTextField.text else{
             return
         }
-        if DataValidation.isProfileValid(profile: profile){
+        if !DataValidation.isProfileValid(profile: profile){
             valid = false
             self.setBorderRed(textfield: pickerTextField)
         }
