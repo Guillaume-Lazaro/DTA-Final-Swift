@@ -94,7 +94,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         
         
         if isInEditionMode {
+            // Set the title with correct parameters
             self.title = "Edition du contact"
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
             deleteButton.isEnabled = true
             deleteButton.isHidden = false
             nameTextField.text = contact?.lastName
@@ -108,7 +111,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             pickerTextField.text = contact?.profile
             //TODO: Pré-remplir les données
         } else {
+            // Set the title with correct parameters
             self.title = "Ajouter un contact"
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
             deleteButton.isEnabled = false
             deleteButton.isHidden = true
         }

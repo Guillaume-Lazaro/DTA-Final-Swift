@@ -58,12 +58,17 @@ class ContactListTableViewController: UITableViewController {
         try? resultController.performFetch()
         self.tableView.reloadData()
         
+        // Set the title with correct parameters
         self.title = "Mes contacts"
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
+        
         let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ContactCell")
         
         searchBarView.delegate = self
         searchBarView.placeholder = "Nom ou Numéro de téléphone"
+        searchBarView.barTintColor = UIColor.DocColors.blue
         
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
@@ -111,6 +116,13 @@ class ContactListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
         
+        // Change cell color
+        if (indexPath.row+1)%2 == 0 {
+            cell.contentView.backgroundColor = UIColor.DocColors.cellDarkColor
+        } else {
+            cell.contentView.backgroundColor = UIColor.DocColors.cellLightColor
+        }
+        
         if let contactCell = cell as? ContactTableViewCell {
             let contact = resultController.object(at: indexPath)
             contactCell.firstNameLabel.text = contact.firstName
@@ -143,6 +155,7 @@ class ContactListTableViewController: UITableViewController {
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
+
     
     /*
      // Override to support conditional editing of the table view.
