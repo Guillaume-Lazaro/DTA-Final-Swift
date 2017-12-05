@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="deleteButton" destination="qh3-Bh-Gep" id="W6r-HR-s3T"/>
                 <outlet property="emailTextField" destination="KXW-Im-o5N" id="J26-L0-Ons"/>
+                <outlet property="emergencyLabel" destination="CQz-gE-6el" id="qrv-7k-OS5"/>
                 <outlet property="emergencyUserSwitch" destination="rrw-tG-Dav" id="7jc-Jl-FEz"/>
                 <outlet property="firstNameTextField" destination="0fY-Xq-gMT" id="Clf-QU-bgI"/>
                 <outlet property="nameTextField" destination="P0X-oM-QZZ" id="N56-Ba-odn"/>
@@ -151,7 +152,6 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rrw-tG-Dav">
                                     <rect key="frame" x="22.5" y="30" width="51" height="30"/>
                                 </switch>
