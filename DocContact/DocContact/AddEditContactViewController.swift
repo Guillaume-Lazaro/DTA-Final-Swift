@@ -258,7 +258,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                     self.netProvider.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile,token :token, success: {
                         // update on local
                         self.DBManager.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile)
-                        DispatchQueue.main.async {self.dismiss(animated: true, completion: nil)}}, failure: {})
+                        DispatchQueue.main.async {self.navigationController?.popToRootViewController(animated: true)}}, failure: {})
                 }
             }
         }else{

@@ -288,7 +288,7 @@ class NetworkProvider{
                         failure()
                         return
                     }
-                    print("inscription valide")
+                    print("Utilisateur modifié")
                     success()
                 }
             }

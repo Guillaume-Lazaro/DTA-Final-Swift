@@ -40,7 +40,7 @@ class ManageDbProvider{
 	
 	func getUser()->User?{
 		let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
-		let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		let managedContext = netProvider.persistentContainer.viewContext
 		do {
 			let fetchedUser = try managedContext.fetch(fetchRequestUser)
 			// print(fetchedUser.first?.lastName)
@@ -53,11 +53,11 @@ class ManageDbProvider{
         guard let user = getUser() else{
             return
         }
-        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        user.setValue(firstname,forKey: firstname)
-        user.setValue(lastname, forKey: lastname)
-        user.setValue(mail, forKey: mail)
-        user.setValue(profile, forKey: profile)
+        let managedContext = netProvider.persistentContainer.viewContext
+        user.setValue(firstname,forKey: "firstName")
+        user.setValue(lastname, forKey: "lastName")
+        user.setValue(mail, forKey: "email")
+        user.setValue(profile, forKey: "profile")
         do{
             try managedContext.save()
         }
