@@ -11,6 +11,7 @@ import UIKit
 class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     let netProvider = NetworkProvider.sharedInstance
+    let DBManager = ManageDbProvider.sharedInstance
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -51,11 +52,14 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     let pickerView = UIPickerView()
     var isInEditionMode:Bool = true
     var contact : Contact?
+    var user: User?
     
     func fillPickerOptions(){
-        netProvider.getProfiles(){ profiles in
+        netProvider.getProfiles(success:{ profiles in
             self.pickOption = profiles
-        }
+        }, failure:{
+            //TODO: Alerte reconnexion
+        })
     }
     
     func setBorderRed(textfield: UITextField){
@@ -90,7 +94,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fillPickerOptions()
+        user = DBManager.getUser()
         
         
         if isInEditionMode {
@@ -197,25 +201,33 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             guard let token = netProvider.token else{
                 return
             }
+            guard let user = self.user else{
+                return
+            }
             if !self.isInEditionMode{
                 // Create contact
-                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
+                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,user: user, token: token, success: {
                     DispatchQueue.main.async {
                         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
                         let navVC = UINavigationController(rootViewController: contactVC)
                         self.present(navVC, animated: true, completion: nil)
                     }
+                }, failure:{
+                    //TODO : Alert reconnexion
                 })
             } else {
                 guard let id = contact?.id else{
                     return
                 }
+                
                 // Update contact
-                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
+                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id,user: user, token: token, success: {DispatchQueue.main.async {
                     let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
                     let navVC = UINavigationController(rootViewController: contactVC)
                     self.present(navVC, animated: true, completion: nil)
                     }
+                }, failure:{
+                    self.alertConnectError()
                 })
             }
         }else{
@@ -248,6 +260,8 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 let navVC = UINavigationController(rootViewController: contactVC)
                 self.present(navVC, animated: true, completion: nil)
             }
+        },failure:{
+            //TODO: Alerte Reco
         })
         
     }
@@ -257,7 +271,33 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         alertSignUp.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertSignUp, animated: true, completion: nil)
     }
-    
+    func alertConnectError(){
+        let alertConnection = UIAlertController(title: NSLocalizedString("ConnectionError", comment: ""), message: NSLocalizedString("ConnectErrorMessage", comment: ""), preferredStyle: .alert)
+        alertConnection.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler:{alertConnection in
+            self.alertReconnect()}))
+        alertConnection.addAction(UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: UIAlertActionStyle.cancel,handler: nil))
+        self.present(alertConnection, animated: true, completion: {
+        })
+    }
+    func alertReconnect(){
+        guard let phone = user?.phone else {
+            return
+        }
+        var passwordTextField: UITextField?
+        let alertPassword = UIAlertController(title: "Reconnect", message: "Reconnect Message", preferredStyle: .alert)
+        alertPassword.addTextField(configurationHandler: {(pass)->() in
+            passwordTextField = pass
+            passwordTextField?.isSecureTextEntry=true
+        })
+        alertPassword.addAction(UIAlertAction(title: "OK", style: .default, handler: { (alertPassword) in
+            guard let password = passwordTextField?.text else{
+                return
+            }
+            self.netProvider.loginOnServer(phone: phone, password: password, success: { _ in }, failure: {})
+        }))
+        alertPassword.addAction(UIAlertAction(title: "Retour", style: .cancel, handler: nil))
+        self.present(alertPassword, animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -179,7 +179,7 @@ class NetworkProvider{
     }
     
     // TODO : Que faire en cas de suppression
-    func deleteContact(id: String, token: String, success: @escaping ()->()){
+    func deleteContact(id: String, token: String, success: @escaping ()->(), failure: @escaping()->()){
         let urlString = API_URL + protectedModifier + "/contacts/" + id
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
@@ -191,6 +191,7 @@ class NetworkProvider{
             do {
                 guard error == nil else {
                     print(error?.localizedDescription ?? "error")
+                    failure()
                     return
                 }
                 success()
@@ -202,7 +203,7 @@ class NetworkProvider{
     }
     
     //TODO : tester l'update
-    func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, id: String, token: String, success: @escaping ()->() ){
+    func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, id: String,user: User, token: String, success: @escaping ()->(), failure: @escaping()->() ){
         var json = [String:Any]()
         json["phone"] = phone
         json["firstName"] = firstname
@@ -224,12 +225,14 @@ class NetworkProvider{
             do{
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
+                    failure()
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let responseJSON = responseJSON as? [String: Any]{
                     if let message = responseJSON["message"]{
                         print(message)
+                        failure()
                         return
                     }
                 }
@@ -268,7 +271,7 @@ class NetworkProvider{
         task.resume()
     }
     
-    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, token: String, success: @escaping ()->() ){
+    func createContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool,user: User, token: String, success: @escaping ()->(), failure:@escaping()->() ){
         var json = [String:Any]()
         json["phone"] = phone
         json["firstName"] = firstname
@@ -290,6 +293,7 @@ class NetworkProvider{
             do{
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
+                    failure()
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
@@ -307,7 +311,7 @@ class NetworkProvider{
         task.resume()
     }
     
-    func getProfiles(success: @escaping ([String])->()) -> (){
+    func getProfiles(success: @escaping ([String])->(), failure: @escaping()->()) -> (){
         var profiles: [String]=[""]
         let urlString = API_URL+publicModifier+"/profiles"
         let url = URL(string: urlString)!
@@ -319,6 +323,7 @@ class NetworkProvider{
             do{
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
+                    failure()
                     return
                 }
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])

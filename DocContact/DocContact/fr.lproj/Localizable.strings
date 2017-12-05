@@ -20,6 +20,8 @@
 "Confirmation" = "Confirmation";
 "DeleteConfirmation" = "Voulez-vous vraiment supprimer ce contact?";
 "InscriptionError" = "Erreur d'inscription";
+"ConnectionError" = "Erreur de connexion";
+"ConnectErrorMessage" = "Une erreur est survenue, veuillez vous reconnecter";
 "CheckField" = "Veuillez vérifier les champ surlignés";
 
 //écran d'accueil:

@@ -81,9 +81,11 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     let pickerView = UIPickerView()
     
     func fillPickerOptions(){
-        netProvider.getProfiles(){ profiles in
+        netProvider.getProfiles(success:{ profiles in
             self.pickOption = profiles
-        }
+        },failure:{
+            //Todo : Alert reco
+        })
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
