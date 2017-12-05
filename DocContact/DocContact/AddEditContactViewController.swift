@@ -59,7 +59,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     var isContactsModification: Bool = false
     
     func fillPickerOptions(){
-        netProvider.getProfiles(){ profiles in
+        self.netProvider.getProfiles(){ profiles in
             self.pickOption = profiles
         }
     }
@@ -227,7 +227,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             }
             if !self.isInEditionMode{
                 // Create contact
-                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
+                self.netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
                     DispatchQueue.main.async {
                         let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
                         let navVC = UINavigationController(rootViewController: contactVC)
@@ -248,6 +248,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                     })
                 } else {    // ici de l'user:
                     //TODO update user
+                    guard let token = self.netProvider.token else{
+                        return
+                    }
+                    self.netProvider.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile,token :token, success: {DispatchQueue.main.async {self.dismiss(animated: true, completion: nil)}}, failure: {})
                 }
             }
         }else{
