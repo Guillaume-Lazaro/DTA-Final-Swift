@@ -15,8 +15,8 @@
 "PhoneNumber" = "Numéro de téléphone";
 
 //écran AddEditContact:
-"Edit" = "Modifier un contact";
-"Add" = "Ajouter un contact";
+"Edit" = "Modifier";
+"Add" = "Ajout";
 "Confirmation" = "Confirmation";
 "DeleteConfirmation" = "Voulez-vous vraiment supprimer ce contact?";
 "InscriptionError" = "Erreur d'inscription";
