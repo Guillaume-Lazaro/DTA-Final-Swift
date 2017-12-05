@@ -11,10 +11,21 @@ import CoreData
 
 class SideDrawerViewController: UIViewController {
 
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
     var resultController : NSFetchedResultsController<User>!
+    var user: User?
+    let DBManager = ManageDbProvider.sharedInstance
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.user=self.DBManager.getUser()  //On récupére l'user en cours
+        guard let firstName = user?.firstName else{
+            return
+        }
+        self.firstNameLabel.text = "Bonjour \(firstName)"
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +40,6 @@ class SideDrawerViewController: UIViewController {
 
     
     @IBAction func disconnect(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+       // self.dismiss(animated: true, completion: nil)
     }
 }
