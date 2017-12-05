@@ -31,9 +31,7 @@ class ContactListTableViewController: UITableViewController{
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         
-        let managerDb = ManageDbProvider.sharedInstance
-        managerDb.wipeContacts()
-        
+		
         //let netProvider = NetworkProvider.sharedInstance
         self.netProvider.getContacts()
         

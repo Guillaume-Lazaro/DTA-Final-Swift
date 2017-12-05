@@ -9,21 +9,16 @@
 import UIKit
 import CoreData
 
-
 class SideDrawerViewController: UIViewController {
 
     var resultController : NSFetchedResultsController<User>!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func goToProfil(_ sender: Any) {
@@ -32,4 +27,8 @@ class SideDrawerViewController: UIViewController {
         self.navigationController?.pushViewController(profilVC, animated: true)
     }
 
+    
+    @IBAction func disconnect(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
