@@ -15,6 +15,7 @@ protocol SideDrawerViewControllerDelegate: AnyObject {
 
 class SideDrawerViewController: UIViewController {
 
+    let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     var resultController : NSFetchedResultsController<User>!
