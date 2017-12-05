@@ -62,6 +62,9 @@ class ContactListTableViewController: UITableViewController{
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
         
+        //Hide the keyboard if you click elsewhere on the screen
+        self.hideKeyboardWhenTappedAround()
+        
     }
     
     // Method of the back button
