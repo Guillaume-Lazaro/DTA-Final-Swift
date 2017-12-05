@@ -100,7 +100,6 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         
         if contact == nil {
             isContactsModification = false
-            isInEditionMode = true
 //            isInEditionMode = true
         } else {
             isContactsModification = true
@@ -225,9 +224,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 // Create contact
                 netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
                     DispatchQueue.main.async {
-                        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                        let navVC = UINavigationController(rootViewController: contactVC)
-                        self.present(navVC, animated: true, completion: nil)
+                 
                     }
                 })
             } else {                            //On est en mode d'édition
