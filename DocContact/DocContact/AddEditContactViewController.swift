@@ -223,9 +223,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 // Create contact
                 netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
                     DispatchQueue.main.async {
-                        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                        let navVC = UINavigationController(rootViewController: contactVC)
-                        self.present(navVC, animated: true, completion: nil)
+                        self.navigationController?.popToRootViewController(animated: true)
                     }
                 })
             } else {                            //On est en mode d'édition
@@ -235,9 +233,8 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                     }
                     // Update contact
                     netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
-                            let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                            let navVC = UINavigationController(rootViewController: contactVC)
-                            self.present(navVC, animated: true, completion: nil)
+                            self.navigationController?.popToRootViewController(animated: true)
+
                         }
                     })
                 } else {    // ici de l'user:
