@@ -147,7 +147,7 @@ class NetworkProvider{
     }
     
     // TODO : Renvoyer la liste reçue
-    func getContacts(){
+    func getContacts(success: @escaping ()->()){
         guard let token: String = self.token else{
             print("Le token n'est pas défini")
             return
@@ -172,6 +172,7 @@ class NetworkProvider{
                 }
                 let managerDB = ManageDbProvider.sharedInstance
                 managerDB.fillCoreDataWithContacts(json: resp)
+                success()
                 //return resp
             }
         }

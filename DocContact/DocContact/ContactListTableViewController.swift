@@ -35,7 +35,19 @@ class ContactListTableViewController: UITableViewController{
         managerDb.wipeContacts()
         
         //let netProvider = NetworkProvider.sharedInstance
-        self.netProvider.getContacts()
+        self.netProvider.getContacts(success: {
+            if self.contacts.isEmpty {
+                let alertAddFirstContact = UIAlertController(title: NSLocalizedString("AddFirstContact", comment: ""), message: NSLocalizedString("MyFirstContact", comment: ""), preferredStyle: .alert)
+                alertAddFirstContact.addAction(UIAlertAction(title:NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+                alertAddFirstContact.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
+                    alert -> Void in
+                    self.goToEditContact()
+                }))
+                self.present(alertAddFirstContact, animated: true)
+            }
+        })
+        
+        
         
         // Get the list of contacts
         let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
@@ -46,6 +58,8 @@ class ContactListTableViewController: UITableViewController{
         resultController.delegate = self
         try? resultController.performFetch()
         self.tableView.reloadData()
+        
+        
         
         // Set the title with correct parameters
         self.title = NSLocalizedString("MyContacts", comment: "")
