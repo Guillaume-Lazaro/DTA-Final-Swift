@@ -23,7 +23,7 @@ class ContactListTableViewController: UITableViewController{
         super.viewDidLoad()
         
         let drawerController  = SideDrawerViewController(nibName: nil, bundle: nil)
-            // Menu a gauche
+        // Menu a gauche
         let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: drawerController)
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         
@@ -62,6 +62,14 @@ class ContactListTableViewController: UITableViewController{
         let validateCreation = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToEditContact))
         self.navigationItem.rightBarButtonItem = validateCreation
         
+        let burgerButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(openDrawer))
+        self.navigationItem.leftBarButtonItem = burgerButton
+        burgerButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 22)!], for: .normal)
+        burgerButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 24)!], for: .highlighted)
+    }
+    
+    @objc func openDrawer() {
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
     
     // Method of the back button

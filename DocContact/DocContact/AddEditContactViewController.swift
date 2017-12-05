@@ -16,8 +16,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var pickerTextField: UITextField!
+    @IBOutlet weak var emergencyLabel: UILabel!
     @IBOutlet weak var emergencyUserSwitch: UISwitch!
     @IBOutlet weak var deleteButton: UIButton!
+    
     @IBAction func mailVerifRealTime(_ sender: Any) {
         guard let mailText = emailTextField.text else {
             return
@@ -51,6 +53,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     let pickerView = UIPickerView()
     var isInEditionMode:Bool = true
     var contact : Contact?
+    //variables pour modifier le profil de l'utilisateur
+    var user: User?
+    let DBManager = ManageDbProvider.sharedInstance
+    var isContactsModification: Bool = false
     
     func fillPickerOptions(){
         netProvider.getProfiles(){ profiles in
@@ -92,24 +98,46 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         super.viewDidLoad()
         self.fillPickerOptions()
         
+        if contact == nil {
+            isContactsModification = false
+            isInEditionMode = true
+        } else {
+            isContactsModification = true
+        }
         
         if isInEditionMode {
             // Set the title with correct parameters
             self.title = NSLocalizedString("Edit", comment: "")
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
-            deleteButton.isEnabled = true
-            deleteButton.isHidden = false
-            nameTextField.text = contact?.lastName
-            firstNameTextField.text = contact?.firstName
-            phoneTextField.text = contact?.phone
-            emailTextField.text = contact?.email
-            guard let emergency = contact?.isEmergencyUser else{
-                return
+            
+            //Remplissage des champs du contact/user:
+            if isContactsModification {
+                deleteButton.isEnabled = true
+                deleteButton.isHidden = false
+                nameTextField.text = contact?.lastName
+                firstNameTextField.text = contact?.firstName
+                phoneTextField.text = contact?.phone
+                emailTextField.text = contact?.email
+                guard let emergency = contact?.isEmergencyUser else{
+                    return
+                }
+                emergencyUserSwitch.setOn(emergency, animated: false)
+                pickerTextField.text = contact?.profile
+            } else {
+                //On vire le bouton supprimer:
+                deleteButton.isEnabled = false
+                deleteButton.isHidden = true
+                nameTextField.text = user?.lastName
+                firstNameTextField.text = user?.firstName
+                phoneTextField.text = user?.phone
+                emailTextField.text = user?.email
+                pickerTextField.text = user?.profile
+                //On vire le switch et son label:
+                emergencyUserSwitch.isEnabled = false
+                emergencyUserSwitch.isHidden = true
+                emergencyLabel.isHidden = true
             }
-            emergencyUserSwitch.setOn(emergency, animated: false)
-            pickerTextField.text = contact?.profile
-            //TODO: Pré-remplir les données
         } else {
             // Set the title with correct parameters
             self.title = NSLocalizedString("Add", comment: "")
@@ -206,17 +234,21 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                         self.present(navVC, animated: true, completion: nil)
                     }
                 })
-            } else {
-                guard let id = contact?.id else{
-                    return
-                }
-                // Update contact
-                netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
-                    let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                    let navVC = UINavigationController(rootViewController: contactVC)
-                    self.present(navVC, animated: true, completion: nil)
+            } else {                            //On est en mode d'édition
+                if isContactsModification {     // ici d'un contact:
+                    guard let id = contact?.id else{
+                        return
                     }
-                })
+                    // Update contact
+                    netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
+                            let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
+                            let navVC = UINavigationController(rootViewController: contactVC)
+                            self.present(navVC, animated: true, completion: nil)
+                        }
+                    })
+                } else {    // ici de l'user:
+                    //TODO update user
+                }
             }
         }else{
             alertChamps()

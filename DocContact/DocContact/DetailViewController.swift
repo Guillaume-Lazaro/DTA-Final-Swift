@@ -49,8 +49,6 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         var hashGravatar:String = "https://fr.gravatar.com/avatar/3853c8335c1170e567e2e04d8c35fb7d"
         if isContactsDetails {
             self.title = NSLocalizedString("MyContact", comment: "")
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
-            
             hashGravatar = (self.contact?.gravatar)!
         } else {
             self.title = NSLocalizedString("MyProfile", comment: "")
@@ -64,6 +62,7 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             }*/
         }
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
         
@@ -112,8 +111,16 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         let navVC = UINavigationController(rootViewController: contactVC)
-        contactVC.contact = contact
-        contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
+        
+        if isContactsDetails {
+            contactVC.contact = contact
+            contactVC.isContactsModification = true
+            contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
+        } else {
+            contactVC.user = self.user
+            contactVC.isContactsModification = false
+            contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
+        }
         self.present(navVC, animated: true, completion: nil)
     }
 
