@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "My Profile"; ObjectID = "1oX-fx-YuG"; */
+"1oX-fx-YuG.text" = "Mon Profil";
+
+/* Class = "UIButton"; normalTitle = "Go To Profil"; ObjectID = "8jq-DH-Zhy"; */
+"8jq-DH-Zhy.normalTitle" = "Aller au profil";
+
+/* Class = "UIButton"; normalTitle = "Disconnect"; ObjectID = "N8t-a9-bjb"; */
+"N8t-a9-bjb.normalTitle" = "Déconnexion";

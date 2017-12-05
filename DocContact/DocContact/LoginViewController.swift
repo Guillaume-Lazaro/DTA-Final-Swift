@@ -21,6 +21,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //TextField:
         phoneTextField.delegate = self
         passwordTextField.delegate = self
+        
+        //Hide the keyboard if you click elsewhere on the screen
+        self.hideKeyboardWhenTappedAround()
+  
+
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -128,5 +134,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.present(alertLogin, animated:true)
     }
 }
-
 

@@ -26,6 +26,7 @@
 		BC1448DF1FCC18DB00528F85 /* DocContactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448DE1FCC18DB00528F85 /* DocContactTests.swift */; };
 		BC1448EA1FCC18DB00528F85 /* DocContactUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1448E91FCC18DB00528F85 /* DocContactUITests.swift */; };
 		BC244C4E1FD546E600452BD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC244C4C1FD546E600452BD7 /* Localizable.strings */; };
+		BCB48AAD1FD6B079000AD7C8 /* SideDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB48AAF1FD6B079000AD7C8 /* SideDrawerViewController.xib */; };
 		BCF6516E1FD015A100BF502F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651701FD015A100BF502F /* DetailViewController.xib */; };
 		BCF651761FD01AC400BF502F /* AddEditContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651781FD01AC400BF502F /* AddEditContactViewController.xib */; };
 		BCF6517E1FD01C5200BF502F /* ContactListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF651801FD01C5200BF502F /* ContactListTableViewController.xib */; };
@@ -33,6 +34,7 @@
 		CE8D164303F99CB4D20A6EBE /* Pods_DocContactUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B08FBA52851F85D1CF4502 /* Pods_DocContactUITests.framework */; };
 		DE21E7AC9FD5AACD8931CF20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6499F95E45B78F3DA8333EFE /* CoreTelephony.framework */; };
 		E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F214A1FCEB59700A28284 /* manageDBProvider.swift */; };
+		E953A6591FD6A88800D10B02 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E953A6581FD6A88800D10B02 /* KeyboardExtension.swift */; };
 		E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */; };
 		E96BE4511FD175A60005ADEC /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4501FD175A60005ADEC /* DefaultButton.swift */; };
 		E96BE4541FD18AB70005ADEC /* DiscreteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */; };
@@ -49,7 +51,6 @@
 		E9F262421FD541C400A5BEF7 /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262411FD541C400A5BEF7 /* ProjectColors.swift */; };
 		E9F262451FD5862900A5BEF7 /* ThinBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */; };
 		E9F262481FD5A6A500A5BEF7 /* SideDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262461FD5A6A500A5BEF7 /* SideDrawerViewController.swift */; };
-		E9F262491FD5A6A500A5BEF7 /* SideDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F262471FD5A6A500A5BEF7 /* SideDrawerViewController.xib */; };
 		FC4C28371FD190AB00F10D93 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4C28361FD190AB00F10D93 /* DataValidation.swift */; };
 		FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,8 @@
 		BC1448EB1FCC18DB00528F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC244C4D1FD546E600452BD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC244C4F1FD546F300452BD7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BCB48AB01FD6B07B000AD7C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SideDrawerViewController.xib; sourceTree = "<group>"; };
+		BCB48AB11FD6B080000AD7C8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SideDrawerViewController.strings; sourceTree = "<group>"; };
 		BCF6516C1FD014E200BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BCF6516D1FD014E200BF502F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		BCF651731FD0177100BF502F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DetailViewController.xib; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		DA4CE5D847BAEC84E88AB741 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		DC6FABDF034877CA58D51F87 /* Pods_DocContactTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocContactTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F214A1FCEB59700A28284 /* manageDBProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manageDBProvider.swift; sourceTree = "<group>"; };
+		E953A6581FD6A88800D10B02 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E962F0F71FCD6C6D001C0403 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		E96BE4501FD175A60005ADEC /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteButton.swift; sourceTree = "<group>"; };
@@ -133,7 +137,6 @@
 		E9F262411FD541C400A5BEF7 /* ProjectColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectColors.swift; sourceTree = "<group>"; };
 		E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinBorderButton.swift; sourceTree = "<group>"; };
 		E9F262461FD5A6A500A5BEF7 /* SideDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDrawerViewController.swift; sourceTree = "<group>"; };
-		E9F262471FD5A6A500A5BEF7 /* SideDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideDrawerViewController.xib; sourceTree = "<group>"; };
 		F3E01EE02F7065C7E9ADAC93 /* Pods-DocContactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocContactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DocContactTests/Pods-DocContactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC4C28361FD190AB00F10D93 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
 		FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
@@ -244,7 +247,7 @@
 				BC1448D21FCC18DB00528F85 /* LaunchScreen.storyboard */,
 				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
 				E9F262461FD5A6A500A5BEF7 /* SideDrawerViewController.swift */,
-				E9F262471FD5A6A500A5BEF7 /* SideDrawerViewController.xib */,
+				BCB48AAF1FD6B079000AD7C8 /* SideDrawerViewController.xib */,
 			);
 			path = DocContact;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				E96BE4531FD18AB70005ADEC /* DiscreteButton.swift */,
 				E9F262411FD541C400A5BEF7 /* ProjectColors.swift */,
 				E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */,
+				E953A6581FD6A88800D10B02 /* KeyboardExtension.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -438,7 +442,7 @@
 				BC244C4E1FD546E600452BD7 /* Localizable.strings in Resources */,
 				BC1448D11FCC18DB00528F85 /* Assets.xcassets in Resources */,
 				E9934BCB1FD1577600B5DCD6 /* Domine-Regular.ttf in Resources */,
-				E9F262491FD5A6A500A5BEF7 /* SideDrawerViewController.xib in Resources */,
+				BCB48AAD1FD6B079000AD7C8 /* SideDrawerViewController.xib in Resources */,
 				BCF6517E1FD01C5200BF502F /* ContactListTableViewController.xib in Resources */,
 				BC1448CC1FCC18DB00528F85 /* Main.storyboard in Resources */,
 				E9934BCD1FD1577E00B5DCD6 /* Domine-Bold.ttf in Resources */,
@@ -626,6 +630,7 @@
 				E984FB061FCC361800BD7F09 /* DetailViewController.swift in Sources */,
 				E94F214B1FCEB59700A28284 /* manageDBProvider.swift in Sources */,
 				E9F262481FD5A6A500A5BEF7 /* SideDrawerViewController.swift in Sources */,
+				E953A6591FD6A88800D10B02 /* KeyboardExtension.swift in Sources */,
 				E9F262421FD541C400A5BEF7 /* ProjectColors.swift in Sources */,
 				E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */,
 				FC4C28371FD190AB00F10D93 /* DataValidation.swift in Sources */,
@@ -695,6 +700,15 @@
 				BC244C4F1FD546F300452BD7 /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BCB48AAF1FD6B079000AD7C8 /* SideDrawerViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCB48AB01FD6B07B000AD7C8 /* Base */,
+				BCB48AB11FD6B080000AD7C8 /* fr */,
+			);
+			name = SideDrawerViewController.xib;
 			sourceTree = "<group>";
 		};
 		BCF651701FD015A100BF502F /* DetailViewController.xib */ = {

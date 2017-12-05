@@ -31,9 +31,7 @@ class ContactListTableViewController: UITableViewController{
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         
-        let managerDb = ManageDbProvider.sharedInstance
-        managerDb.wipeContacts()
-        
+		
         //let netProvider = NetworkProvider.sharedInstance
         self.netProvider.getContacts()
         
@@ -75,14 +73,14 @@ class ContactListTableViewController: UITableViewController{
     // Method of the back button
     @objc func backAction(){
         dismiss(animated: true, completion: nil)
+        //Hide the keyboard if you click elsewhere on the screen
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
-        let navVC = UINavigationController(rootViewController: contactVC)
-        
         contactVC.isInEditionMode = false   //On précise à la view AddEdit qu'il s'agit d'un ajout
-        self.present(navVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(contactVC, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,47 +147,6 @@ class ContactListTableViewController: UITableViewController{
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
-
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
- 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     
     func searchBarResearch(research : String){

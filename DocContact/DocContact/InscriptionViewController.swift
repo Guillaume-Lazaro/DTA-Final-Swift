@@ -139,6 +139,10 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         
         pickerTextField.inputView = pickerView
         pickerTextField.text = "SENIOR"
+        
+        //Hide the keyboard if you click elsewhere on the screen
+        self.hideKeyboardWhenTappedAround()
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
