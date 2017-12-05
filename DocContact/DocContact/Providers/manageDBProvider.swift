@@ -37,6 +37,7 @@ class ManageDbProvider{
 		}
 		print("L'utilisateur a été ajouté à la base")
 	}
+	
 	func getUser()->User?{
 		let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
 		let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -68,12 +69,23 @@ class ManageDbProvider{
 	
 	
 	func fillCoreDataWithContacts(json: [[String : Any]]){                    // Passed in data from remote DB
+		
 		let sort = NSSortDescriptor(key: "lastName", ascending: true)
 		let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
 		fetchRequest.sortDescriptors = [sort]
 		let appDelegate = netProvider.persistentContainer
 		let context = appDelegate.viewContext
-		// create
+		
+		// TODO: Add a diff between contacts on lacal db and the one on server
+		do {
+			let localContacts = try context.fetch(fetchRequest)
+			for contact in localContacts {
+				context.delete(contact)
+			}
+		} catch {
+			print(error)
+		}
+		
 		for jsonPerson in json{
 			let contact = Contact(context: context)
 			// contact.user = context
