@@ -101,6 +101,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         if contact == nil {
             isContactsModification = false
             isInEditionMode = true
+//            isInEditionMode = true
         } else {
             isContactsModification = true
         }
