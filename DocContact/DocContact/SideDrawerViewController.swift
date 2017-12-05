@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol SideDrawerViewControllerDelegate: AnyObject {
+    func goToLogin()
+}
+
 class SideDrawerViewController: UIViewController {
 
     @IBOutlet weak var firstNameLabel: UILabel!
@@ -16,6 +20,9 @@ class SideDrawerViewController: UIViewController {
     var resultController : NSFetchedResultsController<User>!
     var user: User?
     let DBManager = ManageDbProvider.sharedInstance
+    
+    weak var delegate: SideDrawerViewControllerDelegate?
+
     
     
     override func viewDidLoad() {
@@ -25,7 +32,6 @@ class SideDrawerViewController: UIViewController {
             return
         }
         self.firstNameLabel.text = "Bonjour \(firstName)"
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +46,7 @@ class SideDrawerViewController: UIViewController {
 
     
     @IBAction func disconnect(_ sender: Any) {
-       // self.dismiss(animated: true, completion: nil)
+        print("clicked")
+        self.delegate?.goToLogin()
     }
 }

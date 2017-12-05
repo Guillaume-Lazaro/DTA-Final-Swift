@@ -29,7 +29,8 @@ class ContactListTableViewController: UITableViewController{
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        drawerController.delegate = self
+        //SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         // Set the title with correct parameters
         self.title = NSLocalizedString("MyContacts", comment: "")
@@ -238,5 +239,11 @@ extension ContactListTableViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Appui sur search")
         self.view.endEditing(true)
+    }
+}
+extension ContactListTableViewController : SideDrawerViewControllerDelegate{
+    func goToLogin() {
+        print("passé dans le delegate")
+        self.dismiss(animated: true, completion: { self.navigationController?.dismiss(animated: true, completion: nil)})
     }
 }
