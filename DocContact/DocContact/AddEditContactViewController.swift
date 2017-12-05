@@ -134,6 +134,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         
         pickerTextField.inputView = pickerView
         
+        //Hide the keyboard if you click elsewhere on the screen
+        self.hideKeyboardWhenTappedAround()
+        
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
