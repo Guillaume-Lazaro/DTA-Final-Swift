@@ -32,11 +32,22 @@
                         <action selector="goToProfil:" destination="-1" eventType="touchUpInside" id="ht9-WM-WYO"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8t-a9-bjb">
+                    <rect key="frame" x="148" y="537" width="78" height="30"/>
+                    <state key="normal" title="Disconnect">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="disconnect:" destination="-1" eventType="touchUpInside" id="pFv-kp-MfP"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8jq-DH-Zhy" secondAttribute="trailing" constant="10" id="5f6-z2-JN4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="N8t-a9-bjb" secondAttribute="bottom" constant="100" id="IYo-ra-EyW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1oX-fx-YuG" secondAttribute="trailing" constant="20" id="azZ-7c-ZR9"/>
+                <constraint firstItem="N8t-a9-bjb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bG8-fU-NmW"/>
                 <constraint firstItem="1oX-fx-YuG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ccV-zo-GNh"/>
                 <constraint firstItem="8jq-DH-Zhy" firstAttribute="top" secondItem="1oX-fx-YuG" secondAttribute="bottom" constant="35" id="jKu-nX-9Gk"/>
                 <constraint firstItem="8jq-DH-Zhy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="neh-Mv-VOg"/>

@@ -19,8 +19,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.DBManager.deleteUsersFromCoreData()
         
         //TextField:
-        phoneTextField.delegate = self
-        passwordTextField.delegate = self
+        phoneTextField?.delegate = self
+        passwordTextField?.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
