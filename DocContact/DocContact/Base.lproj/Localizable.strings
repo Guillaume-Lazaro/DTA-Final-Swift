@@ -28,6 +28,7 @@
 
 //écran de détails:
 "MyContact" = "My Contact";
+"MyProfile" = "My Profile";
 "Modify" = "Modify";
 "Greetings"="Greetings";
 "MailFromDocContacts" = "This mail was send by my app DocContact";
