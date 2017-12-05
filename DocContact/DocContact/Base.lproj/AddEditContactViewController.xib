@@ -50,7 +50,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
                             <connections>
                                 <action selector="editLastName:" destination="-1" eventType="editingDidBegin" id="vT7-PO-sid"/>
                             </connections>
@@ -71,7 +71,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <textInputTraits key="textInputTraits" textContentType="name"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                             <connections>
                                 <action selector="editFirstName:" destination="-1" eventType="editingDidBegin" id="Xlm-Vj-KNQ"/>
                             </connections>
@@ -113,7 +113,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
                             <connections>
                                 <action selector="mailVerifRealTime:" destination="-1" eventType="editingChanged" id="kW0-jW-tHM"/>
                             </connections>
@@ -151,7 +151,6 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rrw-tG-Dav">
                                     <rect key="frame" x="22.5" y="30" width="51" height="30"/>
                                 </switch>
