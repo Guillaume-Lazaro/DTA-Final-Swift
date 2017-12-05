@@ -118,20 +118,6 @@ class ManageDbProvider{
 		
 		print("Les contacts ont bien été ajoutés à la base de données locale")
 	}
-	
-	func wipeContacts(){
-		let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
-		let netProvider = NetworkProvider.sharedInstance
-		let appDelegate = netProvider.persistentContainer
-		let context = appDelegate.viewContext
-		let contacts : [Contact] = try! context.fetch(fetchRequest)
-		
-		contacts.forEach { (contact) in
-			context.delete(contact)
-		}
-		
-		
-	}
 }
 
 
