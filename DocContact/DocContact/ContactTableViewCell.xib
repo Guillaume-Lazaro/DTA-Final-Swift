@@ -34,17 +34,17 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PO8-Fs-eRJ">
-                        <rect key="frame" x="108.5" y="40.5" width="442" height="43.5"/>
+                        <rect key="frame" x="108.5" y="38" width="442" height="49.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-1Q-dTw">
-                                <rect key="frame" x="0.0" y="0.0" width="442" height="23.5"/>
-                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="442" height="27"/>
+                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nj-cW-JO4">
-                                <rect key="frame" x="0.0" y="23.5" width="442" height="20"/>
-                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="27" width="442" height="22.5"/>
+                                <fontDescription key="fontDescription" name="Domine-Regular" family="Domine" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

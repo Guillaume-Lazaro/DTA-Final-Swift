@@ -96,6 +96,7 @@ class ContactListTableViewController: UITableViewController{
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         contactVC.isInEditionMode = false   //On précise à la view AddEdit qu'il s'agit d'un ajout
+        contactVC.isContactsModification = true
         self.navigationController?.pushViewController(contactVC, animated: true)
     }
     

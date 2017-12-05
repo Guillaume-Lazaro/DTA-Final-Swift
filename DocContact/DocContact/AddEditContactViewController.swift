@@ -98,11 +98,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         super.viewDidLoad()
         self.fillPickerOptions()
         
-        if contact == nil {
-            isContactsModification = false
-            isInEditionMode = true
-        } else {
+        if user == nil {
             isContactsModification = true
+        } else {
+            isContactsModification = false
         }
         
         if isInEditionMode {
