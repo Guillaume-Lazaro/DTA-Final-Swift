@@ -213,7 +213,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                         self.present(navVC, animated: true, completion: nil)
                     }
                 }, failure:{
-                    //TODO : Alert reconnexion
+                    self.alertConnectError()
                 })
             } else {
                 guard let id = contact?.id else{
@@ -261,7 +261,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 self.present(navVC, animated: true, completion: nil)
             }
         },failure:{
-            //TODO: Alerte Reco
+            self.alertConnectError()
         })
         
     }
