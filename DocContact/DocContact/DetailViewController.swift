@@ -114,14 +114,10 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         if isContactsDetails {
             contactVC.contact = contact
             contactVC.isContactsModification = true
-            contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
         } else {
             contactVC.user = self.user
             contactVC.isContactsModification = false
-            contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
         }
-      
-        contactVC.contact = contact
         contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
 
         self.navigationController?.pushViewController(contactVC, animated: true)
