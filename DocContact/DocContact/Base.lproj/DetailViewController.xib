@@ -26,6 +26,8 @@
                 <outlet property="emailView" destination="BFX-mY-Try" id="TLS-Xx-KIr"/>
                 <outlet property="firstAndLastNameLabel" destination="Pqh-p4-4bq" id="Z62-x6-ne1"/>
                 <outlet property="imageView" destination="5M8-Ug-CDh" id="5TV-NR-2bQ"/>
+                <outlet property="mailButton" destination="kgO-Aq-6T2" id="Ba9-2i-OLh"/>
+                <outlet property="phoneButton" destination="MUb-I6-Rs8" id="mzq-cV-uDr"/>
                 <outlet property="phoneView" destination="MU3-jG-Jdm" id="jjj-ph-745"/>
                 <outlet property="typeView" destination="Iq0-0p-39b" id="Igy-Od-ACN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

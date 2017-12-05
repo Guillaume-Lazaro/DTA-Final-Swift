@@ -22,6 +22,9 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var emergencyUserView: UILabel!
     @IBOutlet weak var firstAndLastNameLabel: UILabel!
     
+    @IBOutlet weak var mailButton: ThinBorderButton!
+    @IBOutlet weak var phoneButton: ThinBorderButton!
+    
     weak var contact: Contact?
     weak var delegate: DetailViewControllerDelegate?
     
@@ -34,34 +37,41 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Au cas ou, si le contact n'est pas donné en paramétre, on indique qu'il s'agit de Mon Profil:
+        //Si le contact n'est pas donné en paramétre, on indique qu'il s'agit de Mon Profil:
         if contact == nil {
-            isContactsDetails = true
-        } else {
             isContactsDetails = false
-        }
-        
-        // si on veut afficher le profil, on récupère l'user en cours
-        if !isContactsDetails{
-            self.user=self.DBManager.getUser()
+            self.user=self.DBManager.getUser()  //On récupére l'user en cours
+        } else {
+            isContactsDetails = true
         }
 
         // Set the title with correct parameters
-        self.title = NSLocalizedString("MyContact", comment: "")
+        var hashGravatar:String = "https://fr.gravatar.com/avatar/3853c8335c1170e567e2e04d8c35fb7d"
+        if isContactsDetails {
+            self.title = NSLocalizedString("MyContact", comment: "")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
+            
+            hashGravatar = (self.contact?.gravatar)!
+        } else {
+            self.title = NSLocalizedString("MyProfile", comment: "")
+            mailButton.isEnabled = false
+            mailButton.isHidden = true
+            phoneButton.isEnabled = false
+            phoneButton.isHidden = true
+            
+            /*guard let hashGravatar:String = self.user?.gravatar else {
+                return
+            }*/
+        }
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
         
         fillTheFields()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
-        
-        //Changement de l'image de profil:
-        guard let hashGravatar:String = self.contact?.gravatar else {
-            return
-        }
+        //Chargement de l'image de profil/contact
         DispatchQueue.main.async() {
             let strUrl = hashGravatar+"?s=200&d=mm"
-            print("URL: ",strUrl)
             let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!)
             self.imageView.image = UIImage(data: data!)
@@ -90,15 +100,12 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // Present the view controller modally.
             present(composeVC, animated: true)
-            
-            
         } else {
             print("Mail services are not available")
             return
         }
     }
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
-        
         controller.dismiss(animated: true)
     }
     
@@ -106,9 +113,9 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         contactVC.contact = contact
         contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
+
         self.navigationController?.pushViewController(contactVC, animated: true)
 
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,18 +124,30 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     func fillTheFields(){
-        phoneView.text = contact?.phone
-        emailView.text = contact?.email
-        typeView.text = contact?.profile
-        guard let firstName = contact?.firstName, let lastName = contact?.lastName else{
-            print("Les noms ne sont pas valides")
-            return
+        if isContactsDetails {
+            phoneView.text = contact?.phone
+            emailView.text = contact?.email
+            typeView.text = contact?.profile
+            guard let firstName = contact?.firstName, let lastName = contact?.lastName else{
+                print("Les noms ne sont pas valides")
+                return
+            }
+            let firstAndLastName = "\(lastName) \(firstName)"
+            firstAndLastNameLabel.text = firstAndLastName
+        } else {
+            phoneView.text = user?.phone
+            emailView.text = user?.email
+            typeView.text = user?.profile
+            guard let firstName = user?.firstName, let lastName = user?.lastName else{
+                print("Les noms ne sont pas valides")
+                return
+            }
+            let firstAndLastName = "\(lastName) \(firstName)"
+            firstAndLastNameLabel.text = firstAndLastName
         }
-        let firstAndLastName = "\(lastName) \(firstName)"
-        firstAndLastNameLabel.text = firstAndLastName
         
+
     }
-    
 }
 
 extension String {
