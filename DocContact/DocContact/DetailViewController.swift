@@ -33,16 +33,23 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
     // TODO : Gérer si on veut afficher les détails du profil et non d'un contact
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Au cas ou, si le contact n'est pas donné en paramétre, on indique qu'il s'agit de Mon Profil:
+        if contact == nil {
+            isContactsDetails = true
+        } else {
+            isContactsDetails = false
+        }
+        
         // si on veut afficher le profil, on récupère l'user en cours
         if !isContactsDetails{
             self.user=self.DBManager.getUser()
         }
-        print("le contact est ",self.contact ?? "no contact")
-        // Set the title with correct parameters 
+
+        // Set the title with correct parameters
         self.title = NSLocalizedString("MyContact", comment: "")
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Domine", size: 19)! ]
-        
         
         fillTheFields()
         
