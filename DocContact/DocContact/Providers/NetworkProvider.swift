@@ -170,10 +170,10 @@ class NetworkProvider{
                 guard let resp = responseJSON as? [[String:Any]] else{
                     return
                 }
+                
                 let managerDB = ManageDbProvider.sharedInstance
                 managerDB.fillCoreDataWithContacts(json: resp)
                 success()
-                //return resp
             }
         }
         task.resume()

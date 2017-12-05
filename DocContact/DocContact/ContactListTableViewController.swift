@@ -15,6 +15,7 @@ class ContactListTableViewController: UITableViewController{
     var contacts = [Contact]()
     var resultController : NSFetchedResultsController<Contact>!
     let netProvider = NetworkProvider.sharedInstance
+    let managerDb = ManageDbProvider.sharedInstance
     
     // SearchBar
     @IBOutlet weak var searchBarView: UISearchBar!
@@ -31,12 +32,13 @@ class ContactListTableViewController: UITableViewController{
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         
-        let managerDb = ManageDbProvider.sharedInstance
-        managerDb.wipeContacts()
+        
+        self.managerDb.wipeContacts()
         
         //let netProvider = NetworkProvider.sharedInstance
         self.netProvider.getContacts(success: {
-            if self.contacts.isEmpty {
+            if self.managerDb.hasNoContact() {
+                print("alert addFirst")
                 let alertAddFirstContact = UIAlertController(title: NSLocalizedString("AddFirstContact", comment: ""), message: NSLocalizedString("MyFirstContact", comment: ""), preferredStyle: .alert)
                 alertAddFirstContact.addAction(UIAlertAction(title:NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
                 alertAddFirstContact.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
