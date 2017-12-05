@@ -29,14 +29,8 @@ class ContactListTableViewController: UITableViewController{
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        
-		
-
-        
-        
-        
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
+  
         // Set the title with correct parameters
         self.title = NSLocalizedString("MyContacts", comment: "")
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -53,13 +47,17 @@ class ContactListTableViewController: UITableViewController{
         self.navigationItem.rightBarButtonItem = validateCreation
         
         let burgerButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(openDrawer))
+
         self.navigationItem.leftBarButtonItem = burgerButton
         burgerButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 22)!], for: .normal)
         burgerButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 24)!], for: .highlighted)
     }
     
     override func viewDidAppear(_ animated: Bool){
-        
+        print("coucou")
+        if self.netProvider.token == nil{
+            self.dismiss(animated: true, completion: nil)
+        }
         //let netProvider = NetworkProvider.sharedInstance
         self.netProvider.getContacts(success: {
             if self.managerDb.hasNoContact() {
@@ -89,7 +87,6 @@ class ContactListTableViewController: UITableViewController{
     @objc func openDrawer() {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
-    
     // Method of the back button
     @objc func backAction(){
         dismiss(animated: true, completion: nil)

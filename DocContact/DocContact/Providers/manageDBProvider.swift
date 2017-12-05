@@ -17,7 +17,7 @@ class ManageDbProvider{
 		return sharedManageDbProvider
 	}
 	
-	func createCoreDataUser(userJson: [String: String]){
+    func createCoreDataUser(userJson: [String: String]){
 		let appDelegate = netProvider.persistentContainer
 		let context = appDelegate.viewContext
 		let user = User(context: context)

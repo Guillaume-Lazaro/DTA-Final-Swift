@@ -19,8 +19,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.DBManager.deleteUsersFromCoreData()
         
         //TextField:
-        phoneTextField.delegate = self
-        passwordTextField.delegate = self
+        //phoneTextField.delegate = self
+       // passwordTextField.delegate = self
         
         //Hide the keyboard if you click elsewhere on the screen
         self.hideKeyboardWhenTappedAround()

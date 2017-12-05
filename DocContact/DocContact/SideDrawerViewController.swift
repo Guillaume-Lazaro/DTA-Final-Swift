@@ -11,6 +11,8 @@ import CoreData
 
 class SideDrawerViewController: UIViewController {
 
+    let netProvider = NetworkProvider.sharedInstance
+    let DBManager = ManageDbProvider.sharedInstance
     var resultController : NSFetchedResultsController<User>!
     
     override func viewDidLoad() {
@@ -29,6 +31,11 @@ class SideDrawerViewController: UIViewController {
 
     
     @IBAction func disconnect(_ sender: Any) {
+        netProvider.token = nil
+        DBManager.deleteUsersFromCoreData()
+        //let loginVC = LoginViewController(nibName: nil, bundle: nil)
+        //self.navigationController?.popToViewController(, animated: true)
         self.dismiss(animated: true, completion: nil)
+        
     }
 }
