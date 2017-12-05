@@ -33,31 +33,7 @@ class ContactListTableViewController: UITableViewController{
         
         
 		
-        //let netProvider = NetworkProvider.sharedInstance
-        self.netProvider.getContacts(success: {
-            if self.managerDb.hasNoContact() {
-                print("alert addFirst")
-                let alertAddFirstContact = UIAlertController(title: NSLocalizedString("AddFirstContact", comment: ""), message: NSLocalizedString("MyFirstContact", comment: ""), preferredStyle: .alert)
-                alertAddFirstContact.addAction(UIAlertAction(title:NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
-                alertAddFirstContact.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
-                    alert -> Void in
-                    self.goToEditContact()
-                }))
-                self.present(alertAddFirstContact, animated: true)
-            }
-        })
-        
-        
-        
-        // Get the list of contacts
-        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
-        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
-        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
-        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
-        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        resultController.delegate = self
-        try? resultController.performFetch()
-        self.tableView.reloadData()
+
         
         
         
@@ -80,6 +56,34 @@ class ContactListTableViewController: UITableViewController{
         self.navigationItem.leftBarButtonItem = burgerButton
         burgerButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 22)!], for: .normal)
         burgerButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 24)!], for: .highlighted)
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        
+        //let netProvider = NetworkProvider.sharedInstance
+        self.netProvider.getContacts(success: {
+            if self.managerDb.hasNoContact() {
+                print("alert addFirst")
+                let alertAddFirstContact = UIAlertController(title: NSLocalizedString("AddFirstContact", comment: ""), message: NSLocalizedString("MyFirstContact", comment: ""), preferredStyle: .alert)
+                alertAddFirstContact.addAction(UIAlertAction(title:NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+                alertAddFirstContact.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
+                    alert -> Void in
+                    self.goToEditContact()
+                }))
+                self.present(alertAddFirstContact, animated: true)
+            }
+        })
+        
+        // Get the list of contacts
+        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
+        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
+        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController.delegate = self
+        try? resultController.performFetch()
+        self.tableView.reloadData()
+        
     }
     
     @objc func openDrawer() {
