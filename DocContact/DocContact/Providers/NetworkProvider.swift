@@ -143,7 +143,7 @@ class NetworkProvider{
         task.resume()
     }
     
-    func getContacts(){
+    func getContacts(success: @escaping ()->()){
         guard let token: String = self.token else{
             print("Le token n'est pas défini")
             return
@@ -166,9 +166,10 @@ class NetworkProvider{
                 guard let resp = responseJSON as? [[String:Any]] else{
                     return
                 }
+                
                 let managerDB = ManageDbProvider.sharedInstance
                 managerDB.fillCoreDataWithContacts(json: resp)
-                //return resp
+                success()
             }
         }
         task.resume()

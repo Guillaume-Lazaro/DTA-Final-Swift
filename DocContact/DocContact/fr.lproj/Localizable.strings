@@ -20,11 +20,13 @@
 "Confirmation" = "Confirmation";
 "DeleteConfirmation" = "Voulez-vous vraiment supprimer ce contact?";
 "InscriptionError" = "Erreur d'inscription";
-"CheckField" = "Veuillez vérifier les champ surlignés";
+"CheckField" = "Veuillez vérifier les champs surlignés";
 
 //écran d'accueil:
 "MyContacts" = "Mes Contacts";
 "NameOrPhoneNumber" = "Nom ou numéro de téléphone";
+"AddFirstContact" = "Premier contact";
+"MyFirstContact" = "Voulez-vous créer votre premier contact ?";
 
 //écran de détails:
 "MyContact" = "Mon Contact";
@@ -52,10 +54,10 @@
 
 //écran de login:
 "ForgotPassword" = "Mot de passe oublié";
-"EnterPhoneNumber" = "Veuillez entrez votre numéro de téléphone pour récupérer votre mot de passe";
+"EnterPhoneNumber" = "Veuillez entrer votre numéro de téléphone pour récupérer votre mot de passe";
 "PasswordSent" = "Mot de passe envoyé";
 "YourPasswordWasSent" = "Votre mot de passe a été envoyé à l'adresse Email de votre compte";
 "UnknownPhone" = "Numéro inconnu";
-"CreateAnAccount" = "Ce numéro est inconnu, veuillez créez un compte";
+"CreateAnAccount" = "Ce numéro est inconnu, veuillez créer un compte";
 "LoginFailed" = "Login échoué";
 "CheckYourLogin" = "Nous n'avons pas pu vous connecter, vérifiez votre numéro de téléphone et votre mot de passe puis réessayez";

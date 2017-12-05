@@ -25,6 +25,8 @@
 //écran d'accueil:
 "MyContacts" = "My Contacts";
 "NameOrPhoneNumber" = "Name or phone number";
+"AddFirstContact" = "First Contact";
+"MyFirstContact" = "Do you want to create your first contact ?";
 
 //écran de détails:
 "MyContact" = "My Contact";

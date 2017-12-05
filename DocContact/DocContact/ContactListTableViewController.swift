@@ -15,6 +15,7 @@ class ContactListTableViewController: UITableViewController{
     var contacts = [Contact]()
     var resultController : NSFetchedResultsController<Contact>!
     let netProvider = NetworkProvider.sharedInstance
+    let managerDb = ManageDbProvider.sharedInstance
     
     // SearchBar
     @IBOutlet weak var searchBarView: UISearchBar!
@@ -32,18 +33,9 @@ class ContactListTableViewController: UITableViewController{
         
         
 		
-        //let netProvider = NetworkProvider.sharedInstance
-        self.netProvider.getContacts()
+
         
-        // Get the list of contacts
-        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
-        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
-        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
-        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
-        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        resultController.delegate = self
-        try? resultController.performFetch()
-        self.tableView.reloadData()
+        
         
         // Set the title with correct parameters
         self.title = NSLocalizedString("MyContacts", comment: "")
@@ -66,6 +58,34 @@ class ContactListTableViewController: UITableViewController{
         burgerButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: 24)!], for: .highlighted)
     }
     
+    override func viewDidAppear(_ animated: Bool){
+        
+        //let netProvider = NetworkProvider.sharedInstance
+        self.netProvider.getContacts(success: {
+            if self.managerDb.hasNoContact() {
+                print("alert addFirst")
+                let alertAddFirstContact = UIAlertController(title: NSLocalizedString("AddFirstContact", comment: ""), message: NSLocalizedString("MyFirstContact", comment: ""), preferredStyle: .alert)
+                alertAddFirstContact.addAction(UIAlertAction(title:NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+                alertAddFirstContact.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
+                    alert -> Void in
+                    self.goToEditContact()
+                }))
+                self.present(alertAddFirstContact, animated: true)
+            }
+        })
+        
+        // Get the list of contacts
+        let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
+        let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        let sortLastName = NSSortDescriptor(key: "lastName", ascending: true)
+        fetchRequest.sortDescriptors = [sortFirstName , sortLastName]
+        resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: netProvider.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        resultController.delegate = self
+        try? resultController.performFetch()
+        self.tableView.reloadData()
+        
+    }
+    
     @objc func openDrawer() {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
@@ -80,6 +100,7 @@ class ContactListTableViewController: UITableViewController{
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
         contactVC.isInEditionMode = false   //On précise à la view AddEdit qu'il s'agit d'un ajout
+        contactVC.isContactsModification = true
         self.navigationController?.pushViewController(contactVC, animated: true)
     }
     

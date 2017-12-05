@@ -218,7 +218,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func checkNum(phone: String) -> Bool{
-        if DataValidation.isPhoneValid(phone: phone) {
+        if !DataValidation.isPhoneValid(phone: phone) {
             let alertCount = UIAlertController(title: NSLocalizedString("InscriptionError", comment: ""), message:NSLocalizedString("CheckPhone", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alertCount.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler:nil))
             self.present(alertCount, animated: true, completion: nil)
@@ -228,7 +228,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func checkPassword(password: String) -> Bool{
-        if DataValidation.isPasswordValid(password: password){
+        if !DataValidation.isPasswordValid(password: password){
             let alertCountPwd = UIAlertController(title: NSLocalizedString("PasswordError", comment: ""), message:NSLocalizedString("CheckPassword", comment: ""), preferredStyle:UIAlertControllerStyle.alert)
             alertCountPwd.addAction(UIAlertAction(title:NSLocalizedString("Ok", comment: ""), style:UIAlertActionStyle.default, handler:nil))
             self.present(alertCountPwd, animated: true, completion: nil)
@@ -244,7 +244,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func checkProfile(profile: String) -> Bool{
-        if profile == "_"{
+        if !DataValidation.isProfileValid(profile: profile){
             let alertProfile = UIAlertController(title: NSLocalizedString("ProfileError", comment: ""), message:NSLocalizedString("CheckProfile", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alertProfile.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.default, handler:nil))
             self.present(alertProfile, animated: true, completion: nil)

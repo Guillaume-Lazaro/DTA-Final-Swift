@@ -141,6 +141,20 @@ class ManageDbProvider{
 		
 		print("Les contacts ont bien été ajoutés à la base de données locale")
 	}
+    func hasNoContact() -> Bool {
+        let fetchRequestContact = NSFetchRequest<Contact>(entityName: "Contact")
+        let managedContext = netProvider.persistentContainer.viewContext
+        do {
+            let fetchedContact = try managedContext.fetch(fetchRequestContact)
+            if fetchedContact.isEmpty{
+                return true
+            } else {
+                return false
+            }
+        } catch {
+            fatalError("Failed to fetch contact: \(error)")
+        }
+    }
 }
 
 

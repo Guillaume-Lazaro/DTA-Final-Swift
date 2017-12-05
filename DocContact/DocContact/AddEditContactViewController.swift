@@ -98,11 +98,10 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         super.viewDidLoad()
         self.fillPickerOptions()
         
-        if contact == nil {
-            isContactsModification = false
-            isInEditionMode = true
-        } else {
+        if user == nil {
             isContactsModification = true
+        } else {
+            isContactsModification = false
         }
         
         if isInEditionMode {
@@ -224,9 +223,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                 // Create contact
                 self.netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
                     DispatchQueue.main.async {
-                        let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                        let navVC = UINavigationController(rootViewController: contactVC)
-                        self.present(navVC, animated: true, completion: nil)
+                        self.navigationController?.popToRootViewController(animated: true)
                     }
                 })
             } else {                            //On est en mode d'édition
@@ -235,18 +232,9 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                         return
                     }
                     // Update contact
-                    netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {
-                        //guard var user: User = self.DBManager.getUser() else{
-                        //   return
-                        // }
-                        // user.lastName = name
-                        //user.firstName = firstname
-                        // user.email = mail
-                        // user.profile = profile
-                        
-                        DispatchQueue.main.async {
+                    netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
                             self.navigationController?.popToRootViewController(animated: true)
-                            
+
                         }
                     })
                 } else {    // ici de l'user:
