@@ -40,7 +40,7 @@ class ManageDbProvider{
 	
 	func getUser()->User?{
 		let fetchRequestUser = NSFetchRequest<User>(entityName : "User")
-		let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		let managedContext = netProvider.persistentContainer.viewContext
 		do {
 			let fetchedUser = try managedContext.fetch(fetchRequestUser)
 			// print(fetchedUser.first?.lastName)
@@ -49,15 +49,27 @@ class ManageDbProvider{
 			fatalError("Failed to fetch employees: \(error)")
 		}
 	}
-	
+    func updateUser(firstname:String, lastname: String, mail: String, profile:String){
+        guard let user = getUser() else{
+            return
+        }
+        let managedContext = netProvider.persistentContainer.viewContext
+        user.setValue(firstname,forKey: "firstName")
+        user.setValue(lastname, forKey: "lastName")
+        user.setValue(mail, forKey: "email")
+        user.setValue(profile, forKey: "profile")
+        do{
+            try managedContext.save()
+        }
+        catch{
+            fatalError("\(error)")
+        }
+    }
 	func deleteUsersFromCoreData(){
-		
 		let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		
 		if let user = getUser() {
 			managedContext.delete(user)
 		}
-		
 		do{
 			if managedContext.hasChanges{
 				try managedContext.save()
@@ -66,7 +78,6 @@ class ManageDbProvider{
 			print(error)
 		}
 	}
-	
 	
 	func fillCoreDataWithContacts(json: [[String : Any]]){                    // Passed in data from remote DB
 		

@@ -31,7 +31,6 @@ class NetworkProvider{
         persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
-    // TODO : Garder le token en base locale, récupérer le profil
     func loginOnServer(phone: String, password: String, success: @escaping ([String: String]) -> (), failure: @escaping () ->()){
         var json = [String:String]()
         json["phone"] = phone
@@ -44,7 +43,6 @@ class NetworkProvider{
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let task = session.dataTask(with: request){data, response, error in
-            // TODO : si ok -> stocker token(data) et passer à la liste (charger contacts)
             do {
                 guard let data = data, error == nil else {
                     print(error?.localizedDescription ?? "No data")
@@ -75,7 +73,6 @@ class NetworkProvider{
         task.resume()
     }
     
-    // TODO : Ajouter user en base locale
     func signUpOnServer(phone: String, password: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String, success: @escaping () -> (), failure: @escaping () -> ()) {
         var json = [String:String]()
         json["phone"] = phone
@@ -146,7 +143,6 @@ class NetworkProvider{
         task.resume()
     }
     
-    // TODO : Renvoyer la liste reçue
     func getContacts(success: @escaping ()->()){
         guard let token: String = self.token else{
             print("Le token n'est pas défini")
@@ -179,7 +175,6 @@ class NetworkProvider{
         task.resume()
     }
     
-    // TODO : Que faire en cas de suppression
     func deleteContact(id: String, token: String, success: @escaping ()->()){
         let urlString = API_URL + protectedModifier + "/contacts/" + id
         let url = URL(string: urlString)!
@@ -200,7 +195,6 @@ class NetworkProvider{
         task.resume()
     }
     
-    //TODO : tester l'update
     func updateContact(phone: String, firstname: String, lastname: String, mail: String, profile: String, gravatar: String,emergency: Bool, id: String, token: String, success: @escaping ()->() ){
         var json = [String:Any]()
         json["phone"] = phone
@@ -261,6 +255,42 @@ class NetworkProvider{
                     print("getUser user :")
                     print(userJson)
                     succes(userJson)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func updateUser(firstname: String, lastname: String, mail: String, profile: String, token: String, success: @escaping () -> (), failure: @escaping () -> ()) {
+        var json = [String:String]()
+        json["firstName"] = firstname
+        json["lastName"] = lastname
+        json["email"] = mail
+        json["profile"] = profile
+        let urlString = API_URL + protectedModifier;
+        let url = URL(string: urlString)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let task = session.dataTask(with: request){data, response, error in
+            do{
+                guard let data = data, error == nil else {
+                    print(error?.localizedDescription ?? "No data")
+                    failure()
+                    return
+                }
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: String]{
+                    if let message = responseJSON["message"]{
+                        print(message)
+                        failure()
+                        return
+                    }
+                    print("Utilisateur modifié")
+                    success()
                 }
             }
         }
@@ -330,11 +360,5 @@ class NetworkProvider{
         }
         task.resume()
     }
-    
-    
-    
-    
-    
-    
-    
 }
+

@@ -59,7 +59,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     var isContactsModification: Bool = false
     
     func fillPickerOptions(){
-        netProvider.getProfiles(){ profiles in
+        self.netProvider.getProfiles(){ profiles in
             self.pickOption = profiles
         }
     }
@@ -221,7 +221,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
             }
             if !self.isInEditionMode{
                 // Create contact
-                netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
+                self.netProvider.createContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency, token: token, success: {
                     DispatchQueue.main.async {
                         self.navigationController?.popToRootViewController(animated: true)
                     }
@@ -239,6 +239,14 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                     })
                 } else {    // ici de l'user:
                     //TODO update user
+                    guard let token = self.netProvider.token else{
+                        return
+                    }
+                    // update on server
+                    self.netProvider.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile,token :token, success: {
+                        // update on local
+                        self.DBManager.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile)
+                        DispatchQueue.main.async {self.navigationController?.popToRootViewController(animated: true)}}, failure: {})
                 }
             }
         }else{
@@ -267,7 +275,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     func deletetOnServer(id: String, token: String){
         self.netProvider.deleteContact(id: id, token: token, success: {
             DispatchQueue.main.async {
-               self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         })
         
