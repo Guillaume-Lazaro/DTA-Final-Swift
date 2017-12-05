@@ -164,7 +164,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
 
             let gravatar = self.getGravatar(mail: mail)
             
-            self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, gravatar: gravatar, success: {
+            self.netProvider.signUpOnServer(phone: phone, password: password, firstname: firstname, lastname: lastname, mail: mail, profile: profile, success: {
                 
                 self.netProvider.loginOnServer(phone: phone, password: password, success: {
                     user in

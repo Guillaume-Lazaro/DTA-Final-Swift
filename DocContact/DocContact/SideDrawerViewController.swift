@@ -15,6 +15,7 @@ protocol SideDrawerViewControllerDelegate: AnyObject {
 
 class SideDrawerViewController: UIViewController {
 
+    let netProvider = NetworkProvider.sharedInstance
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     var resultController : NSFetchedResultsController<User>!
@@ -46,6 +47,8 @@ class SideDrawerViewController: UIViewController {
 
     
     @IBAction func disconnect(_ sender: Any) {
+        netProvider.token = nil
+        DBManager.deleteUsersFromCoreData()
         print("clicked")
         self.delegate?.goToLogin()
     }

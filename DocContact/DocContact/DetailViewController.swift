@@ -56,10 +56,10 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             mailButton.isHidden = true
             phoneButton.isEnabled = false
             phoneButton.isHidden = true
-            
-            /*guard let hashGravatar:String = self.user?.gravatar else {
+            guard let mail = self.user?.email else{
                 return
-            }*/
+            }
+            hashGravatar = self.getGravatar(mail: mail)
         }
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Modify", comment: ""), style: .plain, target: self, action: #selector(goToEditContact))
@@ -77,6 +77,14 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
   
+    func getGravatar(mail: String)->String{
+        var email = mail.lowercased()
+        email = email.trimmingCharacters(in: .whitespaces)
+        let mailmd5 = email.toMD5()
+        let gravatar = "https://www.gravatar.com/avatar/"+mailmd5
+        return gravatar
+    }
+    
     @IBAction func pressedCallButton(_ sender: Any) {
         guard let phone = self.contact?.phone else{
             return
