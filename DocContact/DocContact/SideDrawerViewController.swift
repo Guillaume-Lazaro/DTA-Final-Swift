@@ -9,14 +9,29 @@
 import UIKit
 import CoreData
 
+protocol SideDrawerViewControllerDelegate: AnyObject {
+    func goToLogin()
+}
+
 class SideDrawerViewController: UIViewController {
 
-    let netProvider = NetworkProvider.sharedInstance
-    let DBManager = ManageDbProvider.sharedInstance
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
     var resultController : NSFetchedResultsController<User>!
+    var user: User?
+    let DBManager = ManageDbProvider.sharedInstance
+    
+    weak var delegate: SideDrawerViewControllerDelegate?
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.user=self.DBManager.getUser()  //On récupére l'user en cours
+        guard let firstName = user?.firstName else{
+            return
+        }
+        self.firstNameLabel.text = "Bonjour \(firstName)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +48,7 @@ class SideDrawerViewController: UIViewController {
     @IBAction func disconnect(_ sender: Any) {
         netProvider.token = nil
         DBManager.deleteUsersFromCoreData()
-        //let loginVC = LoginViewController(nibName: nil, bundle: nil)
-        //self.navigationController?.popToViewController(, animated: true)
-        self.dismiss(animated: true, completion: nil)
-        
+        print("clicked")
+        self.delegate?.goToLogin()
     }
 }

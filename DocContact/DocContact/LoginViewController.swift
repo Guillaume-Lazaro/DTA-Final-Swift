@@ -83,6 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         netProvider.loginOnServer(phone: phone, password: password,success: {
             user in self.DBManager.createCoreDataUser(userJson: user)
             DispatchQueue.main.async {
+                self.passwordTextField.text = ""
                 self.goToList()
             }
         }, failure: {
