@@ -235,10 +235,18 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                         return
                     }
                     // Update contact
-                    netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {DispatchQueue.main.async {
-                            let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                            let navVC = UINavigationController(rootViewController: contactVC)
-                            self.present(navVC, animated: true, completion: nil)
+                    netProvider.updateContact(phone: phone, firstname: firstname, lastname: name, mail: mail, profile: profile, gravatar: gravatar, emergency: emergency,id:id, token: token, success: {
+                        //guard var user: User = self.DBManager.getUser() else{
+                        //   return
+                        // }
+                        // user.lastName = name
+                        //user.firstName = firstname
+                        // user.email = mail
+                        // user.profile = profile
+                        
+                        DispatchQueue.main.async {
+                            self.navigationController?.popToRootViewController(animated: true)
+                            
                         }
                     })
                 } else {    // ici de l'user:
@@ -246,7 +254,11 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
                     guard let token = self.netProvider.token else{
                         return
                     }
-                    self.netProvider.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile,token :token, success: {DispatchQueue.main.async {self.dismiss(animated: true, completion: nil)}}, failure: {})
+                    // update on server
+                    self.netProvider.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile,token :token, success: {
+                        // update on local
+                        self.DBManager.updateUser(firstname: firstname, lastname: name, mail: mail, profile: profile)
+                        DispatchQueue.main.async {self.dismiss(animated: true, completion: nil)}}, failure: {})
                 }
             }
         }else{
@@ -275,7 +287,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     func deletetOnServer(id: String, token: String){
         self.netProvider.deleteContact(id: id, token: token, success: {
             DispatchQueue.main.async {
-               self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         })
         
