@@ -129,7 +129,6 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         //PickerView:
         pickerView.delegate = self
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .plain, target: self, action: #selector(editContact))
         
         pickerTextField.inputView = pickerView
@@ -137,20 +136,12 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         //Hide the keyboard if you click elsewhere on the screen
         self.hideKeyboardWhenTappedAround()
         
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
-    
-    // Method of the back button
-    @objc func backAction(){
-        //print("Back Button Clicked")
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     @objc func editContact(){
         var valid: Bool = true
@@ -248,9 +239,7 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
     func deletetOnServer(id: String, token: String){
         self.netProvider.deleteContact(id: id, token: token, success: {
             DispatchQueue.main.async {
-                let contactVC = ContactListTableViewController(nibName: nil, bundle: nil)
-                let navVC = UINavigationController(rootViewController: contactVC)
-                self.present(navVC, animated: true, completion: nil)
+               self.navigationController?.popToRootViewController(animated: true)
             }
         })
         
@@ -266,15 +255,5 @@ class AddEditContactViewController: UIViewController, UIPickerViewDataSource, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
