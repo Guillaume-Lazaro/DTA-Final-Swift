@@ -15,6 +15,7 @@ class ContactListTableViewController: UITableViewController{
     var contacts = [Contact]()
     var resultController : NSFetchedResultsController<Contact>!
     let netProvider = NetworkProvider.sharedInstance
+    let managerDb = ManageDbProvider.sharedInstance
     
     // SearchBar
     @IBOutlet weak var searchBarView: UISearchBar!
@@ -33,7 +34,20 @@ class ContactListTableViewController: UITableViewController{
         
 		
         //let netProvider = NetworkProvider.sharedInstance
-        self.netProvider.getContacts()
+        self.netProvider.getContacts(success: {
+            if self.managerDb.hasNoContact() {
+                print("alert addFirst")
+                let alertAddFirstContact = UIAlertController(title: NSLocalizedString("AddFirstContact", comment: ""), message: NSLocalizedString("MyFirstContact", comment: ""), preferredStyle: .alert)
+                alertAddFirstContact.addAction(UIAlertAction(title:NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+                alertAddFirstContact.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
+                    alert -> Void in
+                    self.goToEditContact()
+                }))
+                self.present(alertAddFirstContact, animated: true)
+            }
+        })
+        
+        
         
         // Get the list of contacts
         let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
@@ -44,6 +58,8 @@ class ContactListTableViewController: UITableViewController{
         resultController.delegate = self
         try? resultController.performFetch()
         self.tableView.reloadData()
+        
+        
         
         // Set the title with correct parameters
         self.title = NSLocalizedString("MyContacts", comment: "")
