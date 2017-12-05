@@ -111,10 +111,11 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     @objc func goToEditContact(){
         let contactVC = AddEditContactViewController(nibName: nil, bundle: nil)
-        let navVC = UINavigationController(rootViewController: contactVC)
         contactVC.contact = contact
         contactVC.isInEditionMode = true   //On précise à la view AddEdit qu'il s'agit d'une édition
-        self.present(navVC, animated: true, completion: nil)
+
+        self.navigationController?.pushViewController(contactVC, animated: true)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,6 +145,8 @@ class DetailViewController: UIViewController, MFMailComposeViewControllerDelegat
             let firstAndLastName = "\(lastName) \(firstName)"
             firstAndLastNameLabel.text = firstAndLastName
         }
+        
+
     }
 }
 

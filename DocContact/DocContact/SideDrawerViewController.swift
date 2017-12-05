@@ -26,6 +26,7 @@ class SideDrawerViewController: UIViewController {
         profilVC.isContactsDetails = false
         self.navigationController?.pushViewController(profilVC, animated: true)
     }
+
     
     @IBAction func disconnect(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
