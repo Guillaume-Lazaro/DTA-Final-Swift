@@ -50,8 +50,6 @@
 		E9F262451FD5862900A5BEF7 /* ThinBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */; };
 		E9F262481FD5A6A500A5BEF7 /* SideDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F262461FD5A6A500A5BEF7 /* SideDrawerViewController.swift */; };
 		E9F262491FD5A6A500A5BEF7 /* SideDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F262471FD5A6A500A5BEF7 /* SideDrawerViewController.xib */; };
-		E9F2624C1FD5A82900A5BEF7 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F2624A1FD5A82900A5BEF7 /* MyProfileViewController.swift */; };
-		E9F2624D1FD5A82900A5BEF7 /* MyProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F2624B1FD5A82900A5BEF7 /* MyProfileViewController.xib */; };
 		FC4C28371FD190AB00F10D93 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4C28361FD190AB00F10D93 /* DataValidation.swift */; };
 		FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */; };
 /* End PBXBuildFile section */
@@ -136,8 +134,6 @@
 		E9F262441FD5862900A5BEF7 /* ThinBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinBorderButton.swift; sourceTree = "<group>"; };
 		E9F262461FD5A6A500A5BEF7 /* SideDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDrawerViewController.swift; sourceTree = "<group>"; };
 		E9F262471FD5A6A500A5BEF7 /* SideDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideDrawerViewController.xib; sourceTree = "<group>"; };
-		E9F2624A1FD5A82900A5BEF7 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
-		E9F2624B1FD5A82900A5BEF7 /* MyProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileViewController.xib; sourceTree = "<group>"; };
 		F3E01EE02F7065C7E9ADAC93 /* Pods-DocContactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocContactTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DocContactTests/Pods-DocContactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC4C28361FD190AB00F10D93 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
 		FCE38E131FCC56D2005322F9 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
@@ -249,8 +245,6 @@
 				BC1448CA1FCC18DB00528F85 /* Main.storyboard */,
 				E9F262461FD5A6A500A5BEF7 /* SideDrawerViewController.swift */,
 				E9F262471FD5A6A500A5BEF7 /* SideDrawerViewController.xib */,
-				E9F2624A1FD5A82900A5BEF7 /* MyProfileViewController.swift */,
-				E9F2624B1FD5A82900A5BEF7 /* MyProfileViewController.xib */,
 			);
 			path = DocContact;
 			sourceTree = "<group>";
@@ -440,7 +434,6 @@
 				E984FB111FCC514800BD7F09 /* ContactTableViewCell.xib in Resources */,
 				BCF6516E1FD015A100BF502F /* DetailViewController.xib in Resources */,
 				BC1448D41FCC18DB00528F85 /* LaunchScreen.storyboard in Resources */,
-				E9F2624D1FD5A82900A5BEF7 /* MyProfileViewController.xib in Resources */,
 				BCF651761FD01AC400BF502F /* AddEditContactViewController.xib in Resources */,
 				BC244C4E1FD546E600452BD7 /* Localizable.strings in Resources */,
 				BC1448D11FCC18DB00528F85 /* Assets.xcassets in Resources */,
@@ -636,7 +629,6 @@
 				E9F262421FD541C400A5BEF7 /* ProjectColors.swift in Sources */,
 				E962F0F81FCD6C6D001C0403 /* RoundedImage.swift in Sources */,
 				FC4C28371FD190AB00F10D93 /* DataValidation.swift in Sources */,
-				E9F2624C1FD5A82900A5BEF7 /* MyProfileViewController.swift in Sources */,
 				FCE38E141FCC56D2005322F9 /* NetworkProvider.swift in Sources */,
 				E96BE4511FD175A60005ADEC /* DefaultButton.swift in Sources */,
 				BC1448CF1FCC18DB00528F85 /* DocContact.xcdatamodeld in Sources */,
