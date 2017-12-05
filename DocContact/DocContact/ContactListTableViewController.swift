@@ -31,12 +31,6 @@ class ContactListTableViewController: UITableViewController{
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
-        
-		
-
-        
-        
-        
         // Set the title with correct parameters
         self.title = NSLocalizedString("MyContacts", comment: "")
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -73,7 +67,7 @@ class ContactListTableViewController: UITableViewController{
                 self.present(alertAddFirstContact, animated: true)
             }
         })
-        
+                
         // Get the list of contacts
         let fetchRequest = NSFetchRequest<Contact>(entityName : "Contact")
         let sortFirstName = NSSortDescriptor(key: "firstName", ascending: true)
